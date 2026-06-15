@@ -1,0 +1,1489 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: url('font/MinecraftTen-VGORe.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --nice-padding: 6rem;
+    --roundness: 0.5rem;
+    --accent1: #55ff55;
+    --accent2: #00aa00;
+    --accent2_transp: #00aa0055;
+    --background1: #1e1e1e;
+    --background2: #0f0f0f;
+    --minecraft-border: #373737;
+    --minecraft-shadow: #000000;
+
+    color-scheme: dark;
+}
+
+* {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+span {
+    font-family: 'Minecraft', monospace;
+}
+
+body {
+    font-family: 'Minecraft', monospace;
+    background: url('bg.png') center center fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    margin:0px;
+    position: relative;
+    image-rendering: pixelated;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+
+#more {
+    padding-top:5rem;
+    margin-top: -5rem;
+}
+#discord {
+    padding-top:5rem;
+    margin-top: -5rem;
+}
+#about {
+    padding-top:5rem;
+    margin-top: -5rem;
+}
+#join {
+    padding-top:5rem;
+    margin-top: -5rem;
+}
+
+
+.banner {
+    display: flex;
+    position: fixed;
+    background-color: #ff000099;
+    width: 100%;
+    height: 3rem;
+    z-index: 10;
+    font-size: 2rem;
+    font-weight: 600;
+    justify-content: center;
+    backdrop-filter: blur(15px);
+    align-content: center;
+    padding-top: .4rem;
+}
+
+
+
+.headline {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-size:3rem;
+    text-align: center;
+    font-weight: normal;
+    text-shadow: 3px 3px 0 var(--minecraft-shadow), 0 0 10px rgba(85, 255, 85, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+}
+
+.desktop_navbar {
+    position:fixed;
+    display: flex;
+    height: 4rem;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom:0;
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 3px solid var(--minecraft-border);
+    border-top: 3px solid var(--minecraft-border);
+    box-shadow: 0 4px 0 var(--minecraft-shadow);
+    z-index: 5;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.desktop_navbar_logo_img {
+    width: 5rem;
+    padding-left: 2rem;
+    padding-right: 1rem;
+}
+
+.desktop_navbar_link {
+    font-size: 1.2rem;
+    padding: .8rem;
+    transition: all .2s;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    text-shadow: 2px 2px 0 var(--minecraft-shadow);
+    border: 2px solid transparent;
+}
+.desktop_navbar_link:hover {
+    color: var(--accent1);
+    text-shadow: 2px 2px 0 var(--minecraft-shadow), 0 0 8px var(--accent1);
+    border: 2px solid var(--accent1);
+    background: rgba(0, 170, 0, 0.2);
+}
+
+.desktop_navbar_link2 {
+    padding:.5rem 1rem;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 2px 2px 0 var(--minecraft-shadow);
+}
+.desktop_navbar_link2_div {
+    font-size: 1.2rem;
+    padding: .8rem;
+    transition: all .2s;
+    margin-left: auto;
+    margin-right: 2rem;
+    font-weight: 700;
+    border: 3px solid var(--minecraft-border);
+    border-top-color: #555;
+    border-left-color: #555;
+    border-bottom-color: #222;
+    border-right-color: #222;
+    background: linear-gradient(135deg, var(--accent2), var(--accent1));
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 4px 0 var(--minecraft-shadow);
+    text-align: center;
+}
+.desktop_navbar_link2_div:hover {
+    background: linear-gradient(135deg, var(--accent1), #7fff7f);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.3), 0 2px 0 var(--minecraft-shadow);
+    transform: translateY(2px);
+}
+.desktop_navbar_link2_div:active {
+    box-shadow: inset 0 2px 0 rgba(0,0,0,0.3);
+    transform: translateY(4px);
+}
+
+.mobile_navbar {
+    display: none;
+    overflow: hidden;
+    background-color: #00000033;
+    backdrop-filter: blur(15px);
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+    flex-direction: row;
+    min-height: 53px;
+}
+
+.mobile_navbar_logo_img {
+    position: absolute;
+    display: block;
+    height: 42px;
+    padding-left: .5rem;
+    top: 0;
+    left: 0;
+    padding-top: 3.5px;
+}
+
+.mobile_navbar #mobile_navbar_links {
+    display: none;
+    margin-top: 53px;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #00000011;
+}
+
+.mobile_navbar_link {
+    padding:.5rem;
+}
+
+.mobile_navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+}
+
+.mobile_navbar .icon {
+    background-color: #00000044;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 16px;
+}
+
+.mobile_navbar_logo_img_a {
+    display: block;
+    background-color: #00000022;
+} 
+
+
+
+.mainflex {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main1 {
+    padding-top: calc(var(--nice-padding) + 2rem);
+    padding-bottom: calc(var(--nice-padding) + 2rem);
+    min-height: 100vh;
+    display:flex;
+    width: 100%;
+    align-self: center;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.main1_logo_a {
+    margin-bottom: var(--nice-padding);
+    cursor: default;
+}
+
+.main1_logo {
+    display: block;
+    align-self: center;
+    margin-left:auto;
+    margin-right: auto;
+    transition: all 0.2s ease;
+    max-width: 40rem;
+    filter: drop-shadow(4px 4px 0 var(--minecraft-shadow));
+    image-rendering: pixelated;
+}
+
+.main1_logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(6px 6px 0 var(--minecraft-shadow)) drop-shadow(0 0 15px var(--accent1));
+}
+
+.main1_description {
+    text-align: center;
+    font-size:3rem;
+    margin-bottom: var(--nice-padding);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-shadow: 3px 3px 0 var(--minecraft-shadow);
+    letter-spacing: 1px;
+}
+
+.main1_actcent {
+    font-weight: 800;
+    color:var(--accent1);
+}
+
+.main1_ipcopier {
+    padding: 0.9rem 2rem;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--accent2), var(--accent1));
+    border: 2px solid var(--minecraft-border);
+    border-top-color: #555;
+    border-left-color: #555;
+    border-bottom-color: #222;
+    border-right-color: #222;
+    border-radius: var(--roundness);
+    color: #ffffff;
+    transition: all 0.2s ease;
+    cursor:pointer;
+    position: relative;
+    text-shadow: 2px 2px 0 var(--minecraft-shadow), 0 0 8px rgba(0, 0, 0, 0.8);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 3px 0 var(--minecraft-shadow);
+    font-family: 'Minecraft', monospace;
+    font-weight: normal;
+}
+
+.main1_ipcopier:hover {
+    background: linear-gradient(135deg, var(--accent1), #7fff7f);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.3), 0 2px 0 var(--minecraft-shadow);
+    transform: translateY(1px);
+    color: #ffffff;
+    text-shadow: 2px 2px 0 var(--minecraft-shadow), 0 0 12px rgba(0, 0, 0, 1);
+}
+
+.main1_ipcopier:active {
+    box-shadow: inset 0 2px 0 rgba(0,0,0,0.3);
+    transform: translateY(3px);
+}
+
+.main1_ipcopier_text1 {
+    font-size:1.6rem;
+    font-weight: normal;
+    color: #ffffff;
+    text-shadow: 2px 2px 0 var(--minecraft-shadow), 0 0 8px rgba(0, 0, 0, 0.8);
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+.main1_ipcopier_text2 {
+    font-size:1.1rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 0 var(--minecraft-shadow), 0 0 6px rgba(0, 0, 0, 0.8);
+    display: block;
+    margin-top: 0.2rem;
+    opacity: 0.95;
+}
+
+.main1_popup {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: linear-gradient(135deg, rgba(0, 170, 0, 0.95), rgba(85, 255, 85, 0.95));
+    backdrop-filter: blur(10px);
+    border: 3px solid var(--accent1);
+    border-top-color: #7fff7f;
+    border-left-color: #7fff7f;
+    border-bottom-color: #00aa00;
+    border-right-color: #00aa00;
+    color: #ffffff;
+    border-radius: var(--roundness);
+    z-index: 9999;
+    padding: 1rem 2rem;
+    margin-top: -8rem;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.3), 0 4px 0 var(--minecraft-shadow), 0 0 20px rgba(85, 255, 85, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Minecraft', monospace;
+    animation: popupSlide 0.3s ease-out;
+}
+
+@keyframes popupSlide {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.main1_popup .fa-check-circle {
+    font-size: 1.5rem;
+    color: #ffffff;
+    filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.5));
+}
+
+.main1_popup .copy_confirm {
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: #ffffff;
+    text-shadow: 2px 2px 0 var(--minecraft-shadow), 0 0 10px rgba(0, 0, 0, 0.8);
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.main1_downarrow {
+    opacity: 50%;
+    height: 1.5rem;
+    padding:2rem;
+    transition: all .5s;
+}
+
+.main1_downarrow:hover {
+    opacity: 100%;
+    transform: scale(1.05)
+}
+
+.main2 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    padding: 4rem 0 5rem 0;
+    background: linear-gradient(180deg, var(--background2) 0%, rgba(15, 15, 15, 0.95) 100%);
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.main2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent1), transparent);
+    box-shadow: 0 0 20px var(--accent1);
+}
+
+.main2_subtitle {
+    text-align: center;
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+    padding: 0 1rem;
+    text-shadow: 2px 2px 0 var(--minecraft-shadow);
+    letter-spacing: 0.5px;
+    font-weight: 300;
+    display: block;
+}
+
+.main2_features_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    width: 100%;
+    padding: 2rem 2rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.main2_feature_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(20, 20, 20, 0.98) 100%);
+    padding: 2.5rem 1.8rem;
+    border-radius: var(--roundness);
+    border: 3px solid var(--minecraft-border);
+    border-top-color: #555;
+    border-left-color: #555;
+    border-bottom-color: #222;
+    border-right-color: #222;
+    box-shadow: 
+        inset 0 2px 0 rgba(255,255,255,0.1), 
+        0 6px 0 var(--minecraft-shadow),
+        0 10px 25px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    min-height: 200px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.main2_feature_card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.main2_feature_card:hover::before {
+    opacity: 1;
+}
+
+.main2_feature_card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(85, 255, 85, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.main2_feature_card:hover::after {
+    opacity: 1;
+}
+
+.main2_feature_card:hover {
+    background: linear-gradient(135deg, rgba(0, 170, 0, 0.2) 0%, rgba(0, 100, 0, 0.15) 100%);
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--accent1);
+    border-top-color: var(--accent1);
+    border-left-color: var(--accent1);
+    box-shadow: 
+        inset 0 2px 0 rgba(255,255,255,0.2), 
+        0 6px 0 var(--minecraft-shadow), 
+        0 15px 40px rgba(85, 255, 85, 0.3),
+        0 0 30px rgba(85, 255, 85, 0.2);
+}
+
+.main2_feature_icon_wrapper {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 170, 0, 0.2), rgba(0, 170, 0, 0.1));
+    border-radius: 50%;
+    margin-bottom: 1.2rem;
+    border: 2px solid rgba(85, 255, 85, 0.3);
+    transition: all 0.4s ease;
+    position: relative;
+    box-shadow: 
+        inset 0 2px 8px rgba(85, 255, 85, 0.2),
+        0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.main2_feature_card:hover .main2_feature_icon_wrapper {
+    background: linear-gradient(135deg, rgba(85, 255, 85, 0.3), rgba(0, 170, 0, 0.2));
+    border-color: var(--accent1);
+    transform: scale(1.1) rotate(360deg);
+    box-shadow: 
+        inset 0 2px 12px rgba(85, 255, 85, 0.4),
+        0 4px 20px rgba(85, 255, 85, 0.4),
+        0 0 30px rgba(85, 255, 85, 0.3);
+}
+
+.main2_feature_icon {
+    font-size: 2.5rem;
+    color: var(--accent1);
+    filter: drop-shadow(2px 2px 4px var(--minecraft-shadow));
+    transition: all 0.4s ease;
+    display: block;
+}
+
+.main2_feature_card:hover .main2_feature_icon {
+    color: #7fff7f;
+    filter: drop-shadow(0 0 12px rgba(85, 255, 85, 0.8)) drop-shadow(3px 3px 4px var(--minecraft-shadow));
+    text-shadow: 0 0 20px rgba(85, 255, 85, 0.6);
+}
+
+.main2_feature_title {
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 0 var(--minecraft-shadow), 0 0 10px rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.9rem;
+    display: block;
+    line-height: 1.3;
+    transition: all 0.3s ease;
+}
+
+.main2_feature_card:hover .main2_feature_title {
+    color: var(--accent1);
+    text-shadow: 2px 2px 0 var(--minecraft-shadow), 0 0 15px rgba(85, 255, 85, 0.6);
+    transform: scale(1.05);
+}
+
+.main2_feature_desc {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 1px 1px 2px var(--minecraft-shadow);
+    line-height: 1.6;
+    display: block;
+    opacity: 0.85;
+    transition: all 0.3s ease;
+    font-weight: 300;
+}
+
+.main2_feature_card:hover .main2_feature_desc {
+    color: rgba(255, 255, 255, 0.95);
+    opacity: 1;
+    text-shadow: 1px 1px 2px var(--minecraft-shadow), 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+
+.main4 {
+    min-height: 10rem;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background1);
+    padding: 3rem 1rem;
+}
+
+.main4_dc_div {
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--background2);
+    border-radius: var(--roundness);
+    max-width: 900px;
+    width: 100%;
+    border: 3px solid var(--minecraft-border);
+    border-top-color: #555;
+    border-left-color: #555;
+    border-bottom-color: #222;
+    border-right-color: #222;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.1), 0 4px 0 var(--minecraft-shadow);
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.main4_dc_div:hover {
+    border-color: var(--accent1);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 0 var(--minecraft-shadow), 0 0 20px rgba(85, 255, 85, 0.3);
+    transform: translateY(-2px);
+}
+
+.main4_dc_widget_container {
+    width: 400px;
+    min-height: 500px;
+    background: linear-gradient(135deg, #5865F2, #7289da);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.main4_dc_widget_container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="10" height="10" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    opacity: 0.3;
+}
+
+.main4_dc_widget_placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    padding: 2rem;
+}
+
+.main4_dc_widget_icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.3));
+    animation: float 3s ease-in-out infinite;
+    color: #ffffff;
+    display: block;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.main4_dc_widget_text {
+    font-size: 1.8rem;
+    font-weight: normal;
+    color: #ffffff;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.5);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.main4_dc_widget_subtext {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+    text-align: center;
+    display: block;
+}
+
+.main4_dc_description_div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 2.5rem;
+    justify-content: space-between;
+}
+
+.main4_dc_description_title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: normal;
+    text-shadow: 3px 3px 0 var(--minecraft-shadow);
+    color: var(--accent1);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: block;
+    letter-spacing: 2px;
+}
+
+.main4_dc_features_list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex: 1;
+}
+
+.main4_dc_feature_item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--roundness);
+    border: 2px solid rgba(85, 255, 85, 0.2);
+    transition: all 0.2s ease;
+}
+
+.main4_dc_feature_item:hover {
+    background: rgba(0, 170, 0, 0.2);
+    border-color: var(--accent1);
+    transform: translateX(5px);
+}
+
+.main4_dc_feature_icon {
+    font-size: 1.8rem;
+    display: block;
+    filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.3));
+    color: var(--accent1);
+    width: 2rem;
+    text-align: center;
+}
+
+.main4_dc_feature_text {
+    font-size: 1.1rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 0 var(--minecraft-shadow);
+    display: block;
+    flex: 1;
+}
+
+.main4_dc_button_a {
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    border: 3px solid var(--minecraft-border);
+    border-top-color: #555;
+    border-left-color: #555;
+    border-bottom-color: #222;
+    border-right-color: #222;
+    border-radius: var(--roundness);
+    background: linear-gradient(135deg, #5865F2, #7289da);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 4px 0 var(--minecraft-shadow);
+    margin-top: auto;
+    transition: all 0.2s ease;
+    text-shadow: 2px 2px 0 var(--minecraft-shadow);
+    display: block;
+    width: 100%;
+}
+
+.main4_dc_button_a:hover {
+    background: linear-gradient(135deg, #7289da, #99aab5);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.3), 0 2px 0 var(--minecraft-shadow);
+    transform: translateY(2px);
+    border-color: var(--accent1);
+}
+
+.main4_dc_button_a:active {
+    box-shadow: inset 0 2px 0 rgba(0,0,0,0.3);
+    transform: translateY(4px);
+}
+
+.main4_dc_button {
+    padding: 1rem 2rem;
+    font-family: 'Minecraft', monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 1.3rem;
+}
+
+.main4_dc_button_icon {
+    font-size: 1.5rem;
+    display: inline-block;
+    color: #ffffff;
+}
+
+.main4_dc_button_text {
+    display: block;
+}
+
+
+
+
+.main5 {
+    background-color: var(--background2);
+    min-height: 10rem;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0;
+}
+
+.main5_owner_section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.main5_admin_section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1.5rem 1rem;
+    margin-bottom: 2rem;
+}
+
+.main5_supporters_section {
+    width: 100%;
+    padding: 1.5rem 1rem;
+}
+
+.main5_team_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.main5_team_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background1);
+    border-radius: var(--roundness);
+    padding: 2rem 1.5rem;
+    border: 3px solid var(--minecraft-border);
+    border-top-color: #555;
+    border-left-color: #555;
+    border-bottom-color: #222;
+    border-right-color: #222;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.1), 0 4px 0 var(--minecraft-shadow);
+    transition: all 0.2s ease;
+    min-height: 220px;
+}
+
+.main5_team_card_owner {
+    max-width: 400px;
+    width: 100%;
+    min-height: 260px;
+    padding: 2.5rem 2rem;
+    border-color: #3498db;
+    border-top-color: #5dade2;
+    border-left-color: #5dade2;
+    border-bottom-color: #2874a6;
+    border-right-color: #2874a6;
+}
+
+.main5_team_card_admin {
+    max-width: 380px;
+    width: 100%;
+    min-height: 240px;
+    padding: 2.25rem 1.75rem;
+    border-color: #f82f2f;
+    border-top-color: #ff6b6b;
+    border-left-color: #ff6b6b;
+    border-bottom-color: #c0392b;
+    border-right-color: #c0392b;
+}
+
+.main5_team_card:hover {
+    border-color: var(--accent1);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 0 var(--minecraft-shadow), 0 0 15px rgba(85, 255, 85, 0.2);
+    transform: translateY(-2px);
+}
+
+.main5_team_img {
+    width: 100px;
+    height: 100px;
+    border-radius: var(--roundness);
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid var(--minecraft-border);
+}
+
+.main5_team_card_owner .main5_team_img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1.25rem;
+}
+
+.main5_team_card_admin .main5_team_img {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 1.15rem;
+}
+
+.main5_team_rank {
+    font-size: 1.2rem;
+    font-weight: normal;
+    text-shadow: 2px 2px 0 var(--minecraft-shadow);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.main5_team_card_owner .main5_team_rank {
+    font-size: 1.4rem;
+    margin-bottom: 0.85rem;
+}
+
+.main5_team_card_admin .main5_team_rank {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.main5_team_rank_owner {
+    color: #3498db;
+}
+
+.main5_team_rank_admin {
+    color: #f82f2f;
+}
+
+.main5_team_rank_supporter {
+    color: #00f8ff;
+}
+
+.main5_team_name {
+    font-size: 1.25rem;
+    font-weight: normal;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 2px 2px 0 var(--minecraft-shadow);
+    transition: all 0.2s ease;
+}
+
+.main5_team_card_owner .main5_team_name {
+    font-size: 1.4rem;
+}
+
+.main5_team_card_admin .main5_team_name {
+    font-size: 1.35rem;
+}
+
+.main5_team_name:hover {
+    color: var(--accent1);
+    text-shadow: 1px 1px 0 var(--minecraft-shadow), 0 0 8px var(--accent1);
+}
+
+
+
+
+
+.main3 {
+    background: linear-gradient(180deg, var(--background1) 0%, rgba(30, 30, 30, 0.95) 100%);
+    min-height: 10rem;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    padding: 4rem 0 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.main3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent1), transparent);
+    box-shadow: 0 0 20px var(--accent1);
+}
+
+.main3_subtitle {
+    text-align: center;
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+    padding: 0 1rem;
+    text-shadow: 2px 2px 0 var(--minecraft-shadow);
+    letter-spacing: 0.5px;
+    font-weight: 300;
+}
+
+.main3_join_div_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin: 1rem;
+    padding: 0 2rem;
+}
+
+.main3_join_div {
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+    min-height: 280px;
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(20, 20, 20, 0.98) 100%);
+    border-radius: var(--roundness);
+    padding: 2rem 1.5rem;
+    border: 3px solid var(--minecraft-border);
+    border-top-color: #555;
+    border-left-color: #555;
+    border-bottom-color: #222;
+    border-right-color: #222;
+    box-shadow: 
+        inset 0 2px 0 rgba(255,255,255,0.1), 
+        0 6px 0 var(--minecraft-shadow),
+        0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.main3_join_div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.main3_join_div:hover::before {
+    opacity: 1;
+}
+
+.main3_join_div:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent1);
+    border-top-color: var(--accent1);
+    border-left-color: var(--accent1);
+    box-shadow: 
+        inset 0 2px 0 rgba(255,255,255,0.2), 
+        0 6px 0 var(--minecraft-shadow), 
+        0 12px 25px rgba(85, 255, 85, 0.25);
+}
+
+.main3_join_icon_wrapper {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 170, 0, 0.2), rgba(0, 170, 0, 0.1));
+    border-radius: 50%;
+    margin: 0 auto 1.2rem auto;
+    border: 2px solid rgba(85, 255, 85, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 
+        inset 0 2px 8px rgba(85, 255, 85, 0.2),
+        0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.main3_join_div:hover .main3_join_icon_wrapper {
+    background: linear-gradient(135deg, rgba(85, 255, 85, 0.3), rgba(0, 170, 0, 0.2));
+    border-color: var(--accent1);
+    transform: scale(1.1);
+    box-shadow: 
+        inset 0 2px 12px rgba(85, 255, 85, 0.4),
+        0 4px 20px rgba(85, 255, 85, 0.3);
+}
+
+.main3_join_icon {
+    font-size: 2.2rem;
+    color: var(--accent1);
+    filter: drop-shadow(2px 2px 4px var(--minecraft-shadow));
+    transition: all 0.3s ease;
+}
+
+.main3_join_div:hover .main3_join_icon {
+    color: #7fff7f;
+    filter: drop-shadow(0 0 8px rgba(85, 255, 85, 0.6));
+}
+
+.main3_join_title {
+    text-align: center;
+    font-size:1.6rem;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin-bottom: 1.2rem;
+    text-shadow: 2px 2px 0 var(--minecraft-shadow);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.main3_join_div:hover .main3_join_title {
+    color: var(--accent1);
+}
+
+.main3_join_content_div {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: var(--roundness);
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+    border: 2px solid rgba(85, 255, 85, 0.2);
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.main3_join_div:hover .main3_join_content_div {
+    background: rgba(0, 0, 0, 0.6);
+    border-color: rgba(85, 255, 85, 0.4);
+}
+
+.main3_join_info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.main3_join_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.8rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    border-left: 3px solid var(--accent1);
+    transition: background 0.2s ease;
+}
+
+.main3_join_row:hover {
+    background: rgba(0, 170, 0, 0.2);
+}
+
+.main3_join_label {
+    font-size: 1rem;
+    color: #ffffff;
+    text-shadow: 
+        -3px -3px 0 #000,
+        3px -3px 0 #000,
+        -3px 3px 0 #000,
+        3px 3px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    text-transform: uppercase;
+}
+
+.main3_join_value {
+    font-size: 0.9rem;
+    color: var(--accent1);
+    text-shadow: 
+        -3px -3px 0 #000,
+        3px -3px 0 #000,
+        -3px 3px 0 #000,
+        3px 3px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    letter-spacing: 0.5px;
+}
+
+.main3_copy_btn {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    font-size: 1.2rem;
+    font-family: 'Minecraft', monospace;
+    background: linear-gradient(135deg, var(--accent2), var(--accent1));
+    border: 3px solid var(--minecraft-border);
+    border-top-color: #555;
+    border-left-color: #555;
+    border-bottom-color: #222;
+    border-right-color: #222;
+    color: #fff;
+    text-shadow: 2px 2px 0 var(--minecraft-shadow);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: var(--roundness);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 4px 0 var(--minecraft-shadow);
+    transition: all 0.2s ease;
+}
+
+.main3_copy_btn:hover {
+    background: linear-gradient(135deg, var(--accent1), #7fff7f);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.3), 0 2px 0 var(--minecraft-shadow);
+    transform: translateY(2px);
+}
+
+.main3_copy_btn:active {
+    box-shadow: inset 0 2px 0 rgba(0,0,0,0.3);
+    transform: translateY(4px);
+}
+
+.main3_copy_btn i {
+    margin-right: 0.5rem;
+}
+
+
+
+
+
+
+
+/* Copyright Text */
+
+.copyright {
+    color: #ffffff99;
+    text-decoration: none;
+}
+
+.copyright_div {
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    width:auto;
+    background-color: #000;
+    border-top: 3px solid var(--minecraft-border);
+    text-shadow: 1px 1px 0 var(--minecraft-shadow);
+}
+
+
+
+
+/* Responsive Design - Tablet */
+@media only screen and (max-width: 1024px) {
+    .main2_features_grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* Responsive Design - Mobile */
+@media only screen and (max-width: 600px) {
+    .desktop_navbar{
+        display:none;
+    }
+    .mobile_navbar{
+        display:flex;
+    }
+    .headline {
+        font-size:1.9rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+    .main1_logo {
+        max-width: 16rem;
+    }
+    .main1_description {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+    .main1_ipcopier {
+        display: none;
+    }
+    .main2_features_grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem 1rem;
+    }
+    .main2_subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+    .main2_feature_card {
+        min-height: 180px;
+        padding: 2rem 1.5rem;
+    }
+    .main2_feature_icon_wrapper {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1rem;
+    }
+    .main2_feature_icon {
+        font-size: 2.2rem;
+    }
+    .main2_feature_title {
+        font-size: 1.3rem;
+        margin-bottom: 0.7rem;
+    }
+    .main2_feature_desc {
+        font-size: 1rem;
+    }
+    .main5_owner_section,
+    .main5_admin_section {
+        padding: 1.5rem 0.5rem;
+    }
+    .main5_team_card_owner {
+        max-width: 100%;
+        min-height: 220px;
+        padding: 2rem 1.5rem;
+    }
+    .main5_team_card_admin {
+        max-width: 100%;
+        min-height: 200px;
+        padding: 1.75rem 1.25rem;
+    }
+    .main5_team_grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+    .main5_team_card {
+        min-height: 200px;
+        padding: 1.5rem 1rem;
+    }
+    .main5_team_img {
+        width: 80px;
+        height: 80px;
+    }
+    .main5_team_card_owner .main5_team_img {
+        width: 100px;
+        height: 100px;
+    }
+    .main5_team_card_admin .main5_team_img {
+        width: 90px;
+        height: 90px;
+    }
+    .main5_team_rank {
+        font-size: 1.1rem;
+    }
+    .main5_team_card_owner .main5_team_rank {
+        font-size: 1.25rem;
+    }
+    .main5_team_card_admin .main5_team_rank {
+        font-size: 1.2rem;
+    }
+    .main5_team_name {
+        font-size: 1.15rem;
+    }
+    .main5_team_card_owner .main5_team_name {
+        font-size: 1.3rem;
+    }
+    .main5_team_card_admin .main5_team_name {
+        font-size: 1.25rem;
+    }
+    .main4_dc_div {
+        flex-direction: column;
+        max-width: 100%;
+    }
+    .main4_dc_widget_container {
+        width: 100%;
+        min-height: 300px;
+    }
+    .main4_dc_widget_icon {
+        font-size: 4rem;
+    }
+    .main4_dc_feature_icon {
+        font-size: 1.5rem;
+        width: 1.75rem;
+    }
+    .main4_dc_widget_text {
+        font-size: 1.5rem;
+    }
+    .main4_dc_widget_subtext {
+        font-size: 1rem;
+    }
+    .main4_dc_description_div {
+        padding: 1.5rem;
+    }
+    .main4_dc_description_title {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+    .main4_dc_features_list {
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+    .main4_dc_feature_item {
+        padding: 0.5rem;
+    }
+    .main4_dc_feature_icon {
+        font-size: 1.5rem;
+    }
+    .main4_dc_feature_text {
+        font-size: 1rem;
+    }
+    .main4_dc_button {
+        padding: 0.75rem 1.5rem;
+        font-size: 1.1rem;
+    }
+    .main3_subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+    .main3_join_div_div {
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    .main3_join_div {
+        width: 100%;
+        max-width: 380px;
+        min-height: 280px;
+        padding: 1.8rem 1.2rem;
+    }
+    .main3_join_icon_wrapper {
+        width: 65px;
+        height: 65px;
+    }
+    .main3_join_icon {
+        font-size: 2rem;
+    }
+    .main3_join_title {
+        font-size: 1.4rem;
+    }
+    .main3_join_content_div {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    .main3_join_row {
+        padding: 0.5rem 0.6rem;
+    }
+    .main3_join_label,
+    .main3_join_value {
+        font-size: 1.1rem;
+    }
+    .main3_copy_btn {
+        padding: 0.8rem 1.2rem;
+        font-size: 1.1rem;
+    }
+    .main5_admins_dev_type1 {
+        padding-right: 0;
+    }
+    .main5_admins_dev_type2 {
+        padding-left: 0;
+    }
+}
+@media only screen and (max-width: 360px) {
+    .main3_join_div {
+        min-height: 260px;
+        padding: 1.5rem 1rem;
+    }
+    .main3_join_div_div {
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
+    .main3_join_label,
+    .main3_join_value {
+        font-size: 1rem;
+    }
+    .main3_copy_btn {
+        font-size: 1rem;
+        padding: 0.7rem 1rem;
+    }
+}
