@@ -50,8 +50,8 @@
     <!-- Kontainer Kartu Utama -->
     <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden animate-fade-in relative">
         
-        <!-- Gambar Sampul Latar Belakang (Tema Gaming/Minecraft) -->
-        <div class="h-40 w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1607853202273-797f1c22a38e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');">
+        <!-- Gambar Sampul Latar Belakang (Menggunakan gambar Viva Fantasy) -->
+        <div class="h-40 w-full bg-cover bg-center bg-gray-800" style="background-image: url('./media/image.jpg');">
             <!-- Overlay gelap transparan -->
             <div class="w-full h-full bg-black bg-opacity-30 flex justify-end p-4">
                 <!-- Tombol Share -->
@@ -110,7 +110,7 @@
                 <a href="https://wa.me/6289618526693" target="_blank" class="truncate font-semibold hover:text-purple-600 transition">+62 896-1852-6693</a>
             </div>
 
-            <!-- Discord (Hanya Username untuk Add Friend) -->
+            <!-- Discord (Copy ke Clipboard tanpa error link) -->
             <div class="flex items-center mb-3 cursor-pointer group" onclick="copyDiscord()">
                 <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-3 shrink-0 group-hover:bg-purple-200 transition">
                     <i class="fa-brands fa-discord"></i>
@@ -152,7 +152,7 @@
                     <i class="fa-brands fa-youtube"></i>
                 </a>
                 
-                <!-- Instagram -->
+                <!-- Instagram (Official) -->
                 <a href="https://www.instagram.com/iqbalcraftmc.official/" target="_blank" class="social-btn w-10 h-10 rounded-full bg-white text-gray-700 flex items-center justify-center shadow-md hover:text-pink-500">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
@@ -189,7 +189,7 @@
     </div>
 
     <!-- Elemen Notifikasi (Toast) -->
-    <div id="toast" class="fixed top-6 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-5 py-3 rounded-full shadow-2xl opacity-0 pointer-events-none transition-opacity duration-300 z-50 flex items-center text-sm font-medium">
+    <div id="toast" class="fixed top-6 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-5 py-3 rounded-full shadow-2xl opacity-0 pointer-events-none transition-opacity duration-300 z-50 flex items-center text-sm font-medium w-max max-w-full">
         <div class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center mr-3 shrink-0">
             <i class="fa-solid fa-check text-white text-xs"></i>
         </div>
@@ -197,8 +197,8 @@
     </div>
 
     <script>
+        // Fungsi fallback untuk mencari ekstensi foto profil otomatis
         function fallbackProfileImage(img) {
-            // Daftar ekstensi yang akan dicoba jika .png gagal dimuat
             const fallbacks = [
                 "./media/profil.jpg",
                 "./media/profil.jpeg",
@@ -207,13 +207,10 @@
                 "./media/profil.JPEG"
             ];
             
-            // Mengecek sudah berapa kali mencoba mencari
             let attempts = parseInt(img.dataset.attempts || "0");
             
             if (attempts < fallbacks.length) {
-                // Coba ekstensi berikutnya
                 img.src = fallbacks[attempts];
-                // Tambah jumlah percobaan
                 img.dataset.attempts = attempts + 1;
             }
         }
@@ -257,11 +254,10 @@
 
         // Fungsi menerapkan terjemahan
         function applyTranslation() {
-            // Cek bahasa dari sistem/browser pengunjung
             const userLang = navigator.language || navigator.userLanguage; 
-            let langCode = "en"; // Jadikan Inggris sebagai dasar (untuk semua negara)
+            let langCode = "en"; // Default ke Inggris untuk internasional
             
-            // Jika bahasa pengunjung mengandung "id" (Indonesia), ubah ke Indonesia
+            // Jika bahasa pengunjung Indonesia, ubah ke Indonesia
             if (userLang.toLowerCase().startsWith("id")) {
                 langCode = "id";
             }
@@ -308,13 +304,13 @@
             document.execCommand("copy");
             document.body.removeChild(tempInput);
 
-            // Munculkan notifikasi sesuai bahasa yang sedang aktif
             showToast(currentLangText.toast_copy);
         }
 
         // Fungsi membagikan profil (Share Button) dengan link GitHub Asli
         function shareProfile() {
-            const profileUrl = "https://iqbalcraftmc.github.io/"; // Selalu pakai link ini
+            // Hardcode ke link GitHub permanen milikmu
+            const profileUrl = "https://iqbalcraftmc.github.io/"; 
 
             if (navigator.share) {
                 navigator.share({
