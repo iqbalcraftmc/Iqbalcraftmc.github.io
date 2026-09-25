@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartu Identitas Digital</title>
+    <!-- Mengimpor Tailwind CSS untuk styling yang cepat dan responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Mengimpor FontAwesome untuk ikon-ikon sosial media dan kontak -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Mengimpor Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Background gradient tema gaming/neon gelap */
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            min-height: 100vh;
+        }
+        
+        /* Animasi melayang (hover) untuk tombol sosial media */
+        .social-btn {
+            transition: all 0.3s ease;
+        }
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animasi muncul (fade in up) saat halaman dimuat */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center p-4">
+
+    <!-- Kontainer Kartu Utama -->
+    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden animate-fade-in relative">
+        
+        <!-- Gambar Sampul Latar Belakang (Tema Gaming/Minecraft) -->
+        <div class="h-40 w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1607853202273-797f1c22a38e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');">
+            <!-- Overlay gelap transparan -->
+            <div class="w-full h-full bg-black bg-opacity-30 flex justify-end p-4">
+                <!-- Tombol Share -->
+                <button onclick="shareProfile()" class="text-white hover:text-gray-200 transition" title="Bagikan Profil">
+                    <i class="fa-solid fa-share-nodes text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="px-6 py-8 relative text-center">
+            <div class="absolute -top-16 left-1/2 transform -translate-x-1/2">
+                <!-- MENGARAH KE FOLDER MEDIA DENGAN SISTEM PENCARIAN EKSTENSI OTOMATIS -->
+                <img src="./media/profil.png" 
+                     onerror="fallbackProfileImage(this)"
+                     alt="Foto Profil Iqbalcraftmc" 
+                     class="w-32 h-32 rounded-full border-4 border-white object-cover shadow-lg bg-white">
+            </div>
+
+            <!-- Jarak kompensasi untuk foto profil -->
+            <div class="mt-16"></div>
+
+            <!-- Nama dan Status (Kapital sesuai Discord) -->
+            <h1 class="text-2xl font-bold text-gray-800 tracking-wider" style="font-family: impact, sans-serif; letter-spacing: 2px;">IQBALCRAFTMC</h1>
+            <p id="text-role" class="text-purple-600 font-medium mt-1">Kreator Konten & Modpack Creator</p>
+            
+            <!-- Deskripsi Singkat (Bio) -->
+            <p id="text-bio" class="text-gray-500 text-sm mt-4 leading-relaxed">
+                Halo! Saya siswa SMK awal jurusan Teknik Komputer Jaringan (TKJ). Di sela waktu, saya aktif membuat konten seputar Minecraft dan musik rewind di YouTube, serta mengembangkan modpack kendaraan fungsional di CurseForge.
+            </p>
+        </div>
+
+        <!-- Bagian Info Kontak -->
+        <div class="px-6 pb-6 text-sm text-gray-600 border-t border-gray-100 pt-6 mx-4">
+            
+            <!-- Pendidikan -->
+            <div class="flex items-center mb-3">
+                <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-3 shrink-0">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span id="text-edu" class="truncate font-semibold text-gray-700">SMK - Teknik Komputer Jaringan</span>
+            </div>
+            
+            <!-- Email -->
+            <div class="flex items-center mb-3">
+                <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-3 shrink-0">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <a href="mailto:iqbalcraftmc.official1@gmail.com" class="truncate font-semibold hover:text-purple-600 transition">iqbalcraftmc.official1@gmail.com</a>
+            </div>
+            
+            <!-- WhatsApp (Link Biasa) -->
+            <div class="flex items-center mb-3">
+                <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-3 shrink-0">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                </div>
+                <a href="https://wa.me/6289618526693" target="_blank" class="truncate font-semibold hover:text-purple-600 transition">+62 896-1852-6693</a>
+            </div>
+
+            <!-- Discord (Hanya Username untuk Add Friend) -->
+            <div class="flex items-center mb-3 cursor-pointer group" onclick="copyDiscord()">
+                <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-3 shrink-0 group-hover:bg-purple-200 transition">
+                    <i class="fa-brands fa-discord"></i>
+                </div>
+                <span class="truncate font-semibold text-gray-700 group-hover:text-purple-600 transition">iqbal_craft <span id="text-copy-discord" class="text-xs font-normal text-gray-500 bg-gray-100 px-2 py-0.5 rounded ml-1 group-hover:bg-purple-100 transition">(Klik untuk salin)</span></span>
+            </div>
+            
+            <!-- CurseForge / Modpack -->
+            <div class="flex items-center mb-3">
+                <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-3 shrink-0">
+                    <i class="fa-solid fa-cubes"></i>
+                </div>
+                <a id="text-modpack" href="https://www.curseforge.com/members/iqbalcraftmc/projects" target="_blank" class="truncate font-semibold hover:text-purple-600 transition">Kreator Modpack di CurseForge</a>
+            </div>
+
+            <!-- Profil NameMC -->
+            <div class="flex items-center mb-3">
+                <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-3 shrink-0">
+                    <i class="fa-solid fa-cube"></i>
+                </div>
+                <a id="text-namemc" href="https://namemc.com/profile/Iqbalcraftmc" target="_blank" class="truncate font-semibold hover:text-purple-600 transition">Profil NameMC</a>
+            </div>
+            
+            <!-- GitHub -->
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-3 shrink-0">
+                    <i class="fa-brands fa-github text-lg"></i>
+                </div>
+                <a id="text-github" href="https://github.com/iqbalcraftmc" target="_blank" class="truncate font-semibold hover:text-purple-600 transition">Profil GitHub</a>
+            </div>
+        </div>
+
+        <!-- Bagian Sosial Media & Tombol Aksi -->
+        <div class="px-6 pb-6 bg-gray-50 rounded-b-3xl">
+            <!-- Ikon Sosial Media -->
+            <div class="flex justify-center gap-4 pt-6 pb-6">
+                <!-- YouTube -->
+                <a href="https://youtube.com/@iqbalcraftmc?si=v6eRLpwi80moqM14" target="_blank" class="social-btn w-10 h-10 rounded-full bg-white text-gray-700 flex items-center justify-center shadow-md hover:text-red-600">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/iqbalcraftmc.official/" target="_blank" class="social-btn w-10 h-10 rounded-full bg-white text-gray-700 flex items-center justify-center shadow-md hover:text-pink-500">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                
+                <!-- GitHub -->
+                <a href="https://github.com/iqbalcraftmc" target="_blank" class="social-btn w-10 h-10 rounded-full bg-white text-gray-700 flex items-center justify-center shadow-md hover:text-gray-900">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+
+                <!-- Discord (Copy) -->
+                <button onclick="copyDiscord()" class="social-btn w-10 h-10 rounded-full bg-white text-gray-700 flex items-center justify-center shadow-md hover:text-indigo-500">
+                    <i class="fa-brands fa-discord"></i>
+                </button>
+            </div>
+
+            <!-- Tombol Aksi Utama -->
+            <div class="flex gap-3">
+                <a href="https://wa.me/6289618526693" target="_blank" class="flex-1 bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-2.5 px-4 rounded-xl font-medium hover:from-purple-600 hover:to-indigo-700 transition shadow-lg shadow-purple-500/30 text-sm flex items-center justify-center">
+                    <i class="fa-brands fa-whatsapp text-lg mr-2"></i> <span id="text-btn-wa">Chat WA</span>
+                </a>
+                <button class="flex-1 bg-white border border-gray-200 text-gray-700 py-2.5 px-4 rounded-xl font-medium hover:bg-gray-50 transition shadow-sm text-sm flex items-center justify-center">
+                    <i class="fa-solid fa-gamepad mr-2"></i> <span id="text-btn-game">Mabar Yuk!</span>
+                </button>
+            </div>
+
+            <!-- Credit / Copyright -->
+            <div class="mt-6 text-center">
+                <p class="text-xs text-gray-400 font-medium">
+                    &copy; 2026 Iqbalcraftmc. All rights reserved.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Elemen Notifikasi (Toast) -->
+    <div id="toast" class="fixed top-6 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-5 py-3 rounded-full shadow-2xl opacity-0 pointer-events-none transition-opacity duration-300 z-50 flex items-center text-sm font-medium">
+        <div class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center mr-3 shrink-0">
+            <i class="fa-solid fa-check text-white text-xs"></i>
+        </div>
+        <span id="toast-message">Pesan notifikasi</span>
+    </div>
+
+    <script>
+        function fallbackProfileImage(img) {
+            // Daftar ekstensi yang akan dicoba jika .png gagal dimuat
+            const fallbacks = [
+                "./media/profil.jpg",
+                "./media/profil.jpeg",
+                "./media/profil.PNG",
+                "./media/profil.JPG",
+                "./media/profil.JPEG"
+            ];
+            
+            // Mengecek sudah berapa kali mencoba mencari
+            let attempts = parseInt(img.dataset.attempts || "0");
+            
+            if (attempts < fallbacks.length) {
+                // Coba ekstensi berikutnya
+                img.src = fallbacks[attempts];
+                // Tambah jumlah percobaan
+                img.dataset.attempts = attempts + 1;
+            }
+        }
+        
+        // Data Terjemahan (2 Bahasa: Indonesia & English)
+        const translations = {
+            "id": { // Indonesia (Default)
+                role: "Kreator Konten & Modpack Creator",
+                bio: "Halo! Saya siswa SMK awal jurusan Teknik Komputer Jaringan (TKJ). Di sela waktu, saya aktif membuat konten seputar Minecraft dan musik rewind di YouTube, serta mengembangkan modpack kendaraan fungsional di CurseForge.",
+                edu: "SMK - Teknik Komputer Jaringan",
+                modpack: "Kreator Modpack di CurseForge",
+                namemc: "Profil NameMC",
+                github: "Profil GitHub",
+                copy_discord: "(Klik untuk salin)",
+                btn_wa: "Chat WA",
+                btn_game: "Mabar Yuk!",
+                toast_copy: "Username 'iqbal_craft' disalin!",
+                toast_share: "Link profil disalin ke clipboard!",
+                share_title: "Profil Iqbalcraftmc",
+                share_text: "Halo! Lihat profil kreator Minecraft & pembuat modpack, Iqbalcraftmc!"
+            },
+            "en": { // Inggris (Global/Internasional)
+                role: "Content Creator & Modpack Developer",
+                bio: "Hello! I'm a vocational high school student majoring in Computer & Network Engineering. In my free time, I create Minecraft content and music rewinds on YouTube, and develop functional vehicle modpacks on CurseForge.",
+                edu: "Vocational School - Computer & Network",
+                modpack: "Modpack Creator on CurseForge",
+                namemc: "NameMC Profile",
+                github: "GitHub Profile",
+                copy_discord: "(Click to copy)",
+                btn_wa: "Chat on WA",
+                btn_game: "Let's Play!",
+                toast_copy: "Username 'iqbal_craft' copied!",
+                toast_share: "Profile link copied to clipboard!",
+                share_title: "Iqbalcraftmc Profile",
+                share_text: "Hello! Check out the profile of Minecraft creator & modpack developer, Iqbalcraftmc!"
+            }
+        };
+
+        // Variabel global penyimpan bahasa yang terpilih
+        let currentLangText = translations["id"];
+
+        // Fungsi menerapkan terjemahan
+        function applyTranslation() {
+            // Cek bahasa dari sistem/browser pengunjung
+            const userLang = navigator.language || navigator.userLanguage; 
+            let langCode = "en"; // Jadikan Inggris sebagai dasar (untuk semua negara)
+            
+            // Jika bahasa pengunjung mengandung "id" (Indonesia), ubah ke Indonesia
+            if (userLang.toLowerCase().startsWith("id")) {
+                langCode = "id";
+            }
+
+            currentLangText = translations[langCode];
+
+            // Ganti teks di layar
+            document.getElementById("text-role").innerText = currentLangText.role;
+            document.getElementById("text-bio").innerText = currentLangText.bio;
+            document.getElementById("text-edu").innerText = currentLangText.edu;
+            document.getElementById("text-modpack").innerText = currentLangText.modpack;
+            document.getElementById("text-namemc").innerText = currentLangText.namemc;
+            document.getElementById("text-github").innerText = currentLangText.github;
+            document.getElementById("text-copy-discord").innerText = currentLangText.copy_discord;
+            document.getElementById("text-btn-wa").innerText = currentLangText.btn_wa;
+            document.getElementById("text-btn-game").innerText = currentLangText.btn_game;
+        }
+
+        // Jalankan fungsi auto-translate saat web pertama kali dibuka
+        window.onload = function() {
+            applyTranslation();
+        };
+
+        // Fungsi Dinamis untuk memunculkan Toast (Pesan Notifikasi)
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            const toastMessage = document.getElementById("toast-message");
+            
+            toastMessage.innerText = message; 
+            toast.classList.remove("opacity-0"); 
+            
+            setTimeout(() => {
+                toast.classList.add("opacity-0");
+            }, 3000);
+        }
+
+        // Fungsi menyalin username Discord
+        function copyDiscord() {
+            const tempInput = document.createElement("input");
+            tempInput.value = "iqbal_craft";
+            document.body.appendChild(tempInput);
+            
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            // Munculkan notifikasi sesuai bahasa yang sedang aktif
+            showToast(currentLangText.toast_copy);
+        }
+
+        // Fungsi membagikan profil (Share Button) dengan link GitHub Asli
+        function shareProfile() {
+            const profileUrl = "https://iqbalcraftmc.github.io/"; // Selalu pakai link ini
+
+            if (navigator.share) {
+                navigator.share({
+                    title: currentLangText.share_title,
+                    text: currentLangText.share_text,
+                    url: profileUrl 
+                }).then(() => {
+                    console.log('Berhasil membagikan profil');
+                }).catch((error) => {
+                    console.error('Gagal membagikan:', error);
+                });
+            } else {
+                const tempInput = document.createElement("input");
+                tempInput.value = profileUrl; 
+                document.body.appendChild(tempInput);
+                
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+                
+                showToast(currentLangText.toast_share);
+            }
+        }
+    </script>
+</body>
+</html>
