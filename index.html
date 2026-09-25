@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -50,20 +51,25 @@
     <!-- Kontainer Kartu Utama -->
     <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden animate-fade-in relative">
         
-        <!-- Gambar Sampul Latar Belakang (Menggunakan gambar Viva Fantasy) -->
-        <div class="h-40 w-full bg-cover bg-center bg-gray-800" style="background-image: url('./media/image.jpg');">
-            <!-- Overlay gelap transparan -->
-            <div class="w-full h-full bg-black bg-opacity-30 flex justify-end p-4">
-                <!-- Tombol Share -->
-                <button onclick="shareProfile()" class="text-white hover:text-gray-200 transition" title="Bagikan Profil">
+        <!-- Gambar Sampul Latar Belakang (Menggunakan tag img agar bisa memakai onerror) -->
+        <div class="h-40 w-full relative bg-gray-800">
+            <!-- MENGARAH KE FOLDER MEDIA DENGAN SISTEM PENCARIAN EKSTENSI OTOMATIS UNTUK BANNER -->
+            <img src="./media/image.jpg" 
+                 onerror="fallbackCoverImage(this)"
+                 alt="Banner Viva Fantasy" 
+                 class="w-full h-full object-cover absolute inset-0">
+                 
+            <!-- Overlay gelap transparan dan tombol share -->
+            <div class="w-full h-full absolute inset-0 bg-black bg-opacity-30 flex justify-end p-4">
+                <button onclick="shareProfile()" class="text-white hover:text-gray-200 transition relative z-10 h-max" title="Bagikan Profil">
                     <i class="fa-solid fa-share-nodes text-xl"></i>
                 </button>
             </div>
         </div>
 
         <div class="px-6 py-8 relative text-center">
-            <div class="absolute -top-16 left-1/2 transform -translate-x-1/2">
-                <!-- MENGARAH KE FOLDER MEDIA DENGAN SISTEM PENCARIAN EKSTENSI OTOMATIS -->
+            <div class="absolute -top-16 left-1/2 transform -translate-x-1/2 z-20">
+                <!-- MENGARAH KE FOLDER MEDIA DENGAN SISTEM PENCARIAN EKSTENSI OTOMATIS UNTUK PROFIL -->
                 <img src="./media/profil.png" 
                      onerror="fallbackProfileImage(this)"
                      alt="Foto Profil Iqbalcraftmc" 
@@ -180,7 +186,7 @@
 
             <!-- Credit / Copyright -->
             <div class="mt-6 text-center">
-                <p class="text-xs text-gray-400 font-medium">
+                <p class="text-xs text-gray-400 font-medium tracking-wide">
                     &copy; 2026 Iqbalcraftmc. All rights reserved.
                 </p>
             </div>
@@ -205,6 +211,24 @@
                 "./media/profil.PNG",
                 "./media/profil.JPG",
                 "./media/profil.JPEG"
+            ];
+            
+            let attempts = parseInt(img.dataset.attempts || "0");
+            
+            if (attempts < fallbacks.length) {
+                img.src = fallbacks[attempts];
+                img.dataset.attempts = attempts + 1;
+            }
+        }
+        
+        // Fungsi fallback untuk mencari ekstensi banner/sampul otomatis
+        function fallbackCoverImage(img) {
+            const fallbacks = [
+                "./media/image.jpeg",
+                "./media/image.png",
+                "./media/image.JPG",
+                "./media/image.PNG",
+                "./media/image.JPEG"
             ];
             
             let attempts = parseInt(img.dataset.attempts || "0");
@@ -255,16 +279,16 @@
         // Fungsi menerapkan terjemahan
         function applyTranslation() {
             const userLang = navigator.language || navigator.userLanguage; 
-            let langCode = "en"; // Default ke Inggris untuk internasional
+            let langCode = "en"; // Default ke Inggris untuk internasional (bule)
             
-            // Jika bahasa pengunjung Indonesia, ubah ke Indonesia
+            // Jika bahasa perangkat/browser pengunjung adalah Indonesia, ubah ke Indonesia
             if (userLang.toLowerCase().startsWith("id")) {
                 langCode = "id";
             }
 
             currentLangText = translations[langCode];
 
-            // Ganti teks di layar
+            // Ganti teks di layar sesuai bahasa
             document.getElementById("text-role").innerText = currentLangText.role;
             document.getElementById("text-bio").innerText = currentLangText.bio;
             document.getElementById("text-edu").innerText = currentLangText.edu;
@@ -307,9 +331,9 @@
             showToast(currentLangText.toast_copy);
         }
 
-        // Fungsi membagikan profil (Share Button) dengan link GitHub Asli
+        // Fungsi membagikan profil (Share Button) dikunci ke link GitHub aslimu
         function shareProfile() {
-            // Hardcode ke link GitHub permanen milikmu
+            // Hardcode (dikunci) ke link GitHub permanen milikmu
             const profileUrl = "https://iqbalcraftmc.github.io/"; 
 
             if (navigator.share) {
@@ -337,3 +361,4 @@
     </script>
 </body>
 </html>
+```
