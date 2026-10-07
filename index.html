@@ -3,529 +3,701 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#1b1b1b">
-  <meta name="description" content="Kartu Identitas Digital IqbalCraftMC">
 
-  <title>Kartu Identitas — IqbalCraftMC</title>
+  <meta name="theme-color" content="#5b8731">
+  <meta
+    name="description"
+    content="Kartu Identitas Digital IqbalCraftMC"
+  >
+
+  <title>IqbalCraftMC — Kartu Identitas Digital</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-    :root {
-      --grass: #5ca832;
-      --grass-dark: #3d7c24;
-      --dirt: #8b5a2b;
-      --stone: #7c7c7c;
-      --diamond: #55e6e6;
-      --gold: #ffd84d;
-      --green: #55ff55;
-      --text: #ffffff;
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
+      margin: 0;
       min-height: 100vh;
-      padding: 25px 14px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+
+      font-family: Arial, sans-serif;
+      color: #fff;
+
+      padding: 25px 12px;
 
       background:
         linear-gradient(
-          rgba(0, 0, 0, .25),
-          rgba(0, 0, 0, .45)
+          rgba(0, 0, 0, .12),
+          rgba(0, 0, 0, .12)
         ),
         repeating-linear-gradient(
+          0deg,
+          #777 0px,
+          #777 7px,
+          #6b6b6b 7px,
+          #6b6b6b 14px
+        );
+    }
+
+    body::before {
+      content: "";
+
+      position: fixed;
+      inset: 0;
+
+      pointer-events: none;
+
+      opacity: .15;
+
+      background-image:
+        linear-gradient(
           45deg,
-          #252525 0,
-          #252525 4px,
-          #292929 4px,
-          #292929 8px
+          #000 25%,
+          transparent 25%
+        ),
+        linear-gradient(
+          -45deg,
+          #000 25%,
+          transparent 25%
+        ),
+        linear-gradient(
+          45deg,
+          transparent 75%,
+          #000 75%
+        ),
+        linear-gradient(
+          -45deg,
+          transparent 75%,
+          #000 75%
         );
 
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-    }
+      background-size: 8px 8px;
 
-    .pixel,
-    h1,
-    h2,
-    .minecraft-button,
-    .username,
-    .connection-value {
-      font-family: "Press Start 2P", monospace;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 480px;
+      background-position:
+        0 0,
+        0 4px,
+        4px -4px,
+        -4px 0;
     }
 
     .card {
-      background: #303030;
-      border: 4px solid #111;
+      width: 100%;
+      max-width: 540px;
+
+      margin: auto;
+
+      background:
+        linear-gradient(
+          rgba(48, 48, 48, .97),
+          rgba(30, 30, 30, .97)
+        );
+
+      border: 5px solid #222;
+
       box-shadow:
-        0 0 0 4px #555,
-        0 18px 0 rgba(0,0,0,.4),
-        0 30px 60px rgba(0,0,0,.65);
+        0 0 0 4px #777,
+        0 12px 35px rgba(0, 0, 0, .65);
+
       overflow: hidden;
     }
 
-    /* =========================
-       GRASS BLOCK HEADER
-       ========================= */
-
-    .grass-header {
-      height: 55px;
-      position: relative;
+    .grass {
+      height: 30px;
 
       background:
         repeating-linear-gradient(
           90deg,
-          #63b538 0,
-          #63b538 15px,
-          #5aa82f 15px,
-          #5aa82f 30px
+          #6baa35 0px,
+          #6baa35 12px,
+          #75b63c 12px,
+          #75b63c 24px
         );
 
-      border-bottom: 8px solid #654321;
+      border-bottom: 7px solid #5b8731;
     }
 
-    .grass-header::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -8px;
-      height: 8px;
-      background: #754a25;
+    .content {
+      padding: 24px 18px 20px;
     }
 
-    /* =========================
-       PROFILE
-       ========================= */
+    /* PROFILE */
 
     .profile {
       text-align: center;
-      padding: 24px 22px 10px;
     }
 
-    .profile-image {
-      width: 120px;
-      height: 120px;
+    .profile-img {
+      width: 130px;
+      height: 130px;
+
       object-fit: cover;
 
-      border: 5px solid #111;
-      outline: 4px solid #888;
+      display: block;
 
-      background: #777;
+      margin: 0 auto 16px;
+
+      border: 5px solid #111;
+
+      box-shadow:
+        0 0 0 4px #888,
+        0 7px 0 #111;
+
       image-rendering: pixelated;
 
-      margin-top: -15px;
-      margin-bottom: 20px;
+      background: #777;
     }
 
-    h1 {
-      font-size: 17px;
-      line-height: 1.6;
-      text-shadow:
-        3px 3px 0 #111,
-        -1px -1px 0 #111;
+    .profile h1 {
+      margin: 15px 0 8px;
+
+      font-family: "Press Start 2P", monospace;
+
+      font-size: 22px;
+      line-height: 1.5;
+
+      text-shadow: 3px 3px #111;
     }
 
     .username {
-      margin-top: 9px;
-      color: var(--diamond);
-      font-size: 10px;
-      text-shadow: 2px 2px 0 #111;
-    }
-
-    .bio {
-      margin: 18px auto 5px;
-      max-width: 390px;
-      color: #ddd;
-      font-size: 14px;
-      line-height: 1.65;
-    }
-
-    /* =========================
-       INFO
-       ========================= */
-
-    .section {
-      padding: 10px 22px 22px;
-    }
-
-    .info-list {
-      display: grid;
-      gap: 9px;
-    }
-
-    .info-item {
-      min-height: 58px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-
-      padding: 10px 12px;
-
-      background: linear-gradient(
-        135deg,
-        #484848,
-        #333
-      );
-
-      border: 3px solid #111;
-
-      box-shadow:
-        inset 2px 2px 0 #6b6b6b,
-        inset -2px -2px 0 #202020;
-    }
-
-    .info-label {
       color: #cfcfcf;
-      font-size: 12px;
-      line-height: 1.5;
+
+      font-size: 14px;
+
+      margin-bottom: 18px;
     }
 
-    .info-value {
-      color: white;
-      font-weight: bold;
-      font-size: 12px;
-      text-align: right;
-      word-break: break-word;
-    }
+    /* STATUS MABAR */
 
-    .server {
-      color: var(--green);
-      text-shadow: 2px 2px 0 #111;
-    }
+    .status {
+      display: inline-block;
 
-    /* =========================
-       BUTTONS
-       ========================= */
+      padding: 10px 13px;
 
-    .buttons {
-      display: grid;
-      gap: 10px;
-      margin-top: 15px;
-    }
+      margin-bottom: 22px;
 
-    .minecraft-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 100%;
-      min-height: 52px;
-
-      padding: 12px 14px;
+      background: #1e5e25;
 
       border: 3px solid #111;
-      border-top-color: #777;
-      border-left-color: #777;
 
-      background: #727272;
-      color: white;
+      box-shadow: 3px 3px 0 #111;
+
+      font-family: "Press Start 2P", monospace;
 
       font-size: 10px;
-      line-height: 1.4;
 
-      text-shadow: 2px 2px 0 #333;
-
-      cursor: pointer;
-      text-decoration: none;
-
-      box-shadow:
-        inset -3px -3px 0 #3e3e3e,
-        3px 3px 0 #111;
-
-      transition: none;
-    }
-
-    .minecraft-button:hover {
-      background: #8b8b8b;
-    }
-
-    .minecraft-button:active {
-      border-top-color: #111;
-      border-left-color: #111;
-      border-bottom-color: #777;
-      border-right-color: #777;
-
-      box-shadow:
-        inset 3px 3px 0 #3e3e3e,
-        1px 1px 0 #111;
-
-      transform: translate(2px, 2px);
-    }
-
-    .minecraft-button.main {
-      background: #5c9f32;
-    }
-
-    .minecraft-button.main:hover {
-      background: #70b73f;
-    }
-
-    /* Tombol dukungan */
-    .minecraft-button.support {
-      background: #2f8f4e;
-    }
-
-    .minecraft-button.support:hover {
-      background: #3eaa5e;
-    }
-
-    .minecraft-button.gold {
-      background: #b18a20;
-    }
-
-    /* =========================
-       FOOTER
-       ========================= */
-
-    .footer {
-      text-align: center;
-      padding: 18px 15px 22px;
-
-      color: #aaa;
-      font-size: 10px;
-      line-height: 1.8;
-
-      border-top: 3px solid #111;
-      background: #252525;
-    }
-
-    /* =========================
-       MODAL
-       ========================= */
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-
-      display: none;
-      align-items: center;
-      justify-content: center;
-
-      padding: 15px;
-
-      background: rgba(0,0,0,.78);
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-box {
-      width: 100%;
-      max-width: 460px;
-      max-height: 90vh;
-      overflow-y: auto;
-
-      background: #303030;
-
-      border: 4px solid #111;
-
-      box-shadow:
-        0 0 0 4px #555,
-        0 25px 70px rgba(0,0,0,.8);
-
-      padding: 18px;
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      padding-bottom: 15px;
-      margin-bottom: 15px;
-
-      border-bottom: 3px solid #111;
-    }
-
-    h2 {
-      font-size: 13px;
       line-height: 1.7;
-      text-shadow: 2px 2px #111;
     }
 
-    .close {
-      width: 38px;
-      height: 38px;
+    .status-text {
+      display: block;
 
-      padding: 0;
+      margin-top: 5px;
 
-      background: #8d3030;
-      color: white;
+      font-family: Arial, sans-serif;
 
-      border: 3px solid #111;
-      border-top-color: #b86a6a;
-      border-left-color: #b86a6a;
+      font-size: 12px;
 
-      font-size: 20px;
-      cursor: pointer;
+      color: #ddd;
     }
 
-    .notice {
-      padding: 15px;
+    /* SECTION */
 
-      background: #414141;
+    .section-title {
+      margin: 25px 0 12px;
 
-      border: 3px solid #111;
-
-      box-shadow:
-        inset 2px 2px 0 #686868,
-        inset -2px -2px 0 #222;
-
-      color: #eee;
-
-      font-size: 13px;
-      line-height: 1.7;
-
-      margin-bottom: 15px;
-    }
-
-    .edition {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9px;
-      margin-bottom: 15px;
-    }
-
-    .edition button {
-      min-height: 48px;
-    }
-
-    .edition button.selected {
-      background: #5c9f32;
-    }
-
-    .connection-card {
-      padding: 14px;
-      margin-bottom: 10px;
+      padding: 11px;
 
       background: #3b3b3b;
 
+      border: 3px solid #171717;
+
+      box-shadow: 3px 3px 0 #111;
+
+      font-family: "Press Start 2P", monospace;
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
+    /* INFO */
+
+    .info-box {
+      margin-bottom: 12px;
+
+      padding: 14px;
+
+      background: #252525;
+
       border: 3px solid #111;
 
-      box-shadow:
-        inset 2px 2px 0 #666,
-        inset -2px -2px 0 #222;
+      box-shadow: 3px 3px 0 #111;
     }
 
-    .connection-title {
-      color: #bbb;
+    .info-label {
+      margin-bottom: 6px;
+
+      color: #aaa;
+
       font-size: 11px;
-      margin-bottom: 9px;
     }
 
-    .connection-value {
-      color: var(--green);
-      font-size: 12px;
-      line-height: 1.7;
+    .info-value {
+      font-size: 15px;
+
+      font-weight: bold;
+
       word-break: break-word;
-      text-shadow: 2px 2px #111;
     }
 
-    .copy-row {
-      margin-top: 11px;
+    /* SERVER */
+
+    .server-box {
+      margin-bottom: 15px;
+
+      padding: 16px;
+
+      background:
+        linear-gradient(
+          #684526,
+          #4b301c
+        );
+
+      border: 4px solid #24160c;
+
+      box-shadow: 4px 4px 0 #111;
     }
 
-    .copy-row button {
-      min-height: 40px;
-      font-size: 9px;
+    .server-address {
+      margin: 8px 0;
+
+      padding: 11px;
+
+      background: #171717;
+
+      border: 2px solid #000;
+
+      font-family: monospace;
+
+      font-size: 15px;
+
+      font-weight: bold;
+
+      text-align: center;
+
+      word-break: break-all;
     }
 
-    .steps {
-      margin: 16px 0 18px;
-      padding-left: 23px;
+    .server-note {
+      margin-top: 12px;
 
       color: #ddd;
 
+      font-size: 12px;
+
+      line-height: 1.6;
+    }
+
+    /* NAMEMC */
+
+    .namemc-box {
+      padding: 8px;
+
+      background: #171717;
+
+      border: 3px solid #111;
+
+      box-shadow: 3px 3px 0 #111;
+
+      overflow: hidden;
+    }
+
+    .namemc-box iframe {
+      width: 100%;
+      height: 90px;
+
+      max-width: 100%;
+
+      display: block;
+
+      margin: auto;
+
+      border: none;
+    }
+
+    /* DISCORD */
+
+    .discord-box {
+      padding: 15px;
+
+      background:
+        linear-gradient(
+          #4b4b72,
+          #30304d
+        );
+
+      border: 4px solid #17172b;
+
+      box-shadow: 4px 4px 0 #111;
+    }
+
+    .discord-name {
+      margin-bottom: 13px;
+
+      font-family: "Press Start 2P", monospace;
+
+      font-size: 12px;
+
+      word-break: break-word;
+    }
+
+    .discord-link {
+      display: block;
+
+      margin-bottom: 12px;
+
+      padding: 10px;
+
+      background: #18182b;
+
+      border: 2px solid #080812;
+
+      font-family: monospace;
+
       font-size: 13px;
-      line-height: 1.8;
+
+      word-break: break-all;
     }
 
-    .steps strong {
-      color: #fff;
+    /* ABOUT */
+
+    .about {
+      padding: 15px;
+
+      background: #252525;
+
+      border: 3px solid #111;
+
+      box-shadow: 3px 3px 0 #111;
+
+      font-size: 13px;
+
+      line-height: 1.7;
     }
 
-    .success-message {
-      display: none;
+    /* ACHIEVEMENTS */
 
-      margin-top: 10px;
-      padding: 11px;
+    .achievement-grid {
+      display: grid;
 
-      background: #3d7b2b;
-      border: 3px solid #172d11;
+      grid-template-columns: repeat(2, 1fr);
 
-      color: white;
+      gap: 10px;
+    }
+
+    .achievement {
+      min-height: 85px;
+
+      padding: 12px 8px;
+
+      background: #292929;
+
+      border: 3px solid #111;
+
+      box-shadow: 3px 3px 0 #111;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
 
       text-align: center;
-      font-size: 11px;
-      line-height: 1.5;
     }
 
-    .success-message.show {
-      display: block;
+    .achievement-icon {
+      margin-bottom: 8px;
+
+      font-size: 25px;
     }
 
-    .small {
-      margin-top: 14px;
+    .achievement-name {
+      font-family: "Press Start 2P", monospace;
+
+      font-size: 8px;
+
+      line-height: 1.7;
+    }
+
+    /* BUTTONS */
+
+    .buttons {
+      display: grid;
+
+      gap: 11px;
+
+      margin-top: 25px;
+    }
+
+    button,
+    .button-link {
+      width: 100%;
+
+      padding: 14px 10px;
+
+      border: 4px solid #111;
+
+      box-shadow: 4px 4px 0 #111;
+
+      cursor: pointer;
+
+      text-align: center;
+
+      text-decoration: none;
+
+      color: #fff;
+
+      background: #555;
+
+      font-family: "Press Start 2P", monospace;
+
+      font-size: 10px;
+
+      line-height: 1.6;
+
+      transition:
+        transform .08s,
+        box-shadow .08s;
+    }
+
+    button:hover,
+    .button-link:hover {
+      filter: brightness(1.12);
+    }
+
+    button:active,
+    .button-link:active {
+      transform: translate(3px, 3px);
+
+      box-shadow: 1px 1px 0 #111;
+    }
+
+    .btn-mabar {
+      background: #3d8f36;
+    }
+
+    .btn-discord {
+      background: #55558c;
+    }
+
+    .btn-support {
+      background: #3e7d45;
+    }
+
+    .btn-copy {
+      background: #555;
+    }
+
+    .btn-share {
+      background: #7b5d32;
+    }
+
+    /* UPDATED */
+
+    .updated {
+      margin-top: 20px;
 
       color: #aaa;
+
       font-size: 10px;
-      line-height: 1.7;
+
       text-align: center;
     }
 
-    @media (max-width: 480px) {
+    footer {
+      margin-top: 22px;
 
-      body {
-        padding: 12px;
+      color: #999;
+
+      font-size: 10px;
+
+      line-height: 1.7;
+
+      text-align: center;
+    }
+
+    /* MODAL */
+
+    .modal {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 1000;
+
+      display: none;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 15px;
+
+      background: rgba(0, 0, 0, .75);
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      position: relative;
+
+      width: 100%;
+
+      max-width: 500px;
+
+      max-height: 90vh;
+
+      overflow-y: auto;
+
+      padding: 20px;
+
+      background: #303030;
+
+      border: 5px solid #111;
+
+      box-shadow:
+        0 0 0 4px #777,
+        8px 8px 0 #111;
+    }
+
+    .modal-title {
+      margin: 0 40px 18px 0;
+
+      font-family: "Press Start 2P", monospace;
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
+    .close {
+      position: absolute;
+
+      top: 12px;
+      right: 12px;
+
+      width: auto;
+
+      padding: 7px 10px;
+
+      background: #8b2929;
+
+      font-size: 10px;
+    }
+
+    .mabar-section {
+      margin-bottom: 12px;
+
+      padding: 13px;
+
+      background: #222;
+
+      border: 3px solid #111;
+    }
+
+    .mabar-section h3 {
+      margin: 0 0 12px;
+
+      font-family: "Press Start 2P", monospace;
+
+      font-size: 10px;
+
+      line-height: 1.7;
+    }
+
+    .copy-row {
+      display: flex;
+
+      gap: 7px;
+
+      margin: 7px 0;
+    }
+
+    .copy-row code {
+      flex: 1;
+
+      min-width: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      padding: 10px;
+
+      background: #111;
+
+      border: 2px solid #000;
+
+      font-family: monospace;
+
+      font-size: 12px;
+
+      word-break: break-all;
+    }
+
+    .copy-small {
+      width: auto;
+
+      min-width: 70px;
+
+      padding: 8px;
+
+      font-size: 8px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 430px) {
+
+      .content {
+        padding: 20px 13px 18px;
       }
 
-      .profile {
-        padding-left: 15px;
-        padding-right: 15px;
+      .profile h1 {
+        font-size: 18px;
       }
 
-      .section {
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-
-      .profile-image {
-        width: 105px;
-        height: 105px;
-      }
-
-      h1 {
-        font-size: 14px;
-      }
-
-      .info-item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .info-value {
-        text-align: left;
-      }
-
-      .edition {
+      .achievement-grid {
         grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 11px;
+      }
+
+      .copy-row {
+        flex-direction: column;
+      }
+
+      .copy-small {
+        width: 100%;
       }
     }
   </style>
@@ -533,116 +705,162 @@
 
 <body>
 
-  <main class="container">
+  <main class="card">
 
-    <section class="card">
+    <div class="grass"></div>
 
-      <!-- GRASS BLOCK -->
-      <div class="grass-header"></div>
+    <div class="content">
 
+      <!-- =========================
+           PROFIL
+      ========================== -->
 
-      <!-- PROFILE -->
-      <div class="profile">
+      <section class="profile">
 
         <img
+          class="profile-img"
           src="./media/profil.png"
           alt="Foto profil IqbalCraftMC"
-          class="profile-image"
-          onerror="this.src='./media/profil.jpg';"
+          onerror="
+            this.onerror=null;
+            this.src='./media/profil.jpg';
+          "
         >
 
-        <h1>IQBALCRAFTMC</h1>
+        <h1>IqbalCraftMC</h1>
 
         <div class="username">
           @Iqbalcraftmc
         </div>
 
-        <p class="bio">
-          🎮 Minecraft Player • Creator • Developer<br>
-          ⚔️ Siap mabar dan menjelajahi dunia Minecraft!
-        </p>
+        <!-- STATUS MABAR
+             Ubah teks di bawah sesuai kebutuhan -->
+        <div class="status">
+
+          🟢 MABAR TERBUKA
+
+          <span class="status-text">
+            Silakan ajak main!
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           DATA MINECRAFT
+      ========================== -->
+
+      <div class="section-title">
+        👤 DATA MINECRAFT
+      </div>
+
+      <div class="info-box">
+
+        <div class="info-label">
+          Minecraft Java Edition
+        </div>
+
+        <div class="info-value">
+          Iqbalcraftmc
+        </div>
+
+      </div>
+
+      <div class="info-box">
+
+        <div class="info-label">
+          Minecraft Bedrock Edition
+        </div>
+
+        <div class="info-value">
+          Iqbal khurniadi
+        </div>
 
       </div>
 
 
-      <!-- INFO -->
-      <div class="section">
+      <!-- =========================
+           SERVER
+      ========================== -->
 
-        <div class="info-list">
+      <div class="section-title">
+        🌐 SERVER MABAR
+      </div>
 
-          <div class="info-item">
-            <span class="info-label">
-              ☕ Minecraft Java
-            </span>
+      <div class="server-box">
 
-            <span class="info-value">
-              Iqbalcraftmc
-            </span>
-          </div>
-
-
-          <div class="info-item">
-            <span class="info-label">
-              🪨 Minecraft Bedrock
-            </span>
-
-            <span class="info-value">
-              Iqbal khurniadi
-            </span>
-          </div>
-
-
-          <div class="info-item">
-            <span class="info-label">
-              🌐 Server
-            </span>
-
-            <span class="info-value server">
-              alwination.id
-            </span>
-          </div>
-
+        <div class="server-address">
+          alwination.id
         </div>
 
+        <div class="server-address">
+          play.alwination.id
+        </div>
 
-        <!-- BUTTONS -->
+        <div class="server-note">
+          👥 <strong>Satu server, dua alamat.</strong><br>
+          Sering bermain di sini bersama teman-teman.
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           NAMEMC
+      ========================== -->
+
+      <div class="section-title">
+        🔎 NAMEMC
+      </div>
+
+      <div class="namemc-box">
+
+        <iframe
+          src="https://id.namemc.com/server/alwination.id/embed"
+          width="728"
+          height="90"
+          loading="lazy"
+          title="Alwination di NameMC">
+        </iframe>
+
+      </div>
+
+
+      <!-- =========================
+           DISCORD
+      ========================== -->
+
+      <div class="section-title">
+        💬 KONTAK DISCORD
+      </div>
+
+      <div class="discord-box">
+
+        <div class="discord-name">
+          @iqbal_craft
+        </div>
+
+        <div class="discord-link">
+          discord.gg/2D7xpe4tg7
+        </div>
+
         <div class="buttons">
 
-          <!-- MABAR -->
-          <button
-            class="minecraft-button main"
-            onclick="openMabar()"
-          >
-            🎮 MABAR YUK!
-          </button>
-
-
-          <!-- DUKUNGAN -->
           <a
-            class="minecraft-button support"
-            href="https://sociabuzz.com/iqbalcraftmc_official/tribe"
+            class="button-link btn-discord"
+            href="https://discord.gg/2D7xpe4tg7"
             target="_blank"
-            rel="noopener noreferrer"
-          >
-            💚 DUKUNG IQBALCRAFTMC
+            rel="noopener noreferrer">
+            💬 GABUNG SERVER DISCORD
           </a>
 
-
-          <!-- SHARE -->
           <button
-            class="minecraft-button"
-            onclick="shareCard()"
-          >
-            📤 BAGIKAN KARTU
-          </button>
-
-
-          <!-- COPY SERVER -->
-          <button
-            class="minecraft-button gold"
-            onclick="copyServer()"
-          >
-            📋 SALIN SERVER
+            class="btn-copy"
+            type="button"
+            onclick="copyText('@iqbal_craft')">
+            📋 SALIN USERNAME DISCORD
           </button>
 
         </div>
@@ -650,279 +868,365 @@
       </div>
 
 
-      <!-- FOOTER -->
-      <div class="footer">
-        © <span id="year"></span> IqbalCraftMC<br>
-        Digital Identity Card • Minecraft Edition
+      <!-- =========================
+           TENTANG IQBALCRAFTMC
+      ========================== -->
+
+      <div class="section-title">
+        🧱 TENTANG IQBALCRAFTMC
       </div>
 
-    </section>
+      <div class="about">
+
+        IqbalCraftMC adalah identitas digital untuk aktivitas
+        Minecraft, mabar bersama teman, komunitas, dan berbagai
+        proyek kreatif.
+
+        <br><br>
+
+        Mendukung Minecraft Java Edition dan Bedrock Edition.
+
+      </div>
+
+
+      <!-- =========================
+           ACHIEVEMENT
+      ========================== -->
+
+      <div class="section-title">
+        🏆 ACHIEVEMENT
+      </div>
+
+      <div class="achievement-grid">
+
+        <div class="achievement">
+
+          <div class="achievement-icon">
+            ⛏️
+          </div>
+
+          <div class="achievement-name">
+            JAVA PLAYER
+          </div>
+
+        </div>
+
+
+        <div class="achievement">
+
+          <div class="achievement-icon">
+            📱
+          </div>
+
+          <div class="achievement-name">
+            BEDROCK PLAYER
+          </div>
+
+        </div>
+
+
+        <div class="achievement">
+
+          <div class="achievement-icon">
+            🌐
+          </div>
+
+          <div class="achievement-name">
+            CROSSPLAY
+          </div>
+
+        </div>
+
+
+        <div class="achievement">
+
+          <div class="achievement-icon">
+            👥
+          </div>
+
+          <div class="achievement-name">
+            MABAR BARENG TEMAN
+          </div>
+
+        </div>
+
+
+        <div class="achievement">
+
+          <div class="achievement-icon">
+            🎙️
+          </div>
+
+          <div class="achievement-name">
+            VOICE CHAT
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           TOMBOL
+      ========================== -->
+
+      <div class="buttons">
+
+        <button
+          class="btn-mabar"
+          type="button"
+          onclick="openModal('mabarModal')">
+          🎮 MABAR YUK!
+        </button>
+
+
+        <a
+          class="button-link btn-discord"
+          href="https://discord.gg/2D7xpe4tg7"
+          target="_blank"
+          rel="noopener noreferrer">
+          💬 GABUNG SERVER DISCORD
+        </a>
+
+
+        <a
+          class="button-link btn-support"
+          href="https://sociabuzz.com/iqbalcraftmc_official/tribe"
+          target="_blank"
+          rel="noopener noreferrer">
+          💚 DUKUNG IQBALCRAFTMC
+        </a>
+
+
+        <button
+          class="btn-share"
+          type="button"
+          onclick="shareCard()">
+          📤 BAGIKAN KARTU
+        </button>
+
+
+        <button
+          class="btn-copy"
+          type="button"
+          onclick="copyAllData()">
+          📋 SALIN SEMUA DATA
+        </button>
+
+      </div>
+
+
+      <!-- UPDATE -->
+
+      <div class="updated">
+
+        🕐 Terakhir diperbarui:
+        <span id="updatedDate"></span>
+
+      </div>
+
+
+      <footer>
+
+        ⛏️ IqbalCraftMC<br>
+        Kartu Identitas Digital Minecraft
+
+      </footer>
+
+    </div>
 
   </main>
 
 
   <!-- =========================
        MODAL MABAR
-       ========================= -->
+  ========================== -->
 
   <div
-    class="modal"
     id="mabarModal"
-    onclick="closeOutside(event)"
-  >
+    class="modal"
+    onclick="outsideClose(event, 'mabarModal')">
 
-    <div class="modal-box">
+    <div class="modal-content">
 
-      <div class="modal-header">
-
-        <h2>🎮 MABAR YUK!</h2>
-
-        <button
-          class="close"
-          onclick="closeMabar()"
-        >
-          ×
-        </button>
-
-      </div>
-
-
-      <div class="notice">
-
-        <strong>
-          Silakan buka Minecraft yang ada di perangkat Anda.
-        </strong>
-
-        <br><br>
-
-        Untuk Java, buka Minecraft Launcher atau launcher
-        Java yang biasa kamu gunakan.
-
-        <br><br>
-
-        Untuk Bedrock, buka Minecraft Bedrock.
-
-      </div>
-
-
-      <!-- EDITION -->
-      <div class="edition">
-
-        <button
-          id="javaBtn"
-          class="minecraft-button selected"
-          onclick="selectEdition('java')"
-        >
-          ☕ JAVA
-        </button>
-
-
-        <button
-          id="bedrockBtn"
-          class="minecraft-button"
-          onclick="selectEdition('bedrock')"
-        >
-          🪨 BEDROCK
-        </button>
-
-      </div>
-
-
-      <!-- =========================
-           JAVA INFO
-           ========================= -->
-
-      <div id="javaInfo">
-
-        <div class="connection-card">
-
-          <div class="connection-title">
-            ☕ NAME MC / USERNAME JAVA
-          </div>
-
-          <div class="connection-value">
-            Iqbalcraftmc
-          </div>
-
-          <div class="copy-row">
-
-            <button
-              class="minecraft-button"
-              onclick="copyText(
-                'Iqbalcraftmc',
-                'Name MC berhasil disalin!'
-              )"
-            >
-              📋 SALIN NAME MC
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <div class="connection-card">
-
-          <div class="connection-title">
-            🌐 SERVER
-          </div>
-
-          <div class="connection-value">
-            alwination.id
-          </div>
-
-          <div class="copy-row">
-
-            <button
-              class="minecraft-button"
-              onclick="copyServer()"
-            >
-              📋 SALIN SERVER
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <ol class="steps">
-
-          <li>
-            Buka <strong>Minecraft Launcher</strong>
-            atau launcher Java kamu.
-          </li>
-
-          <li>
-            Masuk ke <strong>Multiplayer</strong>.
-          </li>
-
-          <li>
-            Tambahkan server:
-            <strong>alwination.id</strong>
-          </li>
-
-          <li>
-            Gunakan Name MC
-            <strong>Iqbalcraftmc</strong>
-            untuk menambahkan teman jika diperlukan.
-          </li>
-
-        </ol>
-
-      </div>
-
-
-      <!-- =========================
-           BEDROCK INFO
-           ========================= -->
-
-      <div
-        id="bedrockInfo"
-        style="display:none;"
-      >
-
-        <div class="connection-card">
-
-          <div class="connection-title">
-            🪨 USERNAME BEDROCK
-          </div>
-
-          <div class="connection-value">
-            Iqbal khurniadi
-          </div>
-
-          <div class="copy-row">
-
-            <button
-              class="minecraft-button"
-              onclick="copyText(
-                'Iqbal khurniadi',
-                'Username Bedrock berhasil disalin!'
-              )"
-            >
-              📋 SALIN USERNAME
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <div class="connection-card">
-
-          <div class="connection-title">
-            🌐 SERVER
-          </div>
-
-          <div class="connection-value">
-            alwination.id
-          </div>
-
-          <div class="copy-row">
-
-            <button
-              class="minecraft-button"
-              onclick="copyServer()"
-            >
-              📋 SALIN SERVER
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <ol class="steps">
-
-          <li>
-            Buka <strong>Minecraft Bedrock</strong>.
-          </li>
-
-          <li>
-            Buka menu <strong>Servers</strong>.
-          </li>
-
-          <li>
-            Masukkan alamat server:
-            <strong>alwination.id</strong>
-          </li>
-
-          <li>
-            Gunakan username
-            <strong>Iqbal khurniadi</strong>
-            untuk menambahkan teman jika diperlukan.
-          </li>
-
-          <li>
-            Masuk ke server dan mulai mabar!
-          </li>
-
-        </ol>
-
-      </div>
-
-
-      <!-- COPY ALL -->
       <button
-        class="minecraft-button main"
-        onclick="copyCurrentDetails()"
-      >
-        📋 SALIN DATA MABAR
+        class="close"
+        type="button"
+        onclick="closeModal('mabarModal')">
+        ✕
       </button>
 
 
-      <div
-        class="success-message"
-        id="successMessage"
-      >
-        Berhasil disalin!
+      <h2 class="modal-title">
+        🎮 DATA MABAR
+      </h2>
+
+
+      <!-- JAVA -->
+
+      <div class="mabar-section">
+
+        <h3>
+          ☕ JAVA EDITION
+        </h3>
+
+
+        <div class="copy-row">
+
+          <code>
+            Iqbalcraftmc
+          </code>
+
+          <button
+            class="copy-small"
+            type="button"
+            onclick="copyText('Iqbalcraftmc')">
+            SALIN
+          </button>
+
+        </div>
+
+
+        <div class="copy-row">
+
+          <code>
+            alwination.id
+          </code>
+
+          <button
+            class="copy-small"
+            type="button"
+            onclick="copyText('alwination.id')">
+            SALIN
+          </button>
+
+        </div>
+
+
+        <div class="copy-row">
+
+          <code>
+            play.alwination.id
+          </code>
+
+          <button
+            class="copy-small"
+            type="button"
+            onclick="copyText('play.alwination.id')">
+            SALIN
+          </button>
+
+        </div>
+
       </div>
 
 
-      <div class="small">
-        💡 Tidak perlu membuka launcher secara otomatis.
-        Cukup buka Minecraft di perangkat kamu dan gunakan
-        data mabar di atas.
+      <!-- BEDROCK -->
+
+      <div class="mabar-section">
+
+        <h3>
+          📱 BEDROCK EDITION
+        </h3>
+
+
+        <div class="copy-row">
+
+          <code>
+            Iqbal khurniadi
+          </code>
+
+          <button
+            class="copy-small"
+            type="button"
+            onclick="copyText('Iqbal khurniadi')">
+            SALIN
+          </button>
+
+        </div>
+
+
+        <div class="copy-row">
+
+          <code>
+            alwination.id
+          </code>
+
+          <button
+            class="copy-small"
+            type="button"
+            onclick="copyText('alwination.id')">
+            SALIN
+          </button>
+
+        </div>
+
+
+        <div class="copy-row">
+
+          <code>
+            play.alwination.id
+          </code>
+
+          <button
+            class="copy-small"
+            type="button"
+            onclick="copyText('play.alwination.id')">
+            SALIN
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- DISCORD -->
+
+      <div class="mabar-section">
+
+        <h3>
+          💬 DISCORD
+        </h3>
+
+
+        <div class="copy-row">
+
+          <code>
+            @iqbal_craft
+          </code>
+
+          <button
+            class="copy-small"
+            type="button"
+            onclick="copyText('@iqbal_craft')">
+            SALIN
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- PETUNJUK -->
+
+      <div class="mabar-section">
+
+        <strong>
+          📌 CARA BERGABUNG
+        </strong>
+
+        <p
+          style="
+            line-height:1.7;
+            font-size:13px;
+            color:#ccc;
+          "
+        >
+          Silakan buka Minecraft Launcher atau Minecraft Bedrock
+          yang ada di perangkat Anda, lalu masukkan username dan
+          alamat server di atas.
+        </p>
+
       </div>
 
     </div>
@@ -932,225 +1236,187 @@
 
   <script>
 
-    /* =========================
-       DATA
-       ========================= */
-
-    const SERVER = "alwination.id";
+    /* =====================================
+       DATA PROFIL
+    ====================================== */
 
     const JAVA_USERNAME = "Iqbalcraftmc";
 
     const BEDROCK_USERNAME = "Iqbal khurniadi";
 
-    let currentEdition = "java";
+    const SERVER = "alwination.id";
+
+    const SERVER_ALTERNATIVE = "play.alwination.id";
+
+    const DISCORD_USERNAME = "@iqbal_craft";
+
+    const DISCORD_SERVER =
+      "https://discord.gg/2D7xpe4tg7";
 
 
-    /* =========================
-       YEAR
-       ========================= */
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-
-    /* =========================
+    /* =====================================
        MODAL
-       ========================= */
+    ====================================== */
 
-    function openMabar() {
+    function openModal(id) {
 
       document
-        .getElementById("mabarModal")
-        .classList.add("active");
+        .getElementById(id)
+        .classList
+        .add("show");
 
       document.body.style.overflow = "hidden";
-
     }
 
 
-    function closeMabar() {
+    function closeModal(id) {
 
       document
-        .getElementById("mabarModal")
-        .classList.remove("active");
+        .getElementById(id)
+        .classList
+        .remove("show");
 
-      document.body.style.overflow = "";
+      if (
+        !document.querySelector(".modal.show")
+      ) {
 
-    }
-
-
-    function closeOutside(event) {
-
-      if (event.target.id === "mabarModal") {
-
-        closeMabar();
+        document.body.style.overflow = "";
 
       }
-
     }
 
 
-    /* =========================
-       JAVA / BEDROCK
-       ========================= */
+    function outsideClose(event, id) {
 
-    function selectEdition(edition) {
+      if (event.target.id === id) {
 
-      currentEdition = edition;
-
-      const javaBtn =
-        document.getElementById("javaBtn");
-
-      const bedrockBtn =
-        document.getElementById("bedrockBtn");
-
-      const javaInfo =
-        document.getElementById("javaInfo");
-
-      const bedrockInfo =
-        document.getElementById("bedrockInfo");
-
-
-      if (edition === "java") {
-
-        javaBtn.classList.add("selected");
-
-        bedrockBtn.classList.remove("selected");
-
-        javaInfo.style.display = "block";
-
-        bedrockInfo.style.display = "none";
-
-      } else {
-
-        javaBtn.classList.remove("selected");
-
-        bedrockBtn.classList.add("selected");
-
-        javaInfo.style.display = "none";
-
-        bedrockInfo.style.display = "block";
+        closeModal(id);
 
       }
-
     }
 
 
-    /* =========================
+    document.addEventListener(
+      "keydown",
+      function(event) {
+
+        if (event.key === "Escape") {
+
+          document
+            .querySelectorAll(".modal.show")
+            .forEach(function(modal) {
+
+              modal.classList.remove("show");
+
+            });
+
+          document.body.style.overflow = "";
+
+        }
+
+      }
+    );
+
+
+    /* =====================================
        COPY
-       ========================= */
+    ====================================== */
 
-    async function copyText(text, message) {
+    async function copyText(text) {
 
       try {
 
-        await navigator.clipboard.writeText(text);
+        await navigator
+          .clipboard
+          .writeText(text);
+
+        showToast("✅ Berhasil disalin!");
 
       } catch (error) {
 
-        const textarea =
-          document.createElement("textarea");
-
-        textarea.value = text;
-
-        textarea.style.position = "fixed";
-
-        textarea.style.opacity = "0";
-
-        document.body.appendChild(textarea);
-
-        textarea.select();
-
-        document.execCommand("copy");
-
-        textarea.remove();
+        fallbackCopy(text);
 
       }
+    }
 
-      showSuccess(message);
+
+    function fallbackCopy(text) {
+
+      const textarea =
+        document.createElement("textarea");
+
+      textarea.value = text;
+
+      textarea.style.position = "fixed";
+
+      textarea.style.opacity = "0";
+
+      document.body.appendChild(textarea);
+
+      textarea.select();
+
+      document.execCommand("copy");
+
+      textarea.remove();
+
+      showToast("✅ Berhasil disalin!");
 
     }
 
 
-    function copyServer() {
+    /* =====================================
+       SALIN SEMUA DATA
+    ====================================== */
 
-      copyText(
-        SERVER,
-        "Alamat server berhasil disalin!"
-      );
+    function copyAllData() {
 
-    }
+      const data =
+`IqbalCraftMC
 
+Minecraft Java: ${JAVA_USERNAME}
+Minecraft Bedrock: ${BEDROCK_USERNAME}
 
-    function copyCurrentDetails() {
+Server: ${SERVER}
+Alternatif: ${SERVER_ALTERNATIVE}
 
-      let details;
+Discord: ${DISCORD_USERNAME}`;
 
-
-      if (currentEdition === "java") {
-
-        details =
-`Minecraft Java
-Name MC: ${JAVA_USERNAME}
-Server: ${SERVER}`;
-
-      } else {
-
-        details =
-`Minecraft Bedrock
-Username: ${BEDROCK_USERNAME}
-Server: ${SERVER}`;
-
-      }
-
-
-      copyText(
-        details,
-        "Data mabar berhasil disalin!"
-      );
+      copyText(data);
 
     }
 
 
-    /* =========================
-       SUCCESS MESSAGE
-       ========================= */
-
-    function showSuccess(message) {
-
-      const success =
-        document.getElementById("successMessage");
-
-      success.textContent = message;
-
-      success.classList.add("show");
-
-
-      setTimeout(() => {
-
-        success.classList.remove("show");
-
-      }, 2200);
-
-    }
-
-
-    /* =========================
+    /* =====================================
        SHARE
-       ========================= */
+    ====================================== */
 
     async function shareCard() {
 
       const shareData = {
 
         title:
-          "Kartu Identitas IqbalCraftMC",
+          "IqbalCraftMC — Kartu Identitas Digital",
 
         text:
-          "🎮 Mabar bersama IqbalCraftMC!\n" +
-          "Java: Iqbalcraftmc\n" +
-          "Bedrock: Iqbal khurniadi\n" +
-          "Server: alwination.id",
+          "Kartu Identitas Digital IqbalCraftMC\n\n" +
+          "Minecraft Java: " +
+          JAVA_USERNAME +
+          "\n" +
+
+          "Minecraft Bedrock: " +
+          BEDROCK_USERNAME +
+          "\n\n" +
+
+          "Server: " +
+          SERVER +
+          "\n" +
+
+          "Alternatif: " +
+          SERVER_ALTERNATIVE +
+          "\n\n" +
+
+          "Discord: " +
+          DISCORD_USERNAME,
 
         url: window.location.href
 
@@ -1161,45 +1427,148 @@ Server: ${SERVER}`;
 
         try {
 
-          await navigator.share(shareData);
+          await navigator.share(
+            shareData
+          );
 
         } catch (error) {
 
-          // Share dibatalkan.
+          if (
+            error.name !== "AbortError"
+          ) {
+
+            copyCardLink();
+
+          }
 
         }
 
       } else {
 
-        copyText(
-
-          `${shareData.text}\n${shareData.url}`,
-
-          "Informasi kartu berhasil disalin!"
-
-        );
+        copyCardLink();
 
       }
 
     }
 
 
-    /* =========================
-       ESCAPE
-       ========================= */
+    function copyCardLink() {
 
-    document.addEventListener(
-      "keydown",
-      function(event) {
+      copyText(
+        window.location.href
+      );
 
-        if (event.key === "Escape") {
+    }
 
-          closeMabar();
 
-        }
+    /* =====================================
+       TANGGAL UPDATE
+    ====================================== */
+
+    function updateDate() {
+
+      const now = new Date();
+
+      const date =
+        now.toLocaleDateString(
+          "id-ID",
+          {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+          }
+        );
+
+      document
+        .getElementById("updatedDate")
+        .textContent = date;
+
+    }
+
+    updateDate();
+
+
+    /* =====================================
+       TOAST
+    ====================================== */
+
+    function showToast(message) {
+
+      const oldToast =
+        document.getElementById("toast");
+
+      if (oldToast) {
+
+        oldToast.remove();
 
       }
-    );
+
+
+      const toast =
+        document.createElement("div");
+
+      toast.id = "toast";
+
+      toast.textContent = message;
+
+
+      Object.assign(
+        toast.style,
+        {
+
+          position: "fixed",
+
+          left: "50%",
+
+          bottom: "25px",
+
+          transform:
+            "translateX(-50%)",
+
+          zIndex: "9999",
+
+          background: "#111",
+
+          color: "#fff",
+
+          border: "3px solid #777",
+
+          boxShadow:
+            "4px 4px 0 #000",
+
+          padding:
+            "12px 16px",
+
+          fontFamily:
+            "Arial, sans-serif",
+
+          fontWeight: "bold",
+
+          fontSize: "13px",
+
+          maxWidth: "90%",
+
+          textAlign: "center"
+
+        }
+      );
+
+
+      document.body.appendChild(
+        toast
+      );
+
+
+      setTimeout(
+        function() {
+
+          toast.remove();
+
+        },
+        1800
+      );
+
+    }
 
   </script>
 
