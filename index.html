@@ -21,14 +21,11 @@
       --grass: #5ca832;
       --grass-dark: #3d7c24;
       --dirt: #8b5a2b;
-      --dirt-dark: #633d1d;
       --stone: #7c7c7c;
-      --stone-dark: #4b4b4b;
-      --wood: #9b6b3d;
       --diamond: #55e6e6;
       --gold: #ffd84d;
+      --green: #55ff55;
       --text: #ffffff;
-      --dark: #171717;
     }
 
     body {
@@ -55,14 +52,12 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    /* Pixel font hanya digunakan untuk judul/UI */
     .pixel,
     h1,
     h2,
     .minecraft-button,
-    .label,
-    .server-value,
-    .username-value {
+    .username,
+    .connection-value {
       font-family: "Press Start 2P", monospace;
     }
 
@@ -78,12 +73,13 @@
         0 0 0 4px #555,
         0 18px 0 rgba(0,0,0,.4),
         0 30px 60px rgba(0,0,0,.65);
-
-      image-rendering: pixelated;
       overflow: hidden;
     }
 
-    /* Grass block header */
+    /* =========================
+       GRASS BLOCK HEADER
+       ========================= */
+
     .grass-header {
       height: 55px;
       position: relative;
@@ -109,6 +105,10 @@
       height: 8px;
       background: #754a25;
     }
+
+    /* =========================
+       PROFILE
+       ========================= */
 
     .profile {
       text-align: center;
@@ -141,7 +141,6 @@
     .username {
       margin-top: 9px;
       color: var(--diamond);
-      font-family: "Press Start 2P", monospace;
       font-size: 10px;
       text-shadow: 2px 2px 0 #111;
     }
@@ -154,11 +153,14 @@
       line-height: 1.65;
     }
 
+    /* =========================
+       INFO
+       ========================= */
+
     .section {
       padding: 10px 22px 22px;
     }
 
-    /* Minecraft inventory-style information */
     .info-list {
       display: grid;
       gap: 9px;
@@ -174,14 +176,14 @@
 
       padding: 10px 12px;
 
-      background:
-        linear-gradient(
-          135deg,
-          #484848,
-          #333
-        );
+      background: linear-gradient(
+        135deg,
+        #484848,
+        #333
+      );
 
       border: 3px solid #111;
+
       box-shadow:
         inset 2px 2px 0 #6b6b6b,
         inset -2px -2px 0 #202020;
@@ -202,11 +204,14 @@
     }
 
     .server {
-      color: #55ff55;
+      color: var(--green);
       text-shadow: 2px 2px 0 #111;
     }
 
-    /* Minecraft-style buttons */
+    /* =========================
+       BUTTONS
+       ========================= */
+
     .buttons {
       display: grid;
       gap: 10px;
@@ -214,7 +219,14 @@
     }
 
     .minecraft-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
       min-height: 52px;
+
+      padding: 12px 14px;
 
       border: 3px solid #111;
       border-top-color: #777;
@@ -229,6 +241,7 @@
       text-shadow: 2px 2px 0 #333;
 
       cursor: pointer;
+      text-decoration: none;
 
       box-shadow:
         inset -3px -3px 0 #3e3e3e,
@@ -262,9 +275,22 @@
       background: #70b73f;
     }
 
+    /* Tombol dukungan */
+    .minecraft-button.support {
+      background: #2f8f4e;
+    }
+
+    .minecraft-button.support:hover {
+      background: #3eaa5e;
+    }
+
     .minecraft-button.gold {
       background: #b18a20;
     }
+
+    /* =========================
+       FOOTER
+       ========================= */
 
     .footer {
       text-align: center;
@@ -278,7 +304,10 @@
       background: #252525;
     }
 
-    /* Modal */
+    /* =========================
+       MODAL
+       ========================= */
+
     .modal {
       position: fixed;
       inset: 0;
@@ -306,6 +335,7 @@
       background: #303030;
 
       border: 4px solid #111;
+
       box-shadow:
         0 0 0 4px #555,
         0 25px 70px rgba(0,0,0,.8);
@@ -401,8 +431,7 @@
     }
 
     .connection-value {
-      color: #55ff55;
-      font-family: "Press Start 2P", monospace;
+      color: var(--green);
       font-size: 12px;
       line-height: 1.7;
       word-break: break-word;
@@ -462,6 +491,7 @@
     }
 
     @media (max-width: 480px) {
+
       body {
         padding: 12px;
       }
@@ -507,8 +537,11 @@
 
     <section class="card">
 
+      <!-- GRASS BLOCK -->
       <div class="grass-header"></div>
 
+
+      <!-- PROFILE -->
       <div class="profile">
 
         <img
@@ -532,6 +565,7 @@
       </div>
 
 
+      <!-- INFO -->
       <div class="section">
 
         <div class="info-list">
@@ -571,8 +605,10 @@
         </div>
 
 
+        <!-- BUTTONS -->
         <div class="buttons">
 
+          <!-- MABAR -->
           <button
             class="minecraft-button main"
             onclick="openMabar()"
@@ -581,6 +617,18 @@
           </button>
 
 
+          <!-- DUKUNGAN -->
+          <a
+            class="minecraft-button support"
+            href="https://sociabuzz.com/iqbalcraftmc_official/tribe"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            💚 DUKUNG IQBALCRAFTMC
+          </a>
+
+
+          <!-- SHARE -->
           <button
             class="minecraft-button"
             onclick="shareCard()"
@@ -589,6 +637,7 @@
           </button>
 
 
+          <!-- COPY SERVER -->
           <button
             class="minecraft-button gold"
             onclick="copyServer()"
@@ -601,6 +650,7 @@
       </div>
 
 
+      <!-- FOOTER -->
       <div class="footer">
         © <span id="year"></span> IqbalCraftMC<br>
         Digital Identity Card • Minecraft Edition
@@ -639,12 +689,14 @@
 
       <div class="notice">
 
-        <strong>Silakan buka Minecraft yang ada di perangkat Anda.</strong>
+        <strong>
+          Silakan buka Minecraft yang ada di perangkat Anda.
+        </strong>
 
         <br><br>
 
-        Untuk Java, buka Minecraft Launcher atau launcher Java
-        yang biasa kamu gunakan.
+        Untuk Java, buka Minecraft Launcher atau launcher
+        Java yang biasa kamu gunakan.
 
         <br><br>
 
@@ -653,6 +705,7 @@
       </div>
 
 
+      <!-- EDITION -->
       <div class="edition">
 
         <button
@@ -675,7 +728,9 @@
       </div>
 
 
-      <!-- JAVA -->
+      <!-- =========================
+           JAVA INFO
+           ========================= -->
 
       <div id="javaInfo">
 
@@ -757,7 +812,9 @@
       </div>
 
 
-      <!-- BEDROCK -->
+      <!-- =========================
+           BEDROCK INFO
+           ========================= -->
 
       <div
         id="bedrockInfo"
@@ -845,6 +902,7 @@
       </div>
 
 
+      <!-- COPY ALL -->
       <button
         class="minecraft-button main"
         onclick="copyCurrentDetails()"
@@ -874,6 +932,10 @@
 
   <script>
 
+    /* =========================
+       DATA
+       ========================= */
+
     const SERVER = "alwination.id";
 
     const JAVA_USERNAME = "Iqbalcraftmc";
@@ -883,13 +945,17 @@
     let currentEdition = "java";
 
 
-    /* Tahun otomatis */
+    /* =========================
+       YEAR
+       ========================= */
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
 
-    /* Buka modal */
+    /* =========================
+       MODAL
+       ========================= */
 
     function openMabar() {
 
@@ -902,8 +968,6 @@
     }
 
 
-    /* Tutup modal */
-
     function closeMabar() {
 
       document
@@ -914,8 +978,6 @@
 
     }
 
-
-    /* Klik area luar modal */
 
     function closeOutside(event) {
 
@@ -928,7 +990,9 @@
     }
 
 
-    /* Pilih Java / Bedrock */
+    /* =========================
+       JAVA / BEDROCK
+       ========================= */
 
     function selectEdition(edition) {
 
@@ -972,7 +1036,9 @@
     }
 
 
-    /* Copy */
+    /* =========================
+       COPY
+       ========================= */
 
     async function copyText(text, message) {
 
@@ -1016,8 +1082,6 @@
     }
 
 
-    /* Copy seluruh data */
-
     function copyCurrentDetails() {
 
       let details;
@@ -1048,7 +1112,9 @@ Server: ${SERVER}`;
     }
 
 
-    /* Notifikasi */
+    /* =========================
+       SUCCESS MESSAGE
+       ========================= */
 
     function showSuccess(message) {
 
@@ -1069,7 +1135,9 @@ Server: ${SERVER}`;
     }
 
 
-    /* Share */
+    /* =========================
+       SHARE
+       ========================= */
 
     async function shareCard() {
 
@@ -1116,7 +1184,9 @@ Server: ${SERVER}`;
     }
 
 
-    /* Tombol Escape */
+    /* =========================
+       ESCAPE
+       ========================= */
 
     document.addEventListener(
       "keydown",
