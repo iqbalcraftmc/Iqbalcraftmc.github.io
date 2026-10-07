@@ -3,16 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080b14">
-  <meta name="description" content="Kartu Identitas Digital IqbalCraftMC dengan Smart Minecraft Detector">
-  <title>IqbalCraftMC — Digital Identity</title>
+  <meta name="theme-color" content="#1b1b1b">
+  <meta name="description" content="Kartu Identitas Digital IqbalCraftMC">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+  <title>Kartu Identitas — IqbalCraftMC</title>
 
   <style>
     * {
@@ -21,741 +15,487 @@
       padding: 0;
     }
 
-    :root {
-      --bg: #070a12;
-      --card: rgba(17, 23, 39, .82);
-      --card2: rgba(255,255,255,.045);
-      --text: #f5f7ff;
-      --muted: #aab3c7;
-      --border: rgba(255,255,255,.09);
-      --purple: #7c5cff;
-      --blue: #00cfff;
-      --green: #32d583;
-      --yellow: #ffbd4a;
-      --red: #ff6177;
-      --shadow: 0 25px 90px rgba(0,0,0,.48);
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --grass: #5ca832;
+      --grass-dark: #3d7c24;
+      --dirt: #8b5a2b;
+      --dirt-dark: #633d1d;
+      --stone: #7c7c7c;
+      --stone-dark: #4b4b4b;
+      --wood: #9b6b3d;
+      --diamond: #55e6e6;
+      --gold: #ffd84d;
+      --text: #ffffff;
+      --dark: #171717;
     }
 
     body {
       min-height: 100vh;
-      padding: 18px;
-      overflow-x: hidden;
-      color: var(--text);
-      font-family: "Inter", sans-serif;
+      padding: 25px 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       background:
-        radial-gradient(
-          circle at 10% 10%,
-          rgba(124,92,255,.20),
-          transparent 30%
+        linear-gradient(
+          rgba(0, 0, 0, .25),
+          rgba(0, 0, 0, .45)
         ),
-        radial-gradient(
-          circle at 90% 15%,
-          rgba(0,207,255,.13),
-          transparent 28%
-        ),
-        radial-gradient(
-          circle at 50% 100%,
-          rgba(124,92,255,.12),
-          transparent 35%
-        ),
-        var(--bg);
+        repeating-linear-gradient(
+          45deg,
+          #252525 0,
+          #252525 4px,
+          #292929 4px,
+          #292929 8px
+        );
+
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    button,
-    input {
-      font: inherit;
-    }
-
-    button {
-      border: 0;
+    /* Pixel font hanya digunakan untuk judul/UI */
+    .pixel,
+    h1,
+    h2,
+    .minecraft-button,
+    .label,
+    .server-value,
+    .username-value {
+      font-family: "Press Start 2P", monospace;
     }
 
     .container {
       width: 100%;
-      max-width: 920px;
-      margin: auto;
+      max-width: 480px;
     }
 
     .card {
+      background: #303030;
+      border: 4px solid #111;
+      box-shadow:
+        0 0 0 4px #555,
+        0 18px 0 rgba(0,0,0,.4),
+        0 30px 60px rgba(0,0,0,.65);
+
+      image-rendering: pixelated;
       overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      background: var(--card);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
     }
 
-    /* =========================
-       HERO
-    ========================= */
+    /* Grass block header */
+    .grass-header {
+      height: 55px;
+      position: relative;
 
-    .hero {
-      padding: 40px 25px 30px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #63b538 0,
+          #63b538 15px,
+          #5aa82f 15px,
+          #5aa82f 30px
+        );
+
+      border-bottom: 8px solid #654321;
+    }
+
+    .grass-header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 8px;
+      background: #754a25;
+    }
+
+    .profile {
       text-align: center;
+      padding: 24px 22px 10px;
+    }
+
+    .profile-image {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+
+      border: 5px solid #111;
+      outline: 4px solid #888;
+
+      background: #777;
+      image-rendering: pixelated;
+
+      margin-top: -15px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 17px;
+      line-height: 1.6;
+      text-shadow:
+        3px 3px 0 #111,
+        -1px -1px 0 #111;
+    }
+
+    .username {
+      margin-top: 9px;
+      color: var(--diamond);
+      font-family: "Press Start 2P", monospace;
+      font-size: 10px;
+      text-shadow: 2px 2px 0 #111;
+    }
+
+    .bio {
+      margin: 18px auto 5px;
+      max-width: 390px;
+      color: #ddd;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .section {
+      padding: 10px 22px 22px;
+    }
+
+    /* Minecraft inventory-style information */
+    .info-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .info-item {
+      min-height: 58px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+
+      padding: 10px 12px;
 
       background:
         linear-gradient(
           135deg,
-          rgba(124,92,255,.15),
-          rgba(0,207,255,.05),
-          transparent
+          #484848,
+          #333
         );
-    }
 
-    .avatar-wrap {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 17px;
-    }
-
-    .avatar {
-      width: 115px;
-      height: 115px;
-      object-fit: cover;
-      border: 3px solid rgba(255,255,255,.14);
-      border-radius: 50%;
-      background: #111827;
-
+      border: 3px solid #111;
       box-shadow:
-        0 0 0 7px rgba(124,92,255,.08),
-        0 15px 45px rgba(0,0,0,.35);
+        inset 2px 2px 0 #6b6b6b,
+        inset -2px -2px 0 #202020;
     }
 
-    .online {
-      position: absolute;
-      right: 5px;
-      bottom: 6px;
-
-      width: 20px;
-      height: 20px;
-
-      border: 4px solid #111827;
-      border-radius: 50%;
-      background: var(--green);
+    .info-label {
+      color: #cfcfcf;
+      font-size: 12px;
+      line-height: 1.5;
     }
 
-    h1 {
-      font-size: clamp(29px, 7vw, 45px);
-      font-weight: 800;
-      letter-spacing: -1.7px;
-    }
-
-    .username {
-      margin-top: 7px;
-      color: var(--blue);
-      font-weight: 700;
-    }
-
-    .bio {
-      max-width: 650px;
-      margin: 15px auto 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.75;
-    }
-
-    .content {
-      padding: 25px;
-    }
-
-    /* =========================
-       SECTION
-    ========================= */
-
-    .section {
-      margin-bottom: 27px;
-    }
-
-    .section:last-child {
-      margin-bottom: 0;
-    }
-
-    .section-title {
-      margin-bottom: 13px;
-
-      color: #fff;
-      font-size: 13px;
-      font-weight: 800;
-
-      text-transform: uppercase;
-      letter-spacing: 1.1px;
-    }
-
-    /* =========================
-       INFO
-    ========================= */
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .info {
-      padding: 16px;
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      background: var(--card2);
-    }
-
-    .label {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .value {
-      font-size: 14px;
-      font-weight: 700;
+    .info-value {
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+      text-align: right;
       word-break: break-word;
     }
 
-    /* =========================
-       BUTTONS
-    ========================= */
+    .server {
+      color: #55ff55;
+      text-shadow: 2px 2px 0 #111;
+    }
 
+    /* Minecraft-style buttons */
     .buttons {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      gap: 10px;
+      margin-top: 15px;
     }
 
-    .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
+    .minecraft-button {
+      min-height: 52px;
 
-      min-height: 51px;
-      padding: 13px 16px;
+      border: 3px solid #111;
+      border-top-color: #777;
+      border-left-color: #777;
 
-      border: 1px solid transparent;
-      border-radius: 15px;
-
+      background: #727272;
       color: white;
+
+      font-size: 10px;
+      line-height: 1.4;
+
+      text-shadow: 2px 2px 0 #333;
+
       cursor: pointer;
-      font-size: 14px;
-      font-weight: 800;
 
-      transition:
-        transform .18s ease,
-        filter .18s ease,
-        background .18s ease;
+      box-shadow:
+        inset -3px -3px 0 #3e3e3e,
+        3px 3px 0 #111;
+
+      transition: none;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.08);
+    .minecraft-button:hover {
+      background: #8b8b8b;
     }
 
-    .btn:active {
-      transform: translateY(0);
+    .minecraft-button:active {
+      border-top-color: #111;
+      border-left-color: #111;
+      border-bottom-color: #777;
+      border-right-color: #777;
+
+      box-shadow:
+        inset 3px 3px 0 #3e3e3e,
+        1px 1px 0 #111;
+
+      transform: translate(2px, 2px);
     }
 
-    .minecraft {
-      background: linear-gradient(135deg, #32914e, #42c768);
+    .minecraft-button.main {
+      background: #5c9f32;
     }
 
-    .primary {
-      background: linear-gradient(135deg, var(--purple), #5d8cff);
+    .minecraft-button.main:hover {
+      background: #70b73f;
     }
 
-    .secondary {
-      border-color: var(--border);
-      background: rgba(255,255,255,.055);
+    .minecraft-button.gold {
+      background: #b18a20;
     }
-
-    /* =========================
-       SMART DETECTOR
-    ========================= */
-
-    .detector {
-      padding: 19px;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background:
-        linear-gradient(
-          145deg,
-          rgba(124,92,255,.09),
-          rgba(0,207,255,.035)
-        );
-    }
-
-    .detector-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 17px;
-    }
-
-    .detector-title {
-      font-size: 17px;
-      font-weight: 800;
-    }
-
-    .scan-status {
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(50,213,131,.09);
-      border: 1px solid rgba(50,213,131,.2);
-      color: var(--green);
-      font-size: 10px;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .detector-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-
-    .detect-item {
-      min-height: 91px;
-      padding: 13px;
-
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      background: rgba(255,255,255,.035);
-    }
-
-    .detect-icon {
-      margin-bottom: 8px;
-      font-size: 21px;
-    }
-
-    .detect-label {
-      color: var(--muted);
-      font-size: 10px;
-    }
-
-    .detect-value {
-      margin-top: 4px;
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-
-      margin-top: 5px;
-      padding: 4px 7px;
-
-      border-radius: 7px;
-      font-size: 9px;
-      font-weight: 800;
-    }
-
-    .status.detected {
-      background: rgba(50,213,131,.10);
-      color: var(--green);
-    }
-
-    .status.possible {
-      background: rgba(255,189,74,.10);
-      color: var(--yellow);
-    }
-
-    .status.unknown {
-      background: rgba(170,179,199,.09);
-      color: var(--muted);
-    }
-
-    /* =========================
-       MINECRAFT RESULT
-    ========================= */
-
-    .edition-box {
-      margin-top: 12px;
-      padding: 15px;
-
-      border: 1px solid var(--border);
-      border-radius: 15px;
-
-      background: rgba(0,0,0,.13);
-    }
-
-    .edition-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .edition-name {
-      font-weight: 800;
-    }
-
-    .edition-score {
-      color: var(--blue);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .progress {
-      height: 7px;
-      margin-top: 11px;
-      overflow: hidden;
-      border-radius: 99px;
-      background: rgba(255,255,255,.08);
-    }
-
-    .progress-bar {
-      width: 0%;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(
-        90deg,
-        var(--purple),
-        var(--blue)
-      );
-      transition: width .8s ease;
-    }
-
-    /* =========================
-       LAUNCHER RESULTS
-    ========================= */
-
-    .launcher-results {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-      margin-top: 12px;
-    }
-
-    .launcher-result {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-
-      padding: 12px;
-
-      border: 1px solid var(--border);
-      border-radius: 14px;
-
-      background: rgba(255,255,255,.035);
-    }
-
-    .launcher-result-icon {
-      display: grid;
-      place-items: center;
-
-      width: 39px;
-      height: 39px;
-      flex-shrink: 0;
-
-      border-radius: 11px;
-      background: rgba(124,92,255,.10);
-
-      font-size: 18px;
-    }
-
-    .launcher-result-name {
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .launcher-result-desc {
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 10px;
-      line-height: 1.45;
-    }
-
-    /* =========================
-       GALLERY
-    ========================= */
-
-    .gallery {
-      width: 100%;
-      max-height: 330px;
-      object-fit: cover;
-
-      border: 1px solid var(--border);
-      border-radius: 20px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
 
     .footer {
-      padding: 19px 8px 5px;
-      color: var(--muted);
       text-align: center;
-      font-size: 11px;
+      padding: 18px 15px 22px;
+
+      color: #aaa;
+      font-size: 10px;
+      line-height: 1.8;
+
+      border-top: 3px solid #111;
+      background: #252525;
     }
 
-    /* =========================
-       MODAL
-    ========================= */
-
+    /* Modal */
     .modal {
       position: fixed;
       inset: 0;
-      z-index: 1000;
+      z-index: 100;
 
       display: none;
       align-items: center;
       justify-content: center;
 
-      padding: 17px;
+      padding: 15px;
 
-      background: rgba(0,0,0,.72);
-
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(0,0,0,.78);
     }
 
-    .modal.show {
+    .modal.active {
       display: flex;
     }
 
     .modal-box {
       width: 100%;
-      max-width: 570px;
+      max-width: 460px;
       max-height: 90vh;
       overflow-y: auto;
 
-      padding: 23px;
+      background: #303030;
 
-      border: 1px solid var(--border);
-      border-radius: 24px;
+      border: 4px solid #111;
+      box-shadow:
+        0 0 0 4px #555,
+        0 25px 70px rgba(0,0,0,.8);
 
-      background: #111728;
-      box-shadow: 0 30px 100px rgba(0,0,0,.6);
-
-      animation: popup .2s ease;
+      padding: 18px;
     }
 
-    @keyframes popup {
-      from {
-        opacity: 0;
-        transform: translateY(8px) scale(.97);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .modal-head {
+    .modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 17px;
+
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+
+      border-bottom: 3px solid #111;
     }
 
-    .modal-head h2 {
-      font-size: 20px;
+    h2 {
+      font-size: 13px;
+      line-height: 1.7;
+      text-shadow: 2px 2px #111;
     }
 
     .close {
-      display: grid;
-      place-items: center;
+      width: 38px;
+      height: 38px;
 
-      width: 40px;
-      height: 40px;
+      padding: 0;
 
-      border-radius: 12px;
-
+      background: #8d3030;
       color: white;
-      background: rgba(255,255,255,.07);
 
+      border: 3px solid #111;
+      border-top-color: #b86a6a;
+      border-left-color: #b86a6a;
+
+      font-size: 20px;
       cursor: pointer;
-      font-size: 21px;
-    }
-
-    .modal-description {
-      margin-bottom: 18px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.65;
-    }
-
-    .platforms {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 11px;
-      margin-bottom: 18px;
-    }
-
-    .platform {
-      min-height: 72px;
-
-      border: 1px solid var(--border);
-      border-radius: 15px;
-
-      color: white;
-      background: rgba(255,255,255,.045);
-
-      cursor: pointer;
-      font-weight: 800;
-    }
-
-    .platform.active {
-      border-color: rgba(124,92,255,.7);
-      background: rgba(124,92,255,.13);
-    }
-
-    .platform-icon {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 23px;
-    }
-
-    .launcher-list {
-      display: none;
-      flex-direction: column;
-      gap: 9px;
-    }
-
-    .launcher-list.show {
-      display: flex;
-    }
-
-    .launcher {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-
-      width: 100%;
-      padding: 13px;
-
-      border: 1px solid var(--border);
-      border-radius: 14px;
-
-      color: white;
-      text-align: left;
-      background: rgba(255,255,255,.035);
-
-      cursor: pointer;
-    }
-
-    .launcher:hover {
-      background: rgba(255,255,255,.07);
-    }
-
-    .launcher-name {
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .launcher-desc {
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 10px;
-      line-height: 1.45;
-    }
-
-    .launcher-arrow {
-      color: var(--blue);
-      font-size: 19px;
     }
 
     .notice {
-      display: none;
+      padding: 15px;
 
-      margin-top: 15px;
-      padding: 13px;
+      background: #414141;
 
-      border: 1px solid rgba(255,189,74,.2);
-      border-radius: 13px;
+      border: 3px solid #111;
 
-      background: rgba(255,189,74,.07);
-      color: #ffd889;
+      box-shadow:
+        inset 2px 2px 0 #686868,
+        inset -2px -2px 0 #222;
 
-      font-size: 11px;
-      line-height: 1.6;
+      color: #eee;
+
+      font-size: 13px;
+      line-height: 1.7;
+
+      margin-bottom: 15px;
     }
 
-    .notice.show {
+    .edition {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+      margin-bottom: 15px;
+    }
+
+    .edition button {
+      min-height: 48px;
+    }
+
+    .edition button.selected {
+      background: #5c9f32;
+    }
+
+    .connection-card {
+      padding: 14px;
+      margin-bottom: 10px;
+
+      background: #3b3b3b;
+
+      border: 3px solid #111;
+
+      box-shadow:
+        inset 2px 2px 0 #666,
+        inset -2px -2px 0 #222;
+    }
+
+    .connection-title {
+      color: #bbb;
+      font-size: 11px;
+      margin-bottom: 9px;
+    }
+
+    .connection-value {
+      color: #55ff55;
+      font-family: "Press Start 2P", monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      word-break: break-word;
+      text-shadow: 2px 2px #111;
+    }
+
+    .copy-row {
+      margin-top: 11px;
+    }
+
+    .copy-row button {
+      min-height: 40px;
+      font-size: 9px;
+    }
+
+    .steps {
+      margin: 16px 0 18px;
+      padding-left: 23px;
+
+      color: #ddd;
+
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .steps strong {
+      color: #fff;
+    }
+
+    .success-message {
+      display: none;
+
+      margin-top: 10px;
+      padding: 11px;
+
+      background: #3d7b2b;
+      border: 3px solid #172d11;
+
+      color: white;
+
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .success-message.show {
       display: block;
     }
 
-    /* =========================
-       TOAST
-    ========================= */
+    .small {
+      margin-top: 14px;
 
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 23px;
-      z-index: 3000;
-
-      max-width: calc(100% - 25px);
-      padding: 12px 16px;
-
-      border: 1px solid var(--border);
-      border-radius: 13px;
-
-      color: white;
-      background: #151c2d;
-
-      box-shadow: 0 15px 45px rgba(0,0,0,.45);
-
-      font-size: 12px;
+      color: #aaa;
+      font-size: 10px;
+      line-height: 1.7;
       text-align: center;
-
-      opacity: 0;
-      pointer-events: none;
-
-      transform: translate(-50%, 20px);
-
-      transition: .25s ease;
     }
 
-    .toast.show {
-      opacity: 1;
-      transform: translate(-50%, 0);
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 650px) {
-
+    @media (max-width: 480px) {
       body {
-        padding: 10px;
+        padding: 12px;
       }
 
-      .hero {
-        padding: 31px 17px 25px;
+      .profile {
+        padding-left: 15px;
+        padding-right: 15px;
       }
 
-      .content {
-        padding: 17px;
+      .section {
+        padding-left: 15px;
+        padding-right: 15px;
       }
 
-      .avatar {
-        width: 101px;
-        height: 101px;
+      .profile-image {
+        width: 105px;
+        height: 105px;
       }
 
-      .info-grid,
-      .buttons,
-      .platforms,
-      .detector-grid {
-        grid-template-columns: 1fr;
+      h1 {
+        font-size: 14px;
       }
 
-      .detector-top {
-        align-items: flex-start;
+      .info-item {
         flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .info-value {
+        text-align: left;
+      }
+
+      .edition {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -765,452 +505,131 @@
 
   <main class="container">
 
-    <div class="card">
+    <section class="card">
 
-      <!-- =====================
-           HERO
-      ====================== -->
+      <div class="grass-header"></div>
 
-      <section class="hero">
+      <div class="profile">
 
-        <div class="avatar-wrap">
+        <img
+          src="./media/profil.png"
+          alt="Foto profil IqbalCraftMC"
+          class="profile-image"
+          onerror="this.src='./media/profil.jpg';"
+        >
 
-          <img
-            class="avatar"
-            src="./media/profil.png"
-            alt="Foto profil"
-            onerror="
-              this.onerror=null;
-              this.src='./media/profil.jpg';
-            "
-          >
+        <h1>IQBALCRAFTMC</h1>
 
-          <span class="online"></span>
-
+        <div class="username">
+          @Iqbalcraftmc
         </div>
 
-        <h1>IqbalCraftMC</h1>
-
-        <div class="username">@IqbalCraftMC</div>
-
         <p class="bio">
-          Minecraft enthusiast, creator, programmer, dan pengembang
-          berbagai project digital. Selamat datang di kartu identitas digital saya!
+          🎮 Minecraft Player • Creator • Developer<br>
+          ⚔️ Siap mabar dan menjelajahi dunia Minecraft!
         </p>
-
-      </section>
-
-
-      <div class="content">
-
-        <!-- =====================
-             INFORMASI
-        ====================== -->
-
-        <section class="section">
-
-          <div class="section-title">
-            Informasi
-          </div>
-
-          <div class="info-grid">
-
-            <div class="info">
-              <span class="label">Nama</span>
-              <span class="value">Iqbal</span>
-            </div>
-
-            <div class="info">
-              <span class="label">Username</span>
-              <span class="value">IqbalCraftMC</span>
-            </div>
-
-            <div class="info">
-              <span class="label">Platform</span>
-              <span class="value" id="profilePlatform">
-                Mendeteksi...
-              </span>
-            </div>
-
-            <div class="info">
-              <span class="label">Fokus</span>
-              <span class="value">
-                Minecraft • Coding • Project
-              </span>
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- =====================
-             SMART DETECTOR
-        ====================== -->
-
-        <section class="section">
-
-          <div class="section-title">
-            Smart Minecraft Detector
-          </div>
-
-          <div class="detector">
-
-            <div class="detector-top">
-
-              <div class="detector-title">
-                🧠 Analisis Perangkat
-              </div>
-
-              <div
-                class="scan-status"
-                id="scanStatus"
-              >
-                ● Siap
-              </div>
-
-            </div>
-
-
-            <div class="detector-grid">
-
-              <!-- DEVICE -->
-
-              <div class="detect-item">
-
-                <div class="detect-icon">
-                  📱
-                </div>
-
-                <div class="detect-label">
-                  Perangkat
-                </div>
-
-                <div
-                  class="detect-value"
-                  id="deviceResult"
-                >
-                  Menganalisis...
-                </div>
-
-                <div
-                  class="status unknown"
-                  id="deviceStatus"
-                >
-                  ● Memeriksa
-                </div>
-
-              </div>
-
-
-              <!-- OS -->
-
-              <div class="detect-item">
-
-                <div class="detect-icon">
-                  ⚙️
-                </div>
-
-                <div class="detect-label">
-                  Sistem Operasi
-                </div>
-
-                <div
-                  class="detect-value"
-                  id="osResult"
-                >
-                  Menganalisis...
-                </div>
-
-                <div
-                  class="status unknown"
-                  id="osStatus"
-                >
-                  ● Memeriksa
-                </div>
-
-              </div>
-
-
-              <!-- BROWSER -->
-
-              <div class="detect-item">
-
-                <div class="detect-icon">
-                  🌐
-                </div>
-
-                <div class="detect-label">
-                  Browser
-                </div>
-
-                <div
-                  class="detect-value"
-                  id="browserResult"
-                >
-                  Menganalisis...
-                </div>
-
-                <div
-                  class="status detected"
-                >
-                  ● Terdeteksi
-                </div>
-
-              </div>
-
-
-              <!-- ARCHITECTURE -->
-
-              <div class="detect-item">
-
-                <div class="detect-icon">
-                  🧩
-                </div>
-
-                <div class="detect-label">
-                  Arsitektur
-                </div>
-
-                <div
-                  class="detect-value"
-                  id="archResult"
-                >
-                  Menganalisis...
-                </div>
-
-                <div
-                  class="status unknown"
-                  id="archStatus"
-                >
-                  ● Memeriksa
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <!-- JAVA -->
-
-            <div class="edition-box">
-
-              <div class="edition-head">
-
-                <div class="edition-name">
-                  ☕ Minecraft Java Edition
-                </div>
-
-                <div
-                  class="edition-score"
-                  id="javaScore"
-                >
-                  0%
-                </div>
-
-              </div>
-
-              <div class="progress">
-                <div
-                  class="progress-bar"
-                  id="javaBar"
-                ></div>
-              </div>
-
-              <div
-                class="status possible"
-                id="javaStatus"
-              >
-                ● Kemungkinan
-              </div>
-
-            </div>
-
-
-            <!-- BEDROCK -->
-
-            <div class="edition-box">
-
-              <div class="edition-head">
-
-                <div class="edition-name">
-                  🟩 Minecraft Bedrock Edition
-                </div>
-
-                <div
-                  class="edition-score"
-                  id="bedrockScore"
-                >
-                  0%
-                </div>
-
-              </div>
-
-              <div class="progress">
-                <div
-                  class="progress-bar"
-                  id="bedrockBar"
-                ></div>
-              </div>
-
-              <div
-                class="status possible"
-                id="bedrockStatus"
-              >
-                ● Kemungkinan
-              </div>
-
-            </div>
-
-
-            <!-- LAUNCHERS -->
-
-            <div class="edition-box">
-
-              <div class="edition-name">
-                🚀 Launcher yang Relevan
-              </div>
-
-              <div
-                class="launcher-results"
-                id="launcherResults"
-              >
-                <div class="launcher-result">
-
-                  <div class="launcher-result-icon">
-                    🔎
-                  </div>
-
-                  <div>
-                    <div class="launcher-result-name">
-                      Menganalisis...
-                    </div>
-
-                    <div class="launcher-result-desc">
-                      Menentukan launcher yang relevan
-                      berdasarkan platform.
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-
-
-            <div
-              class="notice"
-              id="detectorNotice"
-            >
-              Website tidak mempunyai izin untuk membaca daftar aplikasi
-              yang terinstal di perangkat. Hasil launcher merupakan
-              rekomendasi berdasarkan platform, bukan bukti bahwa aplikasi
-              tersebut benar-benar terpasang.
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- =====================
-             ACTION
-        ====================== -->
-
-        <section class="section">
-
-          <div class="section-title">
-            Aksi
-          </div>
-
-          <div class="buttons">
-
-            <button
-              class="btn minecraft"
-              onclick="openMabar()"
-            >
-              🎮 Mabar Yuk!
-            </button>
-
-            <button
-              class="btn primary"
-              onclick="copyDiscord()"
-            >
-              💬 Salin Discord
-            </button>
-
-            <button
-              class="btn secondary"
-              onclick="sharePage()"
-            >
-              🔗 Bagikan Profil
-            </button>
-
-            <button
-              class="btn secondary"
-              onclick="runDetector(true)"
-            >
-              🔄 Scan Ulang
-            </button>
-
-          </div>
-
-        </section>
-
-
-        <!-- =====================
-             PREVIEW
-        ====================== -->
-
-        <section class="section">
-
-          <div class="section-title">
-            Preview
-          </div>
-
-          <img
-            class="gallery"
-            src="./media/image.jpg"
-            alt="Preview"
-            onerror="this.style.display='none';"
-          >
-
-        </section>
 
       </div>
 
-    </div>
+
+      <div class="section">
+
+        <div class="info-list">
+
+          <div class="info-item">
+            <span class="info-label">
+              ☕ Minecraft Java
+            </span>
+
+            <span class="info-value">
+              Iqbalcraftmc
+            </span>
+          </div>
 
 
-    <div class="footer">
-      © <span id="year"></span>
-      IqbalCraftMC • Smart Digital Identity
-    </div>
+          <div class="info-item">
+            <span class="info-label">
+              🪨 Minecraft Bedrock
+            </span>
+
+            <span class="info-value">
+              Iqbal khurniadi
+            </span>
+          </div>
+
+
+          <div class="info-item">
+            <span class="info-label">
+              🌐 Server
+            </span>
+
+            <span class="info-value server">
+              alwination.id
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="buttons">
+
+          <button
+            class="minecraft-button main"
+            onclick="openMabar()"
+          >
+            🎮 MABAR YUK!
+          </button>
+
+
+          <button
+            class="minecraft-button"
+            onclick="shareCard()"
+          >
+            📤 BAGIKAN KARTU
+          </button>
+
+
+          <button
+            class="minecraft-button gold"
+            onclick="copyServer()"
+          >
+            📋 SALIN SERVER
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer">
+        © <span id="year"></span> IqbalCraftMC<br>
+        Digital Identity Card • Minecraft Edition
+      </div>
+
+    </section>
 
   </main>
 
 
   <!-- =========================
-       MABAR MODAL
-  ========================== -->
+       MODAL MABAR
+       ========================= -->
 
   <div
     class="modal"
     id="mabarModal"
+    onclick="closeOutside(event)"
   >
 
     <div class="modal-box">
 
-      <div class="modal-head">
+      <div class="modal-header">
 
-        <h2>
-          🎮 Mabar Yuk!
-        </h2>
+        <h2>🎮 MABAR YUK!</h2>
 
         <button
           class="close"
           onclick="closeMabar()"
-          aria-label="Tutup"
         >
           ×
         </button>
@@ -1218,1564 +637,496 @@
       </div>
 
 
-      <p class="modal-description">
-        Sistem mendeteksi platform perangkat terlebih dahulu.
-        Pilih launcher yang kamu gunakan. Website tidak akan
-        mengarahkanmu secara otomatis ke Google Play Store.
-      </p>
+      <div class="notice">
+
+        <strong>Silakan buka Minecraft yang ada di perangkat Anda.</strong>
+
+        <br><br>
+
+        Untuk Java, buka Minecraft Launcher atau launcher Java
+        yang biasa kamu gunakan.
+
+        <br><br>
+
+        Untuk Bedrock, buka Minecraft Bedrock.
+
+      </div>
 
 
-      <div class="platforms">
+      <div class="edition">
 
         <button
-          class="platform"
-          id="androidPlatform"
-          onclick="selectPlatform('android')"
+          id="javaBtn"
+          class="minecraft-button selected"
+          onclick="selectEdition('java')"
         >
-          <span class="platform-icon">
-            📱
-          </span>
-
-          Android
+          ☕ JAVA
         </button>
 
 
         <button
-          class="platform"
-          id="windowsPlatform"
-          onclick="selectPlatform('windows')"
+          id="bedrockBtn"
+          class="minecraft-button"
+          onclick="selectEdition('bedrock')"
         >
-          <span class="platform-icon">
-            💻
-          </span>
-
-          Windows / PC
+          🪨 BEDROCK
         </button>
 
       </div>
 
 
-      <!-- ANDROID -->
+      <!-- JAVA -->
+
+      <div id="javaInfo">
+
+        <div class="connection-card">
+
+          <div class="connection-title">
+            ☕ NAME MC / USERNAME JAVA
+          </div>
+
+          <div class="connection-value">
+            Iqbalcraftmc
+          </div>
+
+          <div class="copy-row">
+
+            <button
+              class="minecraft-button"
+              onclick="copyText(
+                'Iqbalcraftmc',
+                'Name MC berhasil disalin!'
+              )"
+            >
+              📋 SALIN NAME MC
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="connection-card">
+
+          <div class="connection-title">
+            🌐 SERVER
+          </div>
+
+          <div class="connection-value">
+            alwination.id
+          </div>
+
+          <div class="copy-row">
+
+            <button
+              class="minecraft-button"
+              onclick="copyServer()"
+            >
+              📋 SALIN SERVER
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <ol class="steps">
+
+          <li>
+            Buka <strong>Minecraft Launcher</strong>
+            atau launcher Java kamu.
+          </li>
+
+          <li>
+            Masuk ke <strong>Multiplayer</strong>.
+          </li>
+
+          <li>
+            Tambahkan server:
+            <strong>alwination.id</strong>
+          </li>
+
+          <li>
+            Gunakan Name MC
+            <strong>Iqbalcraftmc</strong>
+            untuk menambahkan teman jika diperlukan.
+          </li>
+
+        </ol>
+
+      </div>
+
+
+      <!-- BEDROCK -->
 
       <div
-        class="launcher-list"
-        id="androidLaunchers"
+        id="bedrockInfo"
+        style="display:none;"
       >
 
-        <button
-          class="launcher"
-          onclick="safeAndroidAttempt('Zalith Launcher 2','com.movtery.zalithlauncher')"
-        >
+        <div class="connection-card">
 
-          <div>
+          <div class="connection-title">
+            🪨 USERNAME BEDROCK
+          </div>
 
-            <div class="launcher-name">
-              🚀 Zalith Launcher 2
-            </div>
+          <div class="connection-value">
+            Iqbal khurniadi
+          </div>
 
-            <div class="launcher-desc">
-              Minecraft Java Edition untuk Android.
-            </div>
+          <div class="copy-row">
+
+            <button
+              class="minecraft-button"
+              onclick="copyText(
+                'Iqbal khurniadi',
+                'Username Bedrock berhasil disalin!'
+              )"
+            >
+              📋 SALIN USERNAME
+            </button>
 
           </div>
 
-          <span class="launcher-arrow">›</span>
-
-        </button>
+        </div>
 
 
-        <button
-          class="launcher"
-          onclick="safeAndroidAttempt('PojavLauncher','net.kdt.pojavlaunch')"
-        >
+        <div class="connection-card">
 
-          <div>
+          <div class="connection-title">
+            🌐 SERVER
+          </div>
 
-            <div class="launcher-name">
-              🚀 PojavLauncher
-            </div>
+          <div class="connection-value">
+            alwination.id
+          </div>
 
-            <div class="launcher-desc">
-              Minecraft Java Edition untuk Android.
-            </div>
+          <div class="copy-row">
+
+            <button
+              class="minecraft-button"
+              onclick="copyServer()"
+            >
+              📋 SALIN SERVER
+            </button>
 
           </div>
 
-          <span class="launcher-arrow">›</span>
-
-        </button>
+        </div>
 
 
-        <button
-          class="launcher"
-          onclick="safeAndroidAttempt('Fold Craft Launcher','com.tungsten.fcl')"
-        >
+        <ol class="steps">
 
-          <div>
+          <li>
+            Buka <strong>Minecraft Bedrock</strong>.
+          </li>
 
-            <div class="launcher-name">
-              🚀 Fold Craft Launcher
-            </div>
+          <li>
+            Buka menu <strong>Servers</strong>.
+          </li>
 
-            <div class="launcher-desc">
-              Launcher Minecraft Java Edition Android.
-            </div>
+          <li>
+            Masukkan alamat server:
+            <strong>alwination.id</strong>
+          </li>
 
-          </div>
+          <li>
+            Gunakan username
+            <strong>Iqbal khurniadi</strong>
+            untuk menambahkan teman jika diperlukan.
+          </li>
 
-          <span class="launcher-arrow">›</span>
+          <li>
+            Masuk ke server dan mulai mabar!
+          </li>
 
-        </button>
-
-
-        <button
-          class="launcher"
-          onclick="cannotVerify('Minecraft Bedrock')"
-        >
-
-          <div>
-
-            <div class="launcher-name">
-              🟩 Minecraft Bedrock
-            </div>
-
-            <div class="launcher-desc">
-              Deteksi aplikasi langsung tidak diizinkan
-              oleh browser.
-            </div>
-
-          </div>
-
-          <span class="launcher-arrow">›</span>
-
-        </button>
-
-
-        <button
-          class="launcher"
-          onclick="cannotVerify('HMCL')"
-        >
-
-          <div>
-
-            <div class="launcher-name">
-              🚀 HMCL
-            </div>
-
-            <div class="launcher-desc">
-              Pembukaan otomatis tidak dapat dijamin
-              dari website.
-            </div>
-
-          </div>
-
-          <span class="launcher-arrow">›</span>
-
-        </button>
+        </ol>
 
       </div>
 
 
-      <!-- WINDOWS -->
-
-      <div
-        class="launcher-list"
-        id="windowsLaunchers"
+      <button
+        class="minecraft-button main"
+        onclick="copyCurrentDetails()"
       >
-
-        <button
-          class="launcher"
-          onclick="safeWindowsAttempt('Minecraft Launcher','minecraft://')"
-        >
-
-          <div>
-
-            <div class="launcher-name">
-              🟩 Minecraft Launcher
-            </div>
-
-            <div class="launcher-desc">
-              Launcher resmi Minecraft.
-            </div>
-
-          </div>
-
-          <span class="launcher-arrow">›</span>
-
-        </button>
-
-
-        <button
-          class="launcher"
-          onclick="safeWindowsAttempt('Prism Launcher','prismlauncher://')"
-        >
-
-          <div>
-
-            <div class="launcher-name">
-              🔷 Prism Launcher
-            </div>
-
-            <div class="launcher-desc">
-              Multi-instance launcher.
-            </div>
-
-          </div>
-
-          <span class="launcher-arrow">›</span>
-
-        </button>
-
-
-        <button
-          class="launcher"
-          onclick="safeWindowsAttempt('MultiMC','multimc://')"
-        >
-
-          <div>
-
-            <div class="launcher-name">
-              🔷 MultiMC
-            </div>
-
-            <div class="launcher-desc">
-              Multi-instance Minecraft launcher.
-            </div>
-
-          </div>
-
-          <span class="launcher-arrow">›</span>
-
-        </button>
-
-
-        <button
-          class="launcher"
-          onclick="safeWindowsAttempt('ATLauncher','atlauncher://')"
-        >
-
-          <div>
-
-            <div class="launcher-name">
-              🚀 ATLauncher
-            </div>
-
-            <div class="launcher-desc">
-              Launcher berbasis instance dan modpack.
-            </div>
-
-          </div>
-
-          <span class="launcher-arrow">›</span>
-
-        </button>
-
-
-        <button
-          class="launcher"
-          onclick="safeWindowsAttempt('SKLauncher','sklauncher://')"
-        >
-
-          <div>
-
-            <div class="launcher-name">
-              ⚡ SKLauncher
-            </div>
-
-            <div class="launcher-desc">
-              Launcher Minecraft Java.
-            </div>
-
-          </div>
-
-          <span class="launcher-arrow">›</span>
-
-        </button>
-
-
-        <button
-          class="launcher"
-          onclick="safeWindowsAttempt('Modrinth App','modrinth://')"
-        >
-
-          <div>
-
-            <div class="launcher-name">
-              🟢 Modrinth App
-            </div>
-
-            <div class="launcher-desc">
-              Launcher dan pengelola modpack.
-            </div>
-
-          </div>
-
-          <span class="launcher-arrow">›</span>
-
-        </button>
-
-
-        <button
-          class="launcher"
-          onclick="safeWindowsAttempt('CurseForge','curseforge://')"
-        >
-
-          <div>
-
-            <div class="launcher-name">
-              🟠 CurseForge
-            </div>
-
-            <div class="launcher-desc">
-              Launcher dan pengelola modpack.
-            </div>
-
-          </div>
-
-          <span class="launcher-arrow">›</span>
-
-        </button>
-
-
-        <button
-          class="launcher"
-          onclick="safeWindowsAttempt('Lunar Client','lunarclient://')"
-        >
-
-          <div>
-
-            <div class="launcher-name">
-              🌙 Lunar Client
-            </div>
-
-            <div class="launcher-desc">
-              Minecraft client untuk PC.
-            </div>
-
-          </div>
-
-          <span class="launcher-arrow">›</span>
-
-        </button>
-
-
-        <button
-          class="launcher"
-          onclick="safeWindowsAttempt('Badlion Client','badlionclient://')"
-        >
-
-          <div>
-
-            <div class="launcher-name">
-              🛡️ Badlion Client
-            </div>
-
-            <div class="launcher-desc">
-              Minecraft client untuk PC.
-            </div>
-
-          </div>
-
-          <span class="launcher-arrow">›</span>
-
-        </button>
-
-
-        <button
-          class="launcher"
-          onclick="safeWindowsAttempt('Feather Client','feather://')"
-        >
-
-          <div>
-
-            <div class="launcher-name">
-              🪶 Feather Client
-            </div>
-
-            <div class="launcher-desc">
-              Minecraft client untuk PC.
-            </div>
-
-          </div>
-
-          <span class="launcher-arrow">›</span>
-
-        </button>
-
-      </div>
+        📋 SALIN DATA MABAR
+      </button>
 
 
       <div
-        class="notice"
-        id="launcherNotice"
-      ></div>
+        class="success-message"
+        id="successMessage"
+      >
+        Berhasil disalin!
+      </div>
+
+
+      <div class="small">
+        💡 Tidak perlu membuka launcher secara otomatis.
+        Cukup buka Minecraft di perangkat kamu dan gunakan
+        data mabar di atas.
+      </div>
 
     </div>
 
   </div>
 
 
-  <!-- TOAST -->
-
-  <div
-    class="toast"
-    id="toast"
-  ></div>
-
-
   <script>
 
-    /* ==================================================
-       BASIC
-    ================================================== */
+    const SERVER = "alwination.id";
+
+    const JAVA_USERNAME = "Iqbalcraftmc";
+
+    const BEDROCK_USERNAME = "Iqbal khurniadi";
+
+    let currentEdition = "java";
+
+
+    /* Tahun otomatis */
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
 
-    /* ==================================================
-       TOAST
-    ================================================== */
-
-    let toastTimer;
-
-    function toast(message) {
-
-      const element =
-        document.getElementById("toast");
-
-      element.textContent = message;
-
-      element.classList.add("show");
-
-      clearTimeout(toastTimer);
-
-      toastTimer = setTimeout(() => {
-
-        element.classList.remove("show");
-
-      }, 3200);
-
-    }
-
-
-    /* ==================================================
-       USERNAME DISCORD
-    ================================================== */
-
-    const discordUsername =
-      "IqbalCraftMC";
-
-
-    async function copyDiscord() {
-
-      try {
-
-        if (
-          navigator.clipboard &&
-          navigator.clipboard.writeText
-        ) {
-
-          await navigator.clipboard.writeText(
-            discordUsername
-          );
-
-        } else {
-
-          const textarea =
-            document.createElement("textarea");
-
-          textarea.value =
-            discordUsername;
-
-          textarea.style.position =
-            "fixed";
-
-          textarea.style.opacity =
-            "0";
-
-          document.body.appendChild(
-            textarea
-          );
-
-          textarea.focus();
-          textarea.select();
-
-          document.execCommand("copy");
-
-          textarea.remove();
-
-        }
-
-        toast(
-          "Discord disalin: " +
-          discordUsername
-        );
-
-      } catch (error) {
-
-        toast(
-          "Gagal menyalin Discord."
-        );
-
-      }
-
-    }
-
-
-    /* ==================================================
-       SHARE
-    ================================================== */
-
-    async function sharePage() {
-
-      const data = {
-
-        title:
-          "IqbalCraftMC",
-
-        text:
-          "Kartu Identitas Digital IqbalCraftMC",
-
-        url:
-          window.location.href
-
-      };
-
-
-      try {
-
-        if (navigator.share) {
-
-          await navigator.share(data);
-
-        } else if (
-          navigator.clipboard &&
-          navigator.clipboard.writeText
-        ) {
-
-          await navigator.clipboard.writeText(
-            window.location.href
-          );
-
-          toast(
-            "Link profil berhasil disalin!"
-          );
-
-        } else {
-
-          toast(
-            "Link: " +
-            window.location.href
-          );
-
-        }
-
-      } catch (error) {
-
-        if (error.name !== "AbortError") {
-
-          toast(
-            "Gagal membagikan profil."
-          );
-
-        }
-
-      }
-
-    }
-
-
-    /* ==================================================
-       SMART DETECTOR
-    ================================================== */
-
-    function detectOS() {
-
-      const ua =
-        navigator.userAgent || "";
-
-      const platform =
-        navigator.platform || "";
-
-      if (/Android/i.test(ua)) {
-
-        return "Android";
-
-      }
-
-      if (
-        /Windows/i.test(ua) ||
-        /Win/i.test(platform)
-      ) {
-
-        return "Windows";
-
-      }
-
-      if (/iPhone|iPad|iPod/i.test(ua)) {
-
-        return "iOS";
-
-      }
-
-      if (/Mac/i.test(ua)) {
-
-        return "macOS";
-
-      }
-
-      if (/Linux/i.test(ua)) {
-
-        return "Linux";
-
-      }
-
-      return "Tidak diketahui";
-
-    }
-
-
-    function detectDevice() {
-
-      const ua =
-        navigator.userAgent || "";
-
-      if (
-        /Android|iPhone|iPad|iPod/i.test(ua)
-      ) {
-
-        return "Mobile";
-
-      }
-
-      if (/Windows|Mac|Linux/i.test(ua)) {
-
-        return "Desktop / Laptop";
-
-      }
-
-      return "Perangkat tidak diketahui";
-
-    }
-
-
-    function detectBrowser() {
-
-      const ua =
-        navigator.userAgent || "";
-
-      if (/Edg\//i.test(ua)) {
-
-        return "Microsoft Edge";
-
-      }
-
-      if (/OPR\//i.test(ua)) {
-
-        return "Opera";
-
-      }
-
-      if (/Firefox\//i.test(ua)) {
-
-        return "Mozilla Firefox";
-
-      }
-
-      if (/CriOS\//i.test(ua)) {
-
-        return "Chrome iOS";
-
-      }
-
-      if (/Chrome\//i.test(ua)) {
-
-        return "Google Chrome";
-
-      }
-
-      if (/Safari\//i.test(ua)) {
-
-        return "Safari";
-
-      }
-
-      return "Browser tidak diketahui";
-
-    }
-
-
-    function detectArchitecture() {
-
-      const ua =
-        navigator.userAgent || "";
-
-      const platform =
-        navigator.platform || "";
-
-      if (
-        /aarch64|arm64|armv8|arm;/i.test(
-          ua
-        )
-      ) {
-
-        return "ARM64 / ARM";
-
-      }
-
-      if (
-        /x86_64|Win64|WOW64|x64/i.test(
-          ua
-        )
-      ) {
-
-        return "x64";
-
-      }
-
-      if (
-        /i[3-6]86|x86/i.test(
-          ua
-        )
-      ) {
-
-        return "x86";
-
-      }
-
-      /*
-        Android modern browser sering tidak
-        membocorkan arsitektur sebenarnya.
-      */
-
-      if (/Android/i.test(ua)) {
-
-        return "Tidak dapat dipastikan";
-
-      }
-
-      if (/Mac/i.test(platform)) {
-
-        return "Apple / Intel tidak dipastikan";
-
-      }
-
-      return "Tidak diketahui";
-
-    }
-
-
-    /* ==================================================
-       EDITION ESTIMATION
-    ================================================== */
-
-    function calculateEditionScores(os) {
-
-      let java = 0;
-      let bedrock = 0;
-
-
-      /*
-        Android:
-
-        Java punya banyak launcher pihak ketiga.
-        Bedrock juga merupakan platform native utama.
-
-        Karena browser tidak dapat melihat aplikasi,
-        hasilnya hanya estimasi.
-      */
-
-      if (os === "Android") {
-
-        java = 55;
-        bedrock = 70;
-
-      }
-
-
-      /*
-        Windows:
-
-        Minecraft Java dan Bedrock sama-sama
-        tersedia secara resmi.
-      */
-
-      else if (os === "Windows") {
-
-        java = 75;
-        bedrock = 75;
-
-      }
-
-
-      /*
-        OS lain.
-      */
-
-      else {
-
-        java = 15;
-        bedrock = 15;
-
-      }
-
-
-      return {
-        java,
-        bedrock
-      };
-
-    }
-
-
-    function renderScore(
-      scoreElement,
-      barElement,
-      statusElement,
-      score
-    ) {
-
-      scoreElement.textContent =
-        score + "%";
-
-      barElement.style.width =
-        score + "%";
-
-
-      if (score >= 70) {
-
-        statusElement.className =
-          "status detected";
-
-        statusElement.textContent =
-          "● Sangat mungkin";
-
-      }
-
-      else if (score >= 40) {
-
-        statusElement.className =
-          "status possible";
-
-        statusElement.textContent =
-          "● Kemungkinan";
-
-      }
-
-      else {
-
-        statusElement.className =
-          "status unknown";
-
-        statusElement.textContent =
-          "● Rendah / tidak diketahui";
-
-      }
-
-    }
-
-
-    /* ==================================================
-       LAUNCHER RECOMMENDATION
-    ================================================== */
-
-    function renderLaunchers(os) {
-
-      const container =
-        document.getElementById(
-          "launcherResults"
-        );
-
-      container.innerHTML = "";
-
-
-      let launchers = [];
-
-
-      if (os === "Android") {
-
-        launchers = [
-
-          [
-            "🚀",
-            "Zalith Launcher 2",
-            "Launcher Java Edition Android."
-          ],
-
-          [
-            "🚀",
-            "PojavLauncher",
-            "Launcher Java Edition Android."
-          ],
-
-          [
-            "🚀",
-            "Fold Craft Launcher",
-            "Launcher Java Edition Android."
-          ],
-
-          [
-            "🟩",
-            "Minecraft Bedrock",
-            "Minecraft Bedrock native Android."
-          ]
-
-        ];
-
-      }
-
-
-      else if (os === "Windows") {
-
-        launchers = [
-
-          [
-            "🟩",
-            "Minecraft Launcher",
-            "Launcher resmi Minecraft."
-          ],
-
-          [
-            "🔷",
-            "Prism Launcher",
-            "Multi-instance Java launcher."
-          ],
-
-          [
-            "⚡",
-            "SKLauncher",
-            "Minecraft Java launcher."
-          ],
-
-          [
-            "🟢",
-            "Modrinth App",
-            "Launcher dan pengelola modpack."
-          ],
-
-          [
-            "🟠",
-            "CurseForge",
-            "Launcher dan modpack manager."
-          ],
-
-          [
-            "🌙",
-            "Lunar Client",
-            "Minecraft client untuk PC."
-          ]
-
-        ];
-
-      }
-
-
-      else {
-
-        launchers = [
-
-          [
-            "❔",
-            "Tidak dapat ditentukan",
-            "Platform ini tidak cukup untuk menentukan launcher."
-          ]
-
-        ];
-
-      }
-
-
-      launchers.forEach(item => {
-
-        const div =
-          document.createElement("div");
-
-        div.className =
-          "launcher-result";
-
-        div.innerHTML = `
-
-          <div class="launcher-result-icon">
-            ${item[0]}
-          </div>
-
-          <div>
-
-            <div class="launcher-result-name">
-              ${item[1]}
-            </div>
-
-            <div class="launcher-result-desc">
-              ${item[2]}
-            </div>
-
-          </div>
-
-        `;
-
-        container.appendChild(div);
-
-      });
-
-    }
-
-
-    /* ==================================================
-       MAIN DETECTOR
-    ================================================== */
-
-    function runDetector(showToast = false) {
-
-      const scan =
-        document.getElementById(
-          "scanStatus"
-        );
-
-      scan.textContent =
-        "● Scanning...";
-
-      scan.style.color =
-        "var(--yellow)";
-
-
-      setTimeout(() => {
-
-        const os =
-          detectOS();
-
-        const device =
-          detectDevice();
-
-        const browser =
-          detectBrowser();
-
-        const architecture =
-          detectArchitecture();
-
-
-        /* Device */
-
-        document.getElementById(
-          "deviceResult"
-        ).textContent =
-          device;
-
-        document.getElementById(
-          "deviceStatus"
-        ).className =
-          "status detected";
-
-        document.getElementById(
-          "deviceStatus"
-        ).textContent =
-          "● Terdeteksi";
-
-
-        /* OS */
-
-        document.getElementById(
-          "osResult"
-        ).textContent =
-          os;
-
-        document.getElementById(
-          "osStatus"
-        ).className =
-          "status detected";
-
-        document.getElementById(
-          "osStatus"
-        ).textContent =
-          "● Terdeteksi";
-
-
-        /* Browser */
-
-        document.getElementById(
-          "browserResult"
-        ).textContent =
-          browser;
-
-
-        /* Architecture */
-
-        document.getElementById(
-          "archResult"
-        ).textContent =
-          architecture;
-
-        document.getElementById(
-          "archStatus"
-        ).className =
-          architecture.includes(
-            "Tidak"
-          )
-            ? "status unknown"
-            : "status possible";
-
-        document.getElementById(
-          "archStatus"
-        ).textContent =
-          architecture.includes(
-            "Tidak"
-          )
-            ? "● Terbatas"
-            : "● Terindikasi";
-
-
-        /* Profile */
-
-        document.getElementById(
-          "profilePlatform"
-        ).textContent =
-          os;
-
-
-        /* Edition */
-
-        const scores =
-          calculateEditionScores(os);
-
-
-        renderScore(
-
-          document.getElementById(
-            "javaScore"
-          ),
-
-          document.getElementById(
-            "javaBar"
-          ),
-
-          document.getElementById(
-            "javaStatus"
-          ),
-
-          scores.java
-
-        );
-
-
-        renderScore(
-
-          document.getElementById(
-            "bedrockScore"
-          ),
-
-          document.getElementById(
-            "bedrockBar"
-          ),
-
-          document.getElementById(
-            "bedrockStatus"
-          ),
-
-          scores.bedrock
-
-        );
-
-
-        /* Launcher */
-
-        renderLaunchers(os);
-
-
-        /* Notice */
-
-        document
-          .getElementById(
-            "detectorNotice"
-          )
-          .classList
-          .add("show");
-
-
-        scan.textContent =
-          "● Scan selesai";
-
-        scan.style.color =
-          "var(--green)";
-
-
-        if (showToast) {
-
-          toast(
-            "Smart Detector selesai."
-          );
-
-        }
-
-      }, 550);
-
-    }
-
-
-    /* ==================================================
-       MABAR
-    ================================================== */
-
-    const modal =
-      document.getElementById(
-        "mabarModal"
-      );
-
+    /* Buka modal */
 
     function openMabar() {
 
-      modal.classList.add(
-        "show"
-      );
+      document
+        .getElementById("mabarModal")
+        .classList.add("active");
 
-      detectPlatformForMabar();
+      document.body.style.overflow = "hidden";
 
     }
 
+
+    /* Tutup modal */
 
     function closeMabar() {
 
-      modal.classList.remove(
-        "show"
-      );
+      document
+        .getElementById("mabarModal")
+        .classList.remove("active");
+
+      document.body.style.overflow = "";
 
     }
 
 
-    modal.addEventListener(
-      "click",
-      event => {
+    /* Klik area luar modal */
 
-        if (
-          event.target === modal
-        ) {
+    function closeOutside(event) {
 
-          closeMabar();
+      if (event.target.id === "mabarModal") {
 
-        }
-
-      }
-    );
-
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (
-          event.key === "Escape"
-        ) {
-
-          closeMabar();
-
-        }
-
-      }
-    );
-
-
-    /* ==================================================
-       MABAR PLATFORM
-    ================================================== */
-
-    function detectPlatformForMabar() {
-
-      const os =
-        detectOS();
-
-      if (os === "Android") {
-
-        selectPlatform(
-          "android"
-        );
-
-      }
-
-      else if (
-        os === "Windows"
-      ) {
-
-        selectPlatform(
-          "windows"
-        );
-
-      }
-
-      else {
-
-        selectPlatform(
-          "windows"
-        );
+        closeMabar();
 
       }
 
     }
 
 
-    function selectPlatform(
-      platform
-    ) {
+    /* Pilih Java / Bedrock */
 
-      const androidButton =
-        document.getElementById(
-          "androidPlatform"
-        );
+    function selectEdition(edition) {
 
-      const windowsButton =
-        document.getElementById(
-          "windowsPlatform"
-        );
+      currentEdition = edition;
 
-      const androidList =
-        document.getElementById(
-          "androidLaunchers"
-        );
+      const javaBtn =
+        document.getElementById("javaBtn");
 
-      const windowsList =
-        document.getElementById(
-          "windowsLaunchers"
-        );
+      const bedrockBtn =
+        document.getElementById("bedrockBtn");
+
+      const javaInfo =
+        document.getElementById("javaInfo");
+
+      const bedrockInfo =
+        document.getElementById("bedrockInfo");
 
 
-      androidButton.classList.remove(
-        "active"
-      );
+      if (edition === "java") {
 
-      windowsButton.classList.remove(
-        "active"
-      );
+        javaBtn.classList.add("selected");
 
-      androidList.classList.remove(
-        "show"
-      );
+        bedrockBtn.classList.remove("selected");
 
-      windowsList.classList.remove(
-        "show"
-      );
+        javaInfo.style.display = "block";
 
+        bedrockInfo.style.display = "none";
 
-      if (
-        platform === "android"
-      ) {
+      } else {
 
-        androidButton.classList.add(
-          "active"
-        );
+        javaBtn.classList.remove("selected");
 
-        androidList.classList.add(
-          "show"
-        );
+        bedrockBtn.classList.add("selected");
+
+        javaInfo.style.display = "none";
+
+        bedrockInfo.style.display = "block";
 
       }
-
-      else {
-
-        windowsButton.classList.add(
-          "active"
-        );
-
-        windowsList.classList.add(
-          "show"
-        );
-
-      }
-
-
-      hideNotice();
 
     }
 
 
-    /* ==================================================
-       SAFE ANDROID LAUNCH
-    ================================================== */
+    /* Copy */
 
-    function safeAndroidAttempt(
-      launcherName,
-      packageName
-    ) {
-
-      if (
-        detectOS() !== "Android"
-      ) {
-
-        showNotice(
-          "Perangkat ini bukan Android."
-        );
-
-        return;
-
-      }
-
-
-      /*
-        Gunakan Android Intent eksplisit.
-
-        Jika aplikasi tidak tersedia,
-        browser diberikan fallback kembali
-        ke halaman ini.
-
-        TIDAK ADA LINK GOOGLE PLAY STORE.
-      */
-
-      const fallback =
-        encodeURIComponent(
-          window.location.href
-        );
-
-
-      const intent =
-        "intent://#Intent;" +
-        "action=android.intent.action.MAIN;" +
-        "category=android.intent.category.LAUNCHER;" +
-        "package=" +
-        encodeURIComponent(
-          packageName
-        ) +
-        ";" +
-        "S.browser_fallback_url=" +
-        fallback +
-        ";end";
-
-
-      showNotice(
-        "Mencoba membuka " +
-        launcherName +
-        ". Jika aplikasi tidak terbuka, browser akan tetap berada di halaman ini."
-      );
-
+    async function copyText(text, message) {
 
       try {
 
-        window.location.href =
-          intent;
+        await navigator.clipboard.writeText(text);
 
       } catch (error) {
 
-        showNotice(
-          "Browser tidak mendukung pembukaan " +
-          launcherName +
-          " secara langsung."
-        );
+        const textarea =
+          document.createElement("textarea");
+
+        textarea.value = text;
+
+        textarea.style.position = "fixed";
+
+        textarea.style.opacity = "0";
+
+        document.body.appendChild(textarea);
+
+        textarea.select();
+
+        document.execCommand("copy");
+
+        textarea.remove();
 
       }
+
+      showSuccess(message);
 
     }
 
 
-    /* ==================================================
-       SAFE WINDOWS LAUNCH
-    ================================================== */
+    function copyServer() {
 
-    function safeWindowsAttempt(
-      launcherName,
-      protocol
-    ) {
-
-      if (
-        detectOS() !== "Windows"
-      ) {
-
-        showNotice(
-          "Perangkat ini bukan Windows."
-        );
-
-        return;
-
-      }
-
-
-      showNotice(
-        "Mencoba membuka " +
-        launcherName +
-        ". Jika tidak ada reaksi, kemungkinan protocol launcher tersebut tidak terdaftar."
+      copyText(
+        SERVER,
+        "Alamat server berhasil disalin!"
       );
 
+    }
 
-      try {
 
-        window.location.href =
-          protocol;
+    /* Copy seluruh data */
 
-      } catch (error) {
+    function copyCurrentDetails() {
 
-        showNotice(
-          "Browser tidak dapat membuka " +
-          launcherName +
-          " secara langsung."
-        );
+      let details;
+
+
+      if (currentEdition === "java") {
+
+        details =
+`Minecraft Java
+Name MC: ${JAVA_USERNAME}
+Server: ${SERVER}`;
+
+      } else {
+
+        details =
+`Minecraft Bedrock
+Username: ${BEDROCK_USERNAME}
+Server: ${SERVER}`;
 
       }
+
+
+      copyText(
+        details,
+        "Data mabar berhasil disalin!"
+      );
+
+    }
+
+
+    /* Notifikasi */
+
+    function showSuccess(message) {
+
+      const success =
+        document.getElementById("successMessage");
+
+      success.textContent = message;
+
+      success.classList.add("show");
 
 
       setTimeout(() => {
 
-        showNotice(
-          "Jika " +
-          launcherName +
-          " tidak terbuka, buka launcher tersebut secara manual. Website tidak dapat memastikan apakah launcher terpasang."
+        success.classList.remove("show");
+
+      }, 2200);
+
+    }
+
+
+    /* Share */
+
+    async function shareCard() {
+
+      const shareData = {
+
+        title:
+          "Kartu Identitas IqbalCraftMC",
+
+        text:
+          "🎮 Mabar bersama IqbalCraftMC!\n" +
+          "Java: Iqbalcraftmc\n" +
+          "Bedrock: Iqbal khurniadi\n" +
+          "Server: alwination.id",
+
+        url: window.location.href
+
+      };
+
+
+      if (navigator.share) {
+
+        try {
+
+          await navigator.share(shareData);
+
+        } catch (error) {
+
+          // Share dibatalkan.
+
+        }
+
+      } else {
+
+        copyText(
+
+          `${shareData.text}\n${shareData.url}`,
+
+          "Informasi kartu berhasil disalin!"
+
         );
 
-      }, 1800);
+      }
 
     }
 
 
-    /* ==================================================
-       CANNOT VERIFY
-    ================================================== */
+    /* Tombol Escape */
 
-    function cannotVerify(
-      name
-    ) {
+    document.addEventListener(
+      "keydown",
+      function(event) {
 
-      showNotice(
-        name +
-        " tidak dapat diverifikasi langsung dari website. Browser tidak memberikan akses ke daftar aplikasi yang terpasang."
-      );
+        if (event.key === "Escape") {
 
-    }
+          closeMabar();
 
-
-    function showNotice(
-      message
-    ) {
-
-      const notice =
-        document.getElementById(
-          "launcherNotice"
-        );
-
-      notice.textContent =
-        message;
-
-      notice.classList.add(
-        "show"
-      );
-
-    }
-
-
-    function hideNotice() {
-
-      document
-        .getElementById(
-          "launcherNotice"
-        )
-        .classList
-        .remove("show");
-
-    }
-
-
-    /* ==================================================
-       START
-    ================================================== */
-
-    window.addEventListener(
-      "DOMContentLoaded",
-      () => {
-
-        runDetector(false);
+        }
 
       }
     );
