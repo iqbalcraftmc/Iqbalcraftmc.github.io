@@ -3,31 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Kartu Identitas Digital IqbalCraftMC">
 
-  <title>IQBALCRAFTMC — Digital Identity</title>
-
-  <meta
-    name="description"
-    content="Kartu Identitas Digital IQBALCRAFTMC — Content Creator & Modpack Creator/Developer."
-  >
-
-  <meta name="theme-color" content="#080b14">
+  <title>IqbalCraftMC — Kartu Identitas Digital</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -35,2163 +20,791 @@
     }
 
     :root {
-      --bg: #070a12;
-      --card: rgba(16, 22, 36, .82);
-      --card2: rgba(255,255,255,.045);
+      --bg: #080b14;
+      --card: rgba(18, 24, 40, 0.78);
+      --card2: rgba(25, 32, 52, 0.72);
+      --text: #f4f7ff;
+      --muted: #aab3c7;
       --border: rgba(255,255,255,.09);
-
-      --text: #f4f7fb;
-      --muted: #9ba7b8;
-
-      --accent: #6c63ff;
-      --accent2: #00d4ff;
-
-      --green: #35e58d;
-      --yellow: #ffd166;
-      --red: #ff647c;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      --accent: #7c5cff;
+      --accent2: #00d9ff;
+      --success: #32d583;
+      --warning: #ffbf47;
+      --danger: #ff5d73;
+      --shadow: 0 25px 80px rgba(0,0,0,.45);
     }
 
     body {
       min-height: 100vh;
-      padding: 25px 15px;
-
       font-family: "Inter", sans-serif;
       color: var(--text);
-
       background:
-        radial-gradient(
-          circle at 10% 10%,
-          rgba(108,99,255,.20),
-          transparent 30%
-        ),
-        radial-gradient(
-          circle at 90% 85%,
-          rgba(0,212,255,.13),
-          transparent 30%
-        ),
+        radial-gradient(circle at 15% 15%, rgba(124,92,255,.20), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(0,217,255,.13), transparent 28%),
+        radial-gradient(circle at 50% 100%, rgba(124,92,255,.12), transparent 35%),
         var(--bg);
+      padding: 24px;
+      overflow-x: hidden;
+    }
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    button,
+    a {
+      font-family: inherit;
     }
 
     .container {
       width: 100%;
-      max-width: 820px;
+      max-width: 920px;
+      margin: auto;
     }
 
-    .profile-card {
-      position: relative;
-      overflow: hidden;
-
-      padding: 30px;
-
+    .card {
+      background: var(--card);
       border: 1px solid var(--border);
       border-radius: 28px;
-
-      background: var(--card);
-
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-
-      box-shadow:
-        0 30px 90px rgba(0,0,0,.45);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      overflow: hidden;
     }
 
-    .profile-card::before {
-      content: "";
-
-      position: absolute;
-
-      width: 300px;
-      height: 300px;
-
-      right: -120px;
-      top: -140px;
-
-      background: var(--accent);
-
-      filter: blur(110px);
-
-      opacity: .13;
-
-      pointer-events: none;
-    }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    .header {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-
+    .hero {
       position: relative;
-      z-index: 1;
+      padding: 38px 30px 30px;
+      text-align: center;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(124,92,255,.14),
+          rgba(0,217,255,.06),
+          transparent
+        );
     }
 
-    .profile-picture {
-      width: 110px;
-      height: 110px;
+    .avatar-wrap {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 18px;
+    }
 
-      flex-shrink: 0;
-
-      border-radius: 50%;
-
+    .avatar {
+      width: 116px;
+      height: 116px;
       object-fit: cover;
-
-      background: #111827;
-
-      border: 3px solid rgba(255,255,255,.14);
-
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,.16);
       box-shadow:
-        0 0 35px rgba(108,99,255,.35);
+        0 0 0 7px rgba(124,92,255,.08),
+        0 15px 40px rgba(0,0,0,.35);
+      background: #111827;
     }
 
-    .identity h1 {
-      font-size: clamp(26px, 6vw, 40px);
+    .online {
+      position: absolute;
+      right: 5px;
+      bottom: 7px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--success);
+      border: 4px solid #111827;
+    }
+
+    h1 {
+      font-size: clamp(28px, 6vw, 44px);
       font-weight: 800;
-      letter-spacing: -.05em;
+      letter-spacing: -1.5px;
     }
 
     .username {
-      margin-top: 4px;
-
+      margin-top: 7px;
       color: var(--accent2);
-
       font-weight: 600;
     }
 
-    .role {
-      margin-top: 8px;
-
-      color: var(--muted);
-
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
     .bio {
-      position: relative;
-      z-index: 1;
-
-      margin-top: 25px;
-
-      color: #cbd5e1;
-
-      font-size: 15px;
+      max-width: 650px;
+      margin: 15px auto 0;
+      color: var(--muted);
       line-height: 1.7;
+      font-size: 15px;
     }
 
-    /* =========================
-       SECTION
-    ========================= */
+    .content {
+      padding: 26px;
+    }
 
     .section {
-      position: relative;
-      z-index: 1;
+      margin-bottom: 25px;
+    }
 
-      margin-top: 30px;
+    .section:last-child {
+      margin-bottom: 0;
     }
 
     .section-title {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-
-      margin-bottom: 14px;
-
-      font-size: 17px;
-      font-weight: 700;
+      margin-bottom: 13px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
     }
-
-    .section-title i {
-      color: var(--accent2);
-    }
-
-    /* =========================
-       INFO
-    ========================= */
 
     .info-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
+      grid-template-columns: repeat(2, 1fr);
       gap: 12px;
     }
 
-    .info-item {
-      padding: 15px;
-
+    .info {
+      padding: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.035);
       border-radius: 17px;
-
-      background: var(--card2);
-
-      border: 1px solid rgba(255,255,255,.07);
     }
 
-    .info-label {
-      margin-bottom: 5px;
-
+    .label {
+      display: block;
+      margin-bottom: 6px;
       color: var(--muted);
-
       font-size: 12px;
     }
 
-    .info-value {
+    .value {
       font-size: 14px;
-
+      font-weight: 600;
       word-break: break-word;
     }
 
-    /* =========================
-       MINECRAFT PANEL
-    ========================= */
-
-    .minecraft-panel {
-      padding: 18px;
-
-      border-radius: 21px;
-
-      background: rgba(255,255,255,.035);
-
-      border: 1px solid rgba(255,255,255,.08);
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
     }
 
-    .device-section {
-      padding: 5px 0 18px;
-
-      border-bottom:
-        1px solid rgba(255,255,255,.07);
-    }
-
-    .device-section + .device-section {
-      padding-top: 20px;
-    }
-
-    .device-section:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .device-title {
+    button,
+    .button {
+      min-height: 50px;
+      border: 0;
+      border-radius: 15px;
+      padding: 13px 16px;
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 9px;
+      transition:
+        transform .18s ease,
+        opacity .18s ease,
+        background .18s ease;
+    }
 
-      margin-bottom: 12px;
+    button:hover,
+    .button:hover {
+      transform: translateY(-2px);
+    }
 
-      font-weight: 700;
+    button:active,
+    .button:active {
+      transform: translateY(0);
+    }
+
+    .primary {
+      background: linear-gradient(135deg, var(--accent), #5b8cff);
+    }
+
+    .secondary {
+      background: rgba(255,255,255,.07);
+      border: 1px solid var(--border);
+    }
+
+    .minecraft {
+      background: linear-gradient(135deg, #3b9b58, #43c96b);
+    }
+
+    .discord {
+      background: linear-gradient(135deg, #5865f2, #7289da);
+    }
+
+    .gallery {
+      width: 100%;
+      max-height: 330px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+
+    .footer {
+      padding: 20px 10px 5px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* MODAL */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(0,0,0,.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 560px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      background: #111728;
+      box-shadow: 0 30px 100px rgba(0,0,0,.6);
+      animation: popup .2s ease;
+    }
+
+    @keyframes popup {
+      from {
+        opacity: 0;
+        transform: scale(.96) translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .modal-head h2 {
+      font-size: 21px;
+    }
+
+    .close {
+      width: 40px;
+      min-height: 40px;
+      padding: 0;
+      border-radius: 12px;
+      background: rgba(255,255,255,.07);
+      font-size: 20px;
+    }
+
+    .platforms {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .platform {
+      min-height: 75px;
+      flex-direction: column;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+    }
+
+    .platform.active {
+      border-color: rgba(124,92,255,.75);
+      background: rgba(124,92,255,.13);
+    }
+
+    .platform-icon {
+      font-size: 24px;
     }
 
     .launcher-list {
-      display: grid;
+      display: none;
+      gap: 10px;
+      flex-direction: column;
+    }
 
-      gap: 8px;
+    .launcher-list.show {
+      display: flex;
     }
 
     .launcher {
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       gap: 12px;
-
-      padding: 12px 13px;
-
-      border-radius: 14px;
-
+      width: 100%;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
       background: rgba(255,255,255,.035);
-
-      border: 1px solid rgba(255,255,255,.05);
-
-      transition: .2s ease;
+      color: white;
+      text-align: left;
+      cursor: pointer;
     }
 
     .launcher:hover {
-      transform: translateY(-1px);
-
-      background:
-        rgba(255,255,255,.065);
-
-      border-color:
-        rgba(255,255,255,.10);
-    }
-
-    .launcher-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      min-width: 0;
-    }
-
-    .launcher-icon {
-      width: 30px;
-      height: 30px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 9px;
-
-      background: rgba(108,99,255,.12);
-
-      color: var(--accent2);
-
-      flex-shrink: 0;
+      background: rgba(255,255,255,.075);
     }
 
     .launcher-name {
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .launcher-type {
-      margin-top: 2px;
-
-      color: var(--muted);
-
-      font-size: 10px;
-    }
-
-    .status {
-      padding: 5px 9px;
-
-      border-radius: 99px;
-
-      font-size: 10px;
       font-weight: 700;
-
-      white-space: nowrap;
     }
 
-    .status-available {
-      color: var(--green);
-      background: rgba(53,229,141,.09);
-    }
-
-    .status-try {
-      color: var(--yellow);
-      background: rgba(255,209,102,.09);
-    }
-
-    .status-unknown {
-      color: var(--muted);
-      background: rgba(255,255,255,.06);
-    }
-
-    .detector-info {
-      margin-top: 15px;
-
-      color: var(--muted);
-
-      font-size: 11px;
-      line-height: 1.65;
-    }
-
-    /* =========================
-       BUTTONS
-    ========================= */
-
-    .actions {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-      gap: 11px;
-    }
-
-    .btn {
-      width: 100%;
-
-      min-height: 50px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      gap: 9px;
-
-      padding: 13px 16px;
-
-      border-radius: 15px;
-
-      border: 1px solid transparent;
-
-      font-family: inherit;
-
-      font-size: 14px;
-      font-weight: 700;
-
-      cursor: pointer;
-
-      color: white;
-
-      transition: .2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background:
-        linear-gradient(
-          135deg,
-          var(--accent),
-          #5148ff
-        );
-
-      box-shadow:
-        0 10px 30px
-        rgba(108,99,255,.22);
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,.05);
-
-      border-color:
-        rgba(255,255,255,.08);
-    }
-
-    .btn-secondary:hover {
-      background:
-        rgba(255,255,255,.09);
-    }
-
-    /* =========================
-       SOCIAL LINKS
-    ========================= */
-
-    .links {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-      gap: 11px;
-    }
-
-    .link-btn {
-      min-height: 48px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      gap: 9px;
-
-      padding: 13px;
-
-      color: white;
-
-      text-decoration: none;
-
-      border-radius: 15px;
-
-      background:
-        rgba(255,255,255,.045);
-
-      border:
-        1px solid rgba(255,255,255,.08);
-
-      font-size: 13px;
-      font-weight: 600;
-
-      transition: .2s ease;
-    }
-
-    .link-btn:hover {
-      transform: translateY(-2px);
-
-      background:
-        rgba(255,255,255,.08);
-    }
-
-    /* =========================
-       LAUNCHER MODAL
-    ========================= */
-
-    .modal {
-      position: fixed;
-
-      inset: 0;
-
-      z-index: 1000;
-
-      display: none;
-
-      align-items: center;
-      justify-content: center;
-
-      padding: 18px;
-
-      background:
-        rgba(0,0,0,.70);
-
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-box {
-      width: 100%;
-      max-width: 550px;
-
-      max-height: 90vh;
-
-      overflow-y: auto;
-
-      padding: 22px;
-
-      border-radius: 23px;
-
-      background:
-        #101625;
-
-      border:
-        1px solid rgba(255,255,255,.10);
-
-      box-shadow:
-        0 30px 90px rgba(0,0,0,.55);
-    }
-
-    .modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 15px;
-
-      margin-bottom: 18px;
-    }
-
-    .modal-title {
-      font-size: 19px;
-      font-weight: 800;
-    }
-
-    .modal-subtitle {
+    .launcher-desc {
       margin-top: 4px;
-
       color: var(--muted);
-
       font-size: 11px;
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
-    .close-btn {
-      width: 38px;
-      height: 38px;
-
-      flex-shrink: 0;
-
-      border: 0;
-
-      border-radius: 12px;
-
-      background:
-        rgba(255,255,255,.06);
-
-      color: white;
-
-      cursor: pointer;
-
-      font-size: 15px;
-    }
-
-    .modal-section {
-      margin-top: 17px;
-    }
-
-    .modal-section-title {
-      margin-bottom: 9px;
-
-      color: var(--muted);
-
-      font-size: 11px;
-      font-weight: 700;
-
-      text-transform: uppercase;
-
-      letter-spacing: .08em;
-    }
-
-    .launcher-choice {
-      width: 100%;
-
-      display: flex;
-      align-items: center;
-
-      gap: 12px;
-
-      padding: 13px;
-
-      margin-bottom: 8px;
-
-      border-radius: 14px;
-
-      border:
-        1px solid rgba(255,255,255,.07);
-
-      background:
-        rgba(255,255,255,.035);
-
-      color: white;
-
-      cursor: pointer;
-
-      text-align: left;
-
-      font-family: inherit;
-
-      transition: .2s ease;
-    }
-
-    .launcher-choice:hover {
-      background:
-        rgba(108,99,255,.11);
-
-      border-color:
-        rgba(108,99,255,.30);
-
-      transform: translateX(2px);
-    }
-
-    .choice-icon {
-      width: 38px;
-      height: 38px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      flex-shrink: 0;
-
-      border-radius: 11px;
-
-      background:
-        rgba(108,99,255,.12);
-
+    .launcher-arrow {
       color: var(--accent2);
+      font-size: 18px;
     }
 
-    .choice-name {
-      font-size: 13px;
-      font-weight: 700;
+    .notice {
+      display: none;
+      margin-top: 15px;
+      padding: 13px;
+      border-radius: 13px;
+      background: rgba(255,191,71,.08);
+      border: 1px solid rgba(255,191,71,.22);
+      color: #ffd98a;
+      font-size: 12px;
+      line-height: 1.6;
     }
 
-    .choice-desc {
-      margin-top: 3px;
-
-      color: var(--muted);
-
-      font-size: 10px;
+    .notice.show {
+      display: block;
     }
 
-    /* =========================
-       TOAST
-    ========================= */
+    /* TOAST */
 
     .toast {
       position: fixed;
-
+      z-index: 2000;
       left: 50%;
       bottom: 25px;
-
-      z-index: 2000;
-
-      max-width: 90%;
-
-      padding: 12px 17px;
-
-      border-radius: 13px;
-
-      background:
-        #151b2b;
-
-      border:
-        1px solid rgba(255,255,255,.10);
-
-      box-shadow:
-        0 15px 40px rgba(0,0,0,.4);
-
-      color: white;
-
-      font-size: 12px;
-
-      text-align: center;
-
+      transform: translate(-50%, 20px);
       opacity: 0;
-
-      transform:
-        translate(-50%, 100px);
-
       pointer-events: none;
-
-      transition: .3s ease;
+      max-width: calc(100% - 30px);
+      padding: 13px 17px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #151c2d;
+      color: white;
+      box-shadow: 0 15px 45px rgba(0,0,0,.45);
+      font-size: 13px;
+      text-align: center;
+      transition: .25s ease;
     }
 
     .toast.show {
       opacity: 1;
-
-      transform:
-        translate(-50%, 0);
+      transform: translate(-50%, 0);
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
+    /* RESPONSIVE */
 
-    .footer {
-      margin-top: 25px;
-
-      color: var(--muted);
-
-      text-align: center;
-
-      font-size: 11px;
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 600px) {
-
+    @media (max-width: 650px) {
       body {
         padding: 12px;
       }
 
-      .profile-card {
-        padding: 22px;
-
-        border-radius: 23px;
+      .hero {
+        padding: 30px 18px 25px;
       }
 
-      .header {
-        align-items: flex-start;
-      }
-
-      .profile-picture {
-        width: 82px;
-        height: 82px;
+      .content {
+        padding: 18px;
       }
 
       .info-grid,
-      .links,
-      .actions {
+      .buttons,
+      .platforms {
         grid-template-columns: 1fr;
       }
 
-      .launcher {
-        align-items: flex-start;
+      .avatar {
+        width: 100px;
+        height: 100px;
       }
-
-      .status {
-        font-size: 9px;
-      }
-
     }
-
   </style>
 </head>
 
-
 <body>
 
-  <div class="container">
+  <main class="container">
 
-    <main class="profile-card">
+    <div class="card">
 
-      <!-- =====================
-           HEADER
-      ====================== -->
+      <!-- HERO -->
+      <section class="hero">
 
-      <div class="header">
-
-        <img
-          class="profile-picture"
-          src="./media/profil.png"
-          alt="Foto profil IQBALCRAFTMC"
-          onerror="
-            this.onerror=null;
-            this.src='./media/image.jpg';
-          "
-        >
-
-        <div class="identity">
-
-          <h1>IQBALCRAFTMC</h1>
-
-          <div class="username">
-            @iqbalcraftmc
-          </div>
-
-          <div class="role">
-            Content Creator & Modpack Creator/Developer
-          </div>
-
+        <div class="avatar-wrap">
+          <img
+            class="avatar"
+            src="./media/profil.png"
+            alt="Foto profil"
+            onerror="this.onerror=null; this.src='./media/profil.jpg';"
+          >
+          <span class="online"></span>
         </div>
 
-      </div>
+        <h1>IqbalCraftMC</h1>
 
+        <div class="username">@IqbalCraftMC</div>
 
-      <!-- =====================
-           BIO
-      ====================== -->
-
-      <p class="bio">
-
-        Pelajar TKJ yang suka membuat konten Minecraft,
-        musik/rewind, serta mengembangkan modpack kendaraan
-        dan berbagai project digital.
-
-      </p>
-
-
-      <!-- =====================
-           INFORMASI
-      ====================== -->
-
-      <section class="section">
-
-        <div class="section-title">
-
-          <i class="fa-solid fa-id-card"></i>
-
-          <span>Informasi</span>
-
-        </div>
-
-
-        <div class="info-grid">
-
-          <div class="info-item">
-
-            <div class="info-label">
-              Nama
-            </div>
-
-            <div class="info-value">
-              IQBALCRAFTMC
-            </div>
-
-          </div>
-
-
-          <div class="info-item">
-
-            <div class="info-label">
-              Discord
-            </div>
-
-            <div class="info-value">
-              iqbal_craft
-            </div>
-
-          </div>
-
-
-          <div class="info-item">
-
-            <div class="info-label">
-              Email
-            </div>
-
-            <div class="info-value">
-              iqbalcraftmc.official1@gmail.com
-            </div>
-
-          </div>
-
-
-          <div class="info-item">
-
-            <div class="info-label">
-              Bidang
-            </div>
-
-            <div class="info-value">
-              Minecraft • Modpack • Content
-            </div>
-
-          </div>
-
-        </div>
+        <p class="bio">
+          Minecraft enthusiast, creator, programmer, dan pengembang
+          berbagai project digital. Selamat datang di kartu identitas digital saya!
+        </p>
 
       </section>
 
+      <div class="content">
 
-      <!-- =====================
-           LAUNCHER DETECTOR
-      ====================== -->
+        <!-- IDENTITAS -->
+        <section class="section">
 
-      <section class="section">
+          <div class="section-title">Informasi</div>
 
-        <div class="section-title">
+          <div class="info-grid">
 
-          <i class="fa-solid fa-cubes"></i>
-
-          <span>
-            Minecraft Launcher
-          </span>
-
-        </div>
-
-
-        <div class="minecraft-panel">
-
-
-          <!-- ANDROID -->
-
-          <div class="device-section">
-
-            <div class="device-title">
-
-              <i class="fa-brands fa-android"></i>
-
-              Android
-
+            <div class="info">
+              <span class="label">Nama</span>
+              <span class="value">Iqbal</span>
             </div>
 
-
-            <div class="launcher-list">
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-rocket"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      Zalith Launcher 2
-                    </div>
-
-                    <div class="launcher-type">
-                      Minecraft Java Edition
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-gamepad"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      PojavLauncher
-                    </div>
-
-                    <div class="launcher-type">
-                      Minecraft Java Edition
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-cube"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      Amethyst Launcher
-                    </div>
-
-                    <div class="launcher-type">
-                      Minecraft Java Edition
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-mobile-screen"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      Fold Craft Launcher
-                    </div>
-
-                    <div class="launcher-type">
-                      Minecraft Java Edition
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-layer-group"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      HMCL
-                    </div>
-
-                    <div class="launcher-type">
-                      Minecraft Java Edition
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-cube"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      Minecraft Bedrock
-                    </div>
-
-                    <div class="launcher-type">
-                      Minecraft for Android
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
+            <div class="info">
+              <span class="label">Username</span>
+              <span class="value">IqbalCraftMC</span>
+            </div>
+
+            <div class="info">
+              <span class="label">Platform</span>
+              <span class="value">Android • Windows</span>
+            </div>
+
+            <div class="info">
+              <span class="label">Fokus</span>
+              <span class="value">Minecraft • Coding • Project</span>
             </div>
 
           </div>
 
+        </section>
 
-          <!-- WINDOWS / PC -->
+        <!-- TOMBOL -->
+        <section class="section">
 
-          <div class="device-section">
+          <div class="section-title">Aksi</div>
 
-            <div class="device-title">
+          <div class="buttons">
 
-              <i class="fa-brands fa-windows"></i>
+            <button class="minecraft" onclick="openMabar()">
+              🎮 Mabar Yuk!
+            </button>
 
-              Windows / PC
+            <button class="primary" onclick="copyDiscord()">
+              💬 Salin Discord
+            </button>
 
-            </div>
+            <button class="secondary" onclick="sharePage()">
+              🔗 Bagikan Profil
+            </button>
 
-
-            <div class="launcher-list">
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-brands fa-microsoft"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      Minecraft Launcher
-                    </div>
-
-                    <div class="launcher-type">
-                      Launcher resmi Minecraft
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-layer-group"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      Prism Launcher
-                    </div>
-
-                    <div class="launcher-type">
-                      Java Edition
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-layer-group"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      MultiMC
-                    </div>
-
-                    <div class="launcher-type">
-                      Java Edition
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-layer-group"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      ATLauncher
-                    </div>
-
-                    <div class="launcher-type">
-                      Java Edition
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-layer-group"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      SKLauncher
-                    </div>
-
-                    <div class="launcher-type">
-                      Java Edition
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-layer-group"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      Modrinth App
-                    </div>
-
-                    <div class="launcher-type">
-                      Minecraft launcher & mod manager
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-layer-group"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      CurseForge App
-                    </div>
-
-                    <div class="launcher-type">
-                      Minecraft mod manager
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-moon"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      Lunar Client
-                    </div>
-
-                    <div class="launcher-type">
-                      Minecraft client
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-shield"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      Badlion Client
-                    </div>
-
-                    <div class="launcher-type">
-                      Minecraft client
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-feather"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      Feather Client
-                    </div>
-
-                    <div class="launcher-type">
-                      Minecraft client
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-              <div class="launcher">
-
-                <div class="launcher-info">
-
-                  <div class="launcher-icon">
-                    <i class="fa-solid fa-cubes-stacked"></i>
-                  </div>
-
-                  <div>
-
-                    <div class="launcher-name">
-                      Titan Launcher
-                    </div>
-
-                    <div class="launcher-type">
-                      Minecraft Java Edition
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <span class="status status-try">
-                  Bisa dicoba
-                </span>
-
-              </div>
-
-
-            </div>
+            <button class="secondary" onclick="showDeviceInfo()">
+              💻 Perangkat Saya
+            </button>
 
           </div>
 
+        </section>
 
-          <div class="detector-info">
+        <!-- GAMBAR -->
+        <section class="section">
 
-            <i class="fa-solid fa-circle-info"></i>
+          <div class="section-title">Preview</div>
 
-            Website tidak bisa membaca daftar aplikasi
-            yang terpasang secara langsung. Status launcher
-            menggunakan metode yang aman untuk browser dan
-            dapat berubah menjadi "berhasil dibuka" ketika
-            launcher menerima permintaan dari website.
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- =====================
-           MINECRAFT ACTION
-      ====================== -->
-
-      <section class="section">
-
-        <div class="section-title">
-
-          <i class="fa-solid fa-gamepad"></i>
-
-          <span>Mabar</span>
-
-        </div>
-
-
-        <div class="actions">
-
-          <button
-            class="btn btn-primary"
-            onclick="openLauncherMenu()"
+          <img
+            class="gallery"
+            src="./media/image.jpg"
+            alt="Preview"
+            onerror="this.style.display='none';"
           >
 
-            <i class="fa-solid fa-play"></i>
-
-            Mabar Yuk!
-
-          </button>
-
-
-          <button
-            class="btn btn-secondary"
-            onclick="detectDevice()"
-          >
-
-            <i class="fa-solid fa-mobile-screen-button"></i>
-
-            Deteksi Perangkat
-
-          </button>
-
-        </div>
-
-      </section>
-
-
-      <!-- =====================
-           SOCIAL
-      ====================== -->
-
-      <section class="section">
-
-        <div class="section-title">
-
-          <i class="fa-solid fa-link"></i>
-
-          <span>Link Saya</span>
-
-        </div>
-
-
-        <div class="links">
-
-
-          <a
-            class="link-btn"
-            href="https://youtube.com/@iqbalcraftmc?si=v6eRLpwi80moqM14"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-            <i class="fa-brands fa-youtube"></i>
-
-            YouTube
-
-          </a>
-
-
-          <a
-            class="link-btn"
-            href="https://www.instagram.com/iqbalcraftmc.official/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-            <i class="fa-brands fa-instagram"></i>
-
-            Instagram
-
-          </a>
-
-
-          <a
-            class="link-btn"
-            href="https://github.com/iqbalcraftmc"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-            <i class="fa-brands fa-github"></i>
-
-            GitHub
-
-          </a>
-
-
-          <a
-            class="link-btn"
-            href="https://www.curseforge.com/members/iqbalcraftmc/projects"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-            <i class="fa-solid fa-cube"></i>
-
-            CurseForge
-
-          </a>
-
-
-          <a
-            class="link-btn"
-            href="https://namemc.com/profile/Iqbalcraftmc"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-            <i class="fa-solid fa-user"></i>
-
-            NameMC
-
-          </a>
-
-
-          <a
-            class="link-btn"
-            href="https://wa.me/6289618526693"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-            <i class="fa-brands fa-whatsapp"></i>
-
-            WhatsApp
-
-          </a>
-
-
-        </div>
-
-      </section>
-
-
-      <!-- =====================
-           DISCORD
-      ====================== -->
-
-      <section class="section">
-
-        <button
-          class="link-btn"
-          style="width:100%;"
-          onclick="copyDiscord()"
-        >
-
-          <i class="fa-brands fa-discord"></i>
-
-          Copy Discord: iqbal_craft
-
-        </button>
-
-      </section>
-
-
-      <!-- =====================
-           SHARE
-      ====================== -->
-
-      <section class="section">
-
-        <button
-          class="btn btn-primary"
-          onclick="shareProfile()"
-        >
-
-          <i class="fa-solid fa-share-nodes"></i>
-
-          Bagikan Profil
-
-        </button>
-
-      </section>
-
-
-      <div class="footer">
-
-        © <span id="year"></span>
-        IQBALCRAFTMC • Digital Identity
-
-      </div>
-
-    </main>
-
-  </div>
-
-
-  <!-- =====================
-       LAUNCHER MODAL
-  ====================== -->
-
-  <div
-    id="launcherModal"
-    class="modal"
-    onclick="closeModalOutside(event)"
-  >
-
-    <div class="modal-box">
-
-      <div class="modal-header">
-
-        <div>
-
-          <div class="modal-title">
-            🎮 Pilih Launcher
-          </div>
-
-          <div class="modal-subtitle">
-            Pilih launcher Minecraft yang ingin kamu coba buka.
-          </div>
-
-        </div>
-
-
-        <button
-          class="close-btn"
-          onclick="closeLauncherMenu()"
-        >
-
-          <i class="fa-solid fa-xmark"></i>
-
-        </button>
-
-      </div>
-
-
-      <!-- ANDROID -->
-
-      <div class="modal-section">
-
-        <div class="modal-section-title">
-          Android
-        </div>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('zalith')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-rocket"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              Zalith Launcher 2
-            </div>
-
-            <div class="choice-desc">
-              Minecraft Java Edition
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('pojav')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-gamepad"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              PojavLauncher
-            </div>
-
-            <div class="choice-desc">
-              Minecraft Java Edition
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('amethyst')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-cube"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              Amethyst Launcher
-            </div>
-
-            <div class="choice-desc">
-              Minecraft Java Edition
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('fcl')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-mobile-screen"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              Fold Craft Launcher
-            </div>
-
-            <div class="choice-desc">
-              Minecraft Java Edition
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('hmcl')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-layer-group"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              HMCL
-            </div>
-
-            <div class="choice-desc">
-              Minecraft Java Edition
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('bedrock')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-cube"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              Minecraft Bedrock
-            </div>
-
-            <div class="choice-desc">
-              Minecraft for Android
-            </div>
-
-          </div>
-
-        </button>
-
-      </div>
-
-
-      <!-- PC -->
-
-      <div class="modal-section">
-
-        <div class="modal-section-title">
-          Windows / PC
-        </div>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('official')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-brands fa-microsoft"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              Minecraft Launcher
-            </div>
-
-            <div class="choice-desc">
-              Launcher resmi Minecraft
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('prism')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-layer-group"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              Prism Launcher
-            </div>
-
-            <div class="choice-desc">
-              Minecraft Java Edition
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('multimc')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-layer-group"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              MultiMC
-            </div>
-
-            <div class="choice-desc">
-              Minecraft Java Edition
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('atlauncher')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-layer-group"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              ATLauncher
-            </div>
-
-            <div class="choice-desc">
-              Minecraft Java Edition
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('sklauncher')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-layer-group"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              SKLauncher
-            </div>
-
-            <div class="choice-desc">
-              Minecraft Java Edition
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('modrinth')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-layer-group"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              Modrinth App
-            </div>
-
-            <div class="choice-desc">
-              Launcher & mod manager
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('curseforge')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-cubes-stacked"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              CurseForge App
-            </div>
-
-            <div class="choice-desc">
-              Launcher & mod manager
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('lunar')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-moon"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              Lunar Client
-            </div>
-
-            <div class="choice-desc">
-              Minecraft client
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('badlion')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-shield"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              Badlion Client
-            </div>
-
-            <div class="choice-desc">
-              Minecraft client
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('feather')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-feather"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              Feather Client
-            </div>
-
-            <div class="choice-desc">
-              Minecraft client
-            </div>
-
-          </div>
-
-        </button>
-
-
-        <button
-          class="launcher-choice"
-          onclick="launchMinecraft('titan')"
-        >
-
-          <div class="choice-icon">
-            <i class="fa-solid fa-cubes-stacked"></i>
-          </div>
-
-          <div>
-
-            <div class="choice-name">
-              Titan Launcher
-            </div>
-
-            <div class="choice-desc">
-              Minecraft Java Edition
-            </div>
-
-          </div>
-
-        </button>
+        </section>
 
       </div>
 
     </div>
 
+    <div class="footer">
+      © <span id="year"></span> IqbalCraftMC • Digital Identity Card
+    </div>
+
+  </main>
+
+
+  <!-- MABAR MODAL -->
+  <div class="modal" id="mabarModal">
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+        <h2>🎮 Mabar Yuk!</h2>
+
+        <button
+          class="close"
+          onclick="closeMabar()"
+          aria-label="Tutup"
+        >
+          ×
+        </button>
+      </div>
+
+      <p style="color:var(--muted);font-size:13px;line-height:1.6;margin-bottom:18px;">
+        Pilih platform dan launcher Minecraft yang kamu gunakan.
+        Website akan mencoba membuka launcher jika browser dan launcher
+        mendukungnya.
+      </p>
+
+      <!-- PLATFORM -->
+      <div class="platforms">
+
+        <button
+          class="platform"
+          id="androidPlatform"
+          onclick="selectPlatform('android')"
+        >
+          <span class="platform-icon">📱</span>
+          <span>Android</span>
+        </button>
+
+        <button
+          class="platform"
+          id="windowsPlatform"
+          onclick="selectPlatform('windows')"
+        >
+          <span class="platform-icon">💻</span>
+          <span>Windows / PC</span>
+        </button>
+
+      </div>
+
+
+      <!-- ANDROID LAUNCHERS -->
+      <div class="launcher-list" id="androidLaunchers">
+
+        <button class="launcher" onclick="tryAndroidLauncher('Zalith Launcher 2','com.movtery.zalithlauncher')">
+          <div>
+            <div class="launcher-name">🚀 Zalith Launcher 2</div>
+            <div class="launcher-desc">
+              Launcher Minecraft Java Edition Android.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="tryAndroidLauncher('PojavLauncher','net.kdt.pojavlaunch')">
+          <div>
+            <div class="launcher-name">🚀 PojavLauncher</div>
+            <div class="launcher-desc">
+              Launcher Minecraft Java Edition Android.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="tryAndroidLauncher('Amethyst Launcher','com.movtery.zalithlauncher')">
+          <div>
+            <div class="launcher-name">🚀 Amethyst Launcher</div>
+            <div class="launcher-desc">
+              Launcher Java alternatif. Dukungan pembukaan aplikasi
+              bergantung pada versi launcher.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="tryAndroidLauncher('Fold Craft Launcher','com.tungsten.fcl')">
+          <div>
+            <div class="launcher-name">🚀 Fold Craft Launcher</div>
+            <div class="launcher-desc">
+              Launcher Java Edition Android.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="launcherUnavailable('HMCL Android')">
+          <div>
+            <div class="launcher-name">🚀 HMCL</div>
+            <div class="launcher-desc">
+              Pembukaan otomatis dari browser tidak dapat dijamin.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="launcherUnavailable('Minecraft Bedrock')">
+          <div>
+            <div class="launcher-name">🟩 Minecraft Bedrock</div>
+            <div class="launcher-desc">
+              Tidak menggunakan deep-link otomatis agar tidak diarahkan
+              ke Google Play Store.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+      </div>
+
+
+      <!-- WINDOWS LAUNCHERS -->
+      <div class="launcher-list" id="windowsLaunchers">
+
+        <button class="launcher" onclick="tryWindowsLauncher('Minecraft Launcher','minecraft://')">
+          <div>
+            <div class="launcher-name">🟩 Minecraft Launcher</div>
+            <div class="launcher-desc">
+              Launcher resmi Minecraft untuk Windows.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="tryWindowsLauncher('Prism Launcher','prismlauncher://')">
+          <div>
+            <div class="launcher-name">🔷 Prism Launcher</div>
+            <div class="launcher-desc">
+              Multi-instance launcher untuk Minecraft.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="tryWindowsLauncher('MultiMC','multimc://')">
+          <div>
+            <div class="launcher-name">🔷 MultiMC</div>
+            <div class="launcher-desc">
+              Launcher multi-instance Minecraft.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="tryWindowsLauncher('ATLauncher','atlauncher://')">
+          <div>
+            <div class="launcher-name">🚀 ATLauncher</div>
+            <div class="launcher-desc">
+              Launcher Minecraft berbasis instance/modpack.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="tryWindowsLauncher('SKLauncher','sklauncher://')">
+          <div>
+            <div class="launcher-name">⚡ SKLauncher</div>
+            <div class="launcher-desc">
+              Launcher Minecraft Java untuk Windows.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="tryWindowsLauncher('Modrinth App','modrinth://')">
+          <div>
+            <div class="launcher-name">🟢 Modrinth App</div>
+            <div class="launcher-desc">
+              Launcher dan pengelola modpack.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="tryWindowsLauncher('CurseForge','curseforge://')">
+          <div>
+            <div class="launcher-name">🟠 CurseForge</div>
+            <div class="launcher-desc">
+              Pengelola modpack dan Minecraft.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="tryWindowsLauncher('Lunar Client','lunarclient://')">
+          <div>
+            <div class="launcher-name">🌙 Lunar Client</div>
+            <div class="launcher-desc">
+              Minecraft client untuk Windows.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="tryWindowsLauncher('Badlion Client','badlionclient://')">
+          <div>
+            <div class="launcher-name">🛡️ Badlion Client</div>
+            <div class="launcher-desc">
+              Minecraft client untuk PC.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="tryWindowsLauncher('Feather Client','feather://')">
+          <div>
+            <div class="launcher-name">🪶 Feather Client</div>
+            <div class="launcher-desc">
+              Minecraft client untuk PC.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+        <button class="launcher" onclick="tryWindowsLauncher('Titan Launcher','titanlauncher://')">
+          <div>
+            <div class="launcher-name">⛏️ Titan Launcher</div>
+            <div class="launcher-desc">
+              Launcher Minecraft pihak ketiga.
+            </div>
+          </div>
+          <span class="launcher-arrow">›</span>
+        </button>
+
+      </div>
+
+
+      <div class="notice" id="launcherNotice"></div>
+
+    </div>
   </div>
 
 
   <!-- TOAST -->
-
-  <div
-    id="toast"
-    class="toast"
-  ></div>
+  <div class="toast" id="toast"></div>
 
 
   <script>
@@ -2200,237 +813,28 @@
        BASIC
     ========================= */
 
-    const toast =
-      document.getElementById("toast");
-
-    const modal =
-      document.getElementById("launcherModal");
-
-
-    document.getElementById("year")
-      .textContent =
+    document.getElementById("year").textContent =
       new Date().getFullYear();
 
 
-    function showToast(message) {
-
-      toast.textContent = message;
-
-      toast.classList.add("show");
-
-      clearTimeout(window.toastTimer);
-
-      window.toastTimer =
-        setTimeout(() => {
-
-          toast.classList.remove("show");
-
-        }, 3000);
-
-    }
-
-
     /* =========================
-       DEVICE
+       TOAST
     ========================= */
 
-    function isAndroid() {
+    let toastTimer;
 
-      return /Android/i
-        .test(navigator.userAgent);
+    function toast(message) {
 
-    }
+      const el = document.getElementById("toast");
 
+      el.textContent = message;
+      el.classList.add("show");
 
-    function isWindows() {
+      clearTimeout(toastTimer);
 
-      return /Windows/i
-        .test(navigator.userAgent);
-
-    }
-
-
-    function detectDevice() {
-
-      if (isAndroid()) {
-
-        showToast(
-          "📱 Perangkat terdeteksi sebagai Android."
-        );
-
-        return;
-
-      }
-
-
-      if (isWindows()) {
-
-        showToast(
-          "💻 Perangkat terdeteksi sebagai Windows/PC."
-        );
-
-        return;
-
-      }
-
-
-      showToast(
-        "🌐 Perangkat lain terdeteksi."
-      );
-
-    }
-
-
-    /* =========================
-       LAUNCHER MENU
-    ========================= */
-
-    function openLauncherMenu() {
-
-      modal.classList.add("active");
-
-      document.body.style.overflow =
-        "hidden";
-
-    }
-
-
-    function closeLauncherMenu() {
-
-      modal.classList.remove("active");
-
-      document.body.style.overflow =
-        "";
-
-    }
-
-
-    function closeModalOutside(event) {
-
-      if (event.target === modal) {
-
-        closeLauncherMenu();
-
-      }
-
-    }
-
-
-    /* =========================
-       LAUNCHER OPENING
-    ========================= */
-
-    function launchMinecraft(type) {
-
-      closeLauncherMenu();
-
-
-      const links = {
-
-        /*
-         * Android
-         */
-
-        zalith:
-          "intent://#Intent;scheme=zalith;package=com.movtery.zalithlauncher;end",
-
-        pojav:
-          "intent://#Intent;scheme=pojavlauncher;package=net.kdt.pojavlaunch;end",
-
-        amethyst:
-          "intent://#Intent;scheme=amethyst;end",
-
-        fcl:
-          "intent://#Intent;scheme=fcl;end",
-
-        hmcl:
-          "intent://#Intent;scheme=hmcl;end",
-
-        bedrock:
-          "minecraft://",
-
-        /*
-         * PC
-         */
-
-        official:
-          "minecraft://",
-
-        prism:
-          "prismlauncher://",
-
-        multimc:
-          "multimc://",
-
-        atlauncher:
-          "atlauncher://",
-
-        sklauncher:
-          "sklauncher://",
-
-        modrinth:
-          "modrinth://",
-
-        curseforge:
-          "curseforge://",
-
-        lunar:
-          "lunarclient://",
-
-        badlion:
-          "badlionclient://",
-
-        feather:
-          "feather://",
-
-        titan:
-          "titanlauncher://"
-
-      };
-
-
-      const target =
-        links[type];
-
-
-      if (!target) {
-
-        showToast(
-          "Launcher tidak memiliki link pembuka."
-        );
-
-        return;
-
-      }
-
-
-      showToast(
-        "🚀 Mencoba membuka launcher..."
-      );
-
-
-      /*
-       * Browser akan mencoba membuka aplikasi.
-       */
-
-      window.location.href =
-        target;
-
-
-      /*
-       * Setelah beberapa detik,
-       * berikan informasi jika browser
-       * tetap berada di halaman.
-       */
-
-      setTimeout(() => {
-
-        showToast(
-          "Jika launcher tidak terbuka, kemungkinan launcher tidak mendukung deep link atau tidak terpasang."
-        );
-
-      }, 2200);
-
+      toastTimer = setTimeout(() => {
+        el.classList.remove("show");
+      }, 3000);
     }
 
 
@@ -2438,47 +842,56 @@
        DISCORD
     ========================= */
 
+    /*
+      GANTI dengan username Discord kamu.
+      Contoh:
+      const discordUsername = "IqbalCraftMC";
+    */
+
+    const discordUsername = "IqbalCraftMC";
+
+
     async function copyDiscord() {
-
-      const username =
-        "iqbal_craft";
-
 
       try {
 
-        await navigator.clipboard
-          .writeText(username);
+        if (navigator.clipboard &&
+            navigator.clipboard.writeText) {
 
-        showToast(
-          "Discord disalin: " +
-          username
-        );
+          await navigator.clipboard.writeText(
+            discordUsername
+          );
+
+        } else {
+
+          const textarea =
+            document.createElement("textarea");
+
+          textarea.value = discordUsername;
+
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+
+          document.body.appendChild(textarea);
+
+          textarea.focus();
+          textarea.select();
+
+          document.execCommand("copy");
+
+          textarea.remove();
+        }
+
+        toast("Discord berhasil disalin: " + discordUsername);
 
       } catch (error) {
 
-        const textarea =
-          document.createElement("textarea");
-
-        textarea.value =
-          username;
-
-        document.body.appendChild(
-          textarea
-        );
-
-        textarea.select();
-
-        document.execCommand("copy");
-
-        textarea.remove();
-
-        showToast(
-          "Discord disalin: " +
-          username
+        toast(
+          "Gagal menyalin. Discord: " +
+          discordUsername
         );
 
       }
-
     }
 
 
@@ -2486,58 +899,244 @@
        SHARE
     ========================= */
 
-    async function shareProfile() {
+    async function sharePage() {
 
       const shareData = {
-
-        title:
-          "IQBALCRAFTMC",
-
-        text:
-          "Kartu Identitas Digital IQBALCRAFTMC",
-
-        url:
-          window.location.href
-
+        title: "IqbalCraftMC",
+        text: "Kartu Identitas Digital IqbalCraftMC",
+        url: window.location.href
       };
 
+      try {
 
-      if (navigator.share) {
+        if (navigator.share) {
 
-        try {
+          await navigator.share(shareData);
 
-          await navigator.share(
-            shareData
+        } else if (
+          navigator.clipboard &&
+          navigator.clipboard.writeText
+        ) {
+
+          await navigator.clipboard.writeText(
+            window.location.href
           );
 
-        } catch (error) {
+          toast("Link profil berhasil disalin!");
 
-          /*
-           * Share dibatalkan.
-           */
+        } else {
+
+          toast("Link profil: " + window.location.href);
 
         }
 
-        return;
+      } catch (error) {
+
+        if (error.name !== "AbortError") {
+          toast("Gagal membagikan profil.");
+        }
 
       }
+    }
+
+
+    /* =========================
+       MABAR MODAL
+    ========================= */
+
+    const modal =
+      document.getElementById("mabarModal");
+
+    function openMabar() {
+
+      modal.classList.add("show");
+
+      detectPlatform();
+
+    }
+
+    function closeMabar() {
+
+      modal.classList.remove("show");
+
+    }
+
+    modal.addEventListener("click", function(event) {
+
+      if (event.target === modal) {
+        closeMabar();
+      }
+
+    });
+
+
+    document.addEventListener("keydown", function(event) {
+
+      if (event.key === "Escape") {
+        closeMabar();
+      }
+
+    });
+
+
+    /* =========================
+       PLATFORM DETECTION
+    ========================= */
+
+    function detectPlatform() {
+
+      const ua =
+        navigator.userAgent ||
+        navigator.vendor ||
+        window.opera ||
+        "";
+
+      const android =
+        /Android/i.test(ua);
+
+      const windows =
+        /Windows/i.test(ua);
+
+      if (android) {
+
+        selectPlatform("android");
+
+      } else if (windows) {
+
+        selectPlatform("windows");
+
+      } else {
+
+        /*
+          Perangkat lain:
+          tampilkan Android sebagai default
+          supaya pengguna tetap bisa memilih.
+        */
+
+        selectPlatform("android");
+
+      }
+
+    }
+
+
+    function selectPlatform(platform) {
+
+      const androidButton =
+        document.getElementById("androidPlatform");
+
+      const windowsButton =
+        document.getElementById("windowsPlatform");
+
+      const androidList =
+        document.getElementById("androidLaunchers");
+
+      const windowsList =
+        document.getElementById("windowsLaunchers");
+
+      androidButton.classList.remove("active");
+      windowsButton.classList.remove("active");
+
+      androidList.classList.remove("show");
+      windowsList.classList.remove("show");
+
+      hideNotice();
+
+      if (platform === "android") {
+
+        androidButton.classList.add("active");
+        androidList.classList.add("show");
+
+      } else {
+
+        windowsButton.classList.add("active");
+        windowsList.classList.add("show");
+
+      }
+
+    }
+
+
+    /* =========================
+       ANDROID LAUNCHER
+       ========================= */
+
+    /*
+      PENTING:
+
+      Website TIDAK mempunyai izin untuk membaca
+      daftar aplikasi Android yang terpasang.
+
+      Kita hanya mencoba membuka aplikasi tertentu.
+
+      Jika gagal:
+      - tidak membuka Google Play Store
+      - tidak membuka halaman download
+      - tetap berada di website
+    */
+
+    function tryAndroidLauncher(
+      launcherName,
+      packageName
+    ) {
+
+      if (!/Android/i.test(navigator.userAgent)) {
+
+        showNotice(
+          "Perangkat ini tidak terdeteksi sebagai Android."
+        );
+
+        return;
+      }
+
+
+      /*
+        browser fallback diarahkan kembali
+        ke halaman saat ini.
+
+        Jadi tidak ada fallback ke Play Store.
+      */
+
+      const fallback =
+        encodeURIComponent(
+          window.location.href
+        );
+
+
+      /*
+        Explicit Android package intent.
+
+        Tidak memakai link Play Store.
+      */
+
+      const intent =
+        "intent://#Intent;" +
+        "action=android.intent.action.MAIN;" +
+        "category=android.intent.category.LAUNCHER;" +
+        "package=" + packageName + ";" +
+        "S.browser_fallback_url=" +
+        fallback +
+        ";end";
+
+
+      showNotice(
+        "Mencoba membuka " +
+        launcherName +
+        "..."
+      );
 
 
       try {
 
-        await navigator.clipboard
-          .writeText(
-            window.location.href
-          );
-
-        showToast(
-          "🔗 Link profil berhasil disalin."
-        );
+        window.location.href = intent;
 
       } catch (error) {
 
-        showToast(
-          window.location.href
+        showNotice(
+          "Browser tidak dapat membuka " +
+          launcherName +
+          " secara langsung. " +
+          "Silakan buka launcher secara manual."
         );
 
       }
@@ -2546,23 +1145,179 @@
 
 
     /* =========================
-       ESC KEY
+       WINDOWS LAUNCHER
     ========================= */
 
-    document.addEventListener(
-      "keydown",
-      function(event) {
+    function tryWindowsLauncher(
+      launcherName,
+      protocol
+    ) {
 
-        if (
-          event.key === "Escape"
-        ) {
+      if (!/Windows/i.test(navigator.userAgent)) {
 
-          closeLauncherMenu();
+        showNotice(
+          "Perangkat ini tidak terdeteksi sebagai Windows."
+        );
 
-        }
+        return;
+      }
+
+
+      showNotice(
+        "Mencoba membuka " +
+        launcherName +
+        "..."
+      );
+
+
+      try {
+
+        /*
+          Tidak menggunakan Play Store.
+
+          Windows akan menangani protocol
+          jika launcher memang mendaftarkannya.
+        */
+
+        window.location.href = protocol;
+
+
+        /*
+          Setelah beberapa saat,
+          berikan informasi jika tidak berhasil.
+        */
+
+        setTimeout(() => {
+
+          showNotice(
+            launcherName +
+            " tidak dapat dipastikan berhasil dibuka. " +
+            "Jika tidak muncul, buka launcher secara manual."
+          );
+
+        }, 1800);
+
+      } catch (error) {
+
+        showNotice(
+          "Browser tidak dapat membuka " +
+          launcherName +
+          "."
+        );
 
       }
-    );
+
+    }
+
+
+    /* =========================
+       LAUNCHER UNAVAILABLE
+    ========================= */
+
+    function launcherUnavailable(
+      launcherName
+    ) {
+
+      showNotice(
+        launcherName +
+        " belum memiliki metode pembukaan otomatis " +
+        "yang aman dan konsisten dari website. " +
+        "Silakan buka launcher tersebut secara manual."
+      );
+
+    }
+
+
+    function showNotice(message) {
+
+      const notice =
+        document.getElementById("launcherNotice");
+
+      notice.textContent = message;
+      notice.classList.add("show");
+
+    }
+
+
+    function hideNotice() {
+
+      const notice =
+        document.getElementById("launcherNotice");
+
+      notice.classList.remove("show");
+
+    }
+
+
+    /* =========================
+       DEVICE INFORMATION
+    ========================= */
+
+    function showDeviceInfo() {
+
+      const ua =
+        navigator.userAgent;
+
+      let platform = "Tidak diketahui";
+
+      if (/Android/i.test(ua)) {
+        platform = "Android";
+      } else if (/Windows/i.test(ua)) {
+        platform = "Windows";
+      } else if (/Mac/i.test(ua)) {
+        platform = "macOS";
+      } else if (/Linux/i.test(ua)) {
+        platform = "Linux";
+      }
+
+      const mobile =
+        /Android|iPhone|iPad|iPod/i.test(ua);
+
+      const type =
+        mobile ? "Mobile" : "Desktop / Laptop";
+
+
+      toast(
+        "Platform: " +
+        platform +
+        " • Tipe: " +
+        type
+      );
+
+    }
+
+
+    /* =========================
+       LANGUAGE
+    ========================= */
+
+    /*
+      Bahasa mengikuti browser.
+
+      Jika browser Indonesia:
+      tetap Indonesia.
+
+      Selain itu:
+      halaman tetap menggunakan bahasa Indonesia
+      karena identitas utama halaman ini Indonesia.
+    */
+
+
+    /* =========================
+       IMAGE FALLBACK
+    ========================= */
+
+    /*
+      Struktur media:
+
+      media/
+      ├── profil.png
+      ├── profil.jpg
+      └── image.jpg
+
+      Kalau profil.png tidak ada,
+      otomatis mencoba profil.jpg.
+    */
 
   </script>
 
